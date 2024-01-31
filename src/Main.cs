@@ -12,17 +12,19 @@ class LangTest
     public static void Main(string[] args)
     {
 
-        var lang = "en";
+        Console.WriteLine("hello world");
 
-        ResourceManager RM = new ResourceManager("ConsoleApp1.languages."+lang,Assembly.GetExecutingAssembly());
+        //var lang = "en";    
 
-        Console.WriteLine(RM.GetString("options"));
+        //ResourceManager RM = new ResourceManager("ConsoleApp1.languages."+lang,Assembly.GetExecutingAssembly());
+
+    //    Console.WriteLine(RM.GetString("options"));
 
 
-        Save s1 = new Save("s1", @"C:\CESI\A3\prog sys\git\projet_pros_sys_A3_23-26\test\", @"C:\CESI\A3\prog sys\git\projet_pros_sys_A3_23 - 26\test2", false);
+    //    Save s1 = new Save("s1", @"C:\CESI\A3\prog sys\git\projet_pros_sys_A3_23-26\test\", @"C:\CESI\A3\prog sys\git\projet_pros_sys_A3_23 - 26\test2", false);
 
 
-        s1.save();
+    //    s1.save();
     }
 
 
