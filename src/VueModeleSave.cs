@@ -21,10 +21,12 @@ namespace Console_Application_Test_1.src
         {
             new ResourceManager("ConsoleApp1.languages." + str, Assembly.GetExecutingAssembly());
         }
-          
+        
         public void menu()
         {
             this.userInput = Vue.GetInput();
+
+            vueobject.SetOutPut(rm.GetString("HOME_hello") ?? errorArgument);
 
             if (this.userInput.Equals("1"))
             {
@@ -44,23 +46,23 @@ namespace Console_Application_Test_1.src
             }
             else
             {
-                vueobject.SetOutPut(rm.GetString("entrer_bad") ?? errorArgument);
+                vueobject.SetOutPut(rm.GetString("enter_bad") ?? errorArgument);
             }
         }
 
         public void creerSauvegarde()
-        {
-            vueobject.SetOutPut(rm.GetString("create_save") ?? errorArgument);
+        { 
+            vueobject.SetOutPut(rm.GetString("HOME_create_save") ?? errorArgument);
         }
 
         public void effectuerSauvegarde()
         {
-            vueobject.SetOutPut(rm.GetString("lunch_save") ?? errorArgument);
+            vueobject.SetOutPut(rm.GetString("HOME_lunch_save") ?? errorArgument);
         }
 
         public void modifierSauvegarde()
         {
-            vueobject.SetOutPut(rm.GetString("edit_save") ?? errorArgument);
+            vueobject.SetOutPut(rm.GetString("HOME_edit_save") ?? errorArgument);
         }
 
         public void assignerParametres()
@@ -69,7 +71,7 @@ namespace Console_Application_Test_1.src
 
             ResourceManager RM = new ResourceManager("ConsoleApp1.languages." + lang, Assembly.GetExecutingAssembly());
 
-            vueobject.SetOutPut(rm.GetString("settings") ?? errorArgument);
+            vueobject.SetOutPut(rm.GetString("SETTINGS_lang") ?? errorArgument);
         }
 
     }
