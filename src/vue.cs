@@ -8,15 +8,19 @@ namespace ConsoleApp1.src
 {
     internal class Vue
     {
-        private string? outPut;
+        private String outPut;
 
-        public static string GetInput()
+        public Vue() {
+            outPut = "";
+        }
+
+        public String GetInput()
         {
-            string str = Console.ReadLine();
+            String str = Console.ReadLine();
                 return str;
         }
 
-        public void SetOutPut(string str)
+        public void SetOutPut(String str)
         {
             outPut = str;
         }

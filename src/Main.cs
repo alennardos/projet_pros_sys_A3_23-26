@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Reflection;
 using static System.Net.Mime.MediaTypeNames;
 using ConsoleApp1.src.SaveType;
+using Console_Application_Test_1.src;
 
 namespace ConsoleApp1.src;
 
@@ -13,13 +14,13 @@ class LangTest
     public static void Main(string[] args)
     {
 
-        Sauvegardes sauvegardes = new Sauvegardes();
+        VueModeleSave vm = new VueModeleSave("fr");
 
-        TypeSave typeSave = new SaveComplete();
+        vm.menu();
 
-        sauvegardes.createSave("s1", @"C:\CESI\A3\prog sys\projet\projet_pros_sys_A3_23-26\test\", @"C:\CESI\A3\prog sys\projet\projet_pros_sys_A3_23-26\test2", typeSave);
+        //ResourceManager rm = new ResourceManager("ConsoleApp1.languages.fr", Assembly.GetExecutingAssembly());
 
-        sauvegardes.save(0);
+        //Console.WriteLine(rm.GetString("HOME_hello"));
     }
 
 }

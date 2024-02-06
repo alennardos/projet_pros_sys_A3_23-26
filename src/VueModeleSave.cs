@@ -11,22 +11,34 @@ namespace Console_Application_Test_1.src
 {
     internal class VueModeleSave
     {
-        String userInput;
-        ResourceManager rm;
-        Vue vueobject;
-        Sauvegardes saves;
-        String errorArgument = "Erreur CS8604 : argument invalide.";
+        private String userInput;
+        private ResourceManager rm;
+        private Vue vueobject;
+        private Sauvegardes saves;
+        private String errorArgument = "Erreur CS8604 : argument invalide.";
 
         public VueModeleSave(String str)
         {
-            new ResourceManager("ConsoleApp1.languages." + str, Assembly.GetExecutingAssembly());
+            this.vueobject = new Vue();
+            this.saves = new Sauvegardes();
+            this.rm = new ResourceManager("ConsoleApp1.languages." + str, Assembly.GetExecutingAssembly());
+            Console.WriteLine(vueobject);
         }
         
         public void menu()
         {
-            this.userInput = Vue.GetInput();
+            List<String> list = ["HOME_create_save", "HOME_lunch_save", "HOME_edit_save", "HOME_settings"];
 
-            vueobject.SetOutPut(rm.GetString("HOME_hello") ?? errorArgument);
+            this.vueobject.SetOutPut(this.rm.GetString("HOME_hello")+"\n");
+            this.vueobject.afficher();
+
+            for (int i = 0; i <list.Count; i++)
+            {
+                this.vueobject.SetOutPut(i+1 + ") " + this.rm.GetString(list[i]));
+                this.vueobject.afficher();
+            }
+
+            this.userInput = this.vueobject.GetInput();
 
             if (this.userInput.Equals("1"))
             {
