@@ -14,7 +14,8 @@ namespace Console_Application_Test_1.src
         String userInput;
         ResourceManager rm;
         Vue vueobject;
-        //Sauvegardes saves;
+        Sauvegardes saves;
+        String errorArgument = "Erreur CS8604 : argument invalide.";
 
         public VueModeleSave(String str)
         {
@@ -43,23 +44,23 @@ namespace Console_Application_Test_1.src
             }
             else
             {
-                vueobject.SetOutPut(rm.GetString("entrer_bad"));
+                vueobject.SetOutPut(rm.GetString("entrer_bad") ?? errorArgument);
             }
         }
 
         public void creerSauvegarde()
         {
-            vueobject.SetOutPut("Veuillez entrer dans l'ordre en appuyant sur 'entrée' à chaque fois le nom, la source, la destination et le type.");
+            vueobject.SetOutPut(rm.GetString("create_save") ?? errorArgument);
         }
 
         public void effectuerSauvegarde()
         {
-            vueobject.SetOutPut("Taper 3-5 pour sauvegarder la 3 et 5 OU 3 à 5 pour sauvegarder la 3, 4 et 5.");
+            vueobject.SetOutPut(rm.GetString("lunch_save") ?? errorArgument);
         }
 
         public void modifierSauvegarde()
         {
-            vueobject.SetOutPut("Choisir le numéro de la sauvegarde allant de 1 à 5.");
+            vueobject.SetOutPut(rm.GetString("edit_save") ?? errorArgument);
         }
 
         public void assignerParametres()
@@ -68,7 +69,7 @@ namespace Console_Application_Test_1.src
 
             ResourceManager RM = new ResourceManager("ConsoleApp1.languages." + lang, Assembly.GetExecutingAssembly());
 
-            vueobject.SetOutPut("Choissisez 1 pour mettre le logiciel en français ou 2 pour le mettre en anglais.");
+            vueobject.SetOutPut(rm.GetString("settings") ?? errorArgument);
         }
 
     }
