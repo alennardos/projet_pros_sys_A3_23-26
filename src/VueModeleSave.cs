@@ -20,7 +20,7 @@ namespace Console_Application_Test_1.src
         {
             new ResourceManager("ConsoleApp1.languages." + str, Assembly.GetExecutingAssembly());
         }
-
+          
         public void menu()
         {
             this.userInput = Vue.GetInput();
@@ -43,7 +43,7 @@ namespace Console_Application_Test_1.src
             }
             else
             {
-                vueobject.SetOutPut("Erreur, veuillez rentrer un chiffre de 1 à 4 en fonction de vos besoins.");
+                vueobject.SetOutPut(rm.GetString("entrer_bad"));
             }
         }
 
@@ -64,6 +64,10 @@ namespace Console_Application_Test_1.src
 
         public void assignerParametres()
         {
+            var lang = "en";
+
+            ResourceManager RM = new ResourceManager("ConsoleApp1.languages." + lang, Assembly.GetExecutingAssembly());
+
             vueobject.SetOutPut("Choissisez 1 pour mettre le logiciel en français ou 2 pour le mettre en anglais.");
         }
 

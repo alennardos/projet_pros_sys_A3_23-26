@@ -132,9 +132,8 @@
   <data name="edit_save_type" xml:space="preserve">
     <value>Edit the type of the backup</value>
   </data>
-  <data name="entrer_null" xml:space="preserve">
+  <data name="entrer_bad" xml:space="preserve">
     <value>I don't understand</value>
-    <comment>utilisateur appuie juste sur entrer sans ecrire un truc</comment>
   </data>
   <data name="info_save" xml:space="preserve">
     <value>Type 3-5 to initiate the backup from 3 TO 5, type 3;4 to backup 3 AND 4</value>
