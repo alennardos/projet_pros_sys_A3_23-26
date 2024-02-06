@@ -117,23 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="create_save" xml:space="preserve">
-    <value>Create a backup</value>
+  <data name="CREATE_name_save" xml:space="preserve">
+    <value>Name of the backup</value>
   </data>
-  <data name="delet_save" xml:space="preserve">
+  <data name="CREATE_source_save" xml:space="preserve">
+    <value>Path of the source of the backup</value>
+  </data>
+  <data name="CREATE_type_save" xml:space="preserve">
+    <value>Type of the backup</value>
+  </data>
+  <data name="EDIT_delet_save" xml:space="preserve">
     <value>Delet a backup</value>
   </data>
-  <data name="destination_save" xml:space="preserve">
+  <data name="EDIT_destination_save" xml:space="preserve">
     <value>Path of the destination of the backup</value>
   </data>
-  <data name="edit_save" xml:space="preserve">
-    <value>Edit a backup</value>
-  </data>
-  <data name="edit_save_dst" xml:space="preserve">
+  <data name="EDIT_edit_save_dst" xml:space="preserve">
     <value>Edit the destination of the backup</value>
   </data>
-  <data name="edit_save_type" xml:space="preserve">
+  <data name="EDIT_edit_save_type" xml:space="preserve">
     <value>Edit the type of the backup</value>
+  </data>
+  <data name="EDIT_name_save" xml:space="preserve">
+    <value>Edit the name of the backup</value>
+  </data>
+  <data name="EDIT_source_save" xml:space="preserve">
+    <value>Edit the source of the backup</value>
   </data>
   <data name="entrer_bad" xml:space="preserve">
     <value>I don't understand</value>
@@ -141,31 +150,31 @@
   <data name="error_general" xml:space="preserve">
     <value>An error occurred</value>
   </data>
-  <data name="info_save" xml:space="preserve">
-    <value>Type 3-5 to initiate the backup from 3 TO 5, type 3;4 to backup 3 AND 4</value>
+  <data name="home" xml:space="preserve">
+    <value>Back to home</value>
   </data>
-  <data name="lunch_save" xml:space="preserve">
+  <data name="HOME_create_save" xml:space="preserve">
+    <value>Create a backup</value>
+  </data>
+  <data name="HOME_edit_save" xml:space="preserve">
+    <value>Edit a backup</value>
+  </data>
+  <data name="HOME_hello" xml:space="preserve">
+    <value>Welcome to the backup software EasySave</value>
+  </data>
+  <data name="HOME_lunch_save" xml:space="preserve">
     <value>Lunch a backup</value>
   </data>
-  <data name="name_save" xml:space="preserve">
-    <value>Name of the backup</value>
+  <data name="HOME_settings" xml:space="preserve">
+    <value>Settings</value>
   </data>
-  <data name="options" xml:space="preserve">
-    <value>Options... (en)</value>
+  <data name="LUNCH_info_save" xml:space="preserve">
+    <value>Type 3-5 to initiate the backup from 3 TO 5, type 3;4 to backup 3 AND 4</value>
   </data>
   <data name="quit" xml:space="preserve">
     <value>Quit</value>
   </data>
-  <data name="settings" xml:space="preserve">
-    <value>Settings</value>
-  </data>
-  <data name="source_save" xml:space="preserve">
-    <value>Path of the destination of the backup</value>
-  </data>
-  <data name="test" xml:space="preserve">
-    <value>test (en)</value>
-  </data>
-  <data name="type_save" xml:space="preserve">
-    <value>Type of the backup</value>
+  <data name="SETTINGS_lang" xml:space="preserve">
+    <value>Choose a language</value>
   </data>
 </root>
