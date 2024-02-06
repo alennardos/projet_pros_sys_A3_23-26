@@ -10,7 +10,7 @@ namespace ConsoleApp1.src
     {
         private string outPut;
 
-        private static string GetInput()
+        public static string GetInput()
         {
             string str = Console.ReadLine();
             if (str == null || str.Length == 0)
@@ -22,12 +22,12 @@ namespace ConsoleApp1.src
                 return str;
         }
 
-        private void SetOutPut()
+        public void SetOutPut()
         {
 
         }
 
-        private void afficher()
+        public void afficher()
         {
             Console.WriteLine("");
         }
