@@ -33,6 +33,12 @@ namespace ConsoleApp1.src
             this.isActive = false;
             this.ts = ts;
             this.sauvegardes = s;
+            nbfiles = 0;
+            fileSize = 0;
+            nbLeft = 0;
+            leftSize = 0;
+            actualFile = "";
+            actualFileTarget = "";
         }
 
         public String log(String src, String target, int size, double time)
@@ -70,6 +76,8 @@ namespace ConsoleApp1.src
 
         public String save()
         {
+            setIsActive(true);
+
             String res = "";
 
             var dir = new DirectoryInfo(this.src);
@@ -115,6 +123,9 @@ namespace ConsoleApp1.src
                 Save s = new Save(name, subDir.FullName, target+"\\"+subDir.Name, ts, this.sauvegardes);
                 res += s.save();
             }
+
+            setIsActive(false);
+            this.setState(0, 0, "", "");
 
             return res;
         }
