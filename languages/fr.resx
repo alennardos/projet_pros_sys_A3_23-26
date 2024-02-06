@@ -123,6 +123,9 @@
   <data name="delet_save" xml:space="preserve">
     <value>Supprimer la sauvegarde</value>
   </data>
+  <data name="destination_save" xml:space="preserve">
+    <value>Chemin de destination de la sauvegarde</value>
+  </data>
   <data name="edit_save" xml:space="preserve">
     <value>Modifier une sauvegarde</value>
   </data>
@@ -135,11 +138,17 @@
   <data name="entrer_bad" xml:space="preserve">
     <value>Je n'ai pas compris</value>
   </data>
+  <data name="error_general" xml:space="preserve">
+    <value>Une erreur c'est produite</value>
+  </data>
   <data name="info_save" xml:space="preserve">
     <value>Taper 3-5 pour lancer les sauvegarde de 3 À 5, taper 3;4 pour sauvegarder la 3 ET la 4</value>
   </data>
   <data name="lunch_save" xml:space="preserve">
     <value>Lancer une sauvegarde</value>
+  </data>
+  <data name="name_save" xml:space="preserve">
+    <value>Nom de la sauvegarde</value>
   </data>
   <data name="options" xml:space="preserve">
     <value>Options... (fr)</value>
@@ -150,7 +159,13 @@
   <data name="settings" xml:space="preserve">
     <value>Paramètres</value>
   </data>
+  <data name="source_save" xml:space="preserve">
+    <value>Chemin de la source de la sauvegarde</value>
+  </data>
   <data name="test" xml:space="preserve">
     <value>test (fr)</value>
+  </data>
+  <data name="type_save" xml:space="preserve">
+    <value>Type de sauvegarde</value>
   </data>
 </root>

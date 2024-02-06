@@ -123,6 +123,9 @@
   <data name="delet_save" xml:space="preserve">
     <value>Delet a backup</value>
   </data>
+  <data name="destination_save" xml:space="preserve">
+    <value>Path of the destination of the backup</value>
+  </data>
   <data name="edit_save" xml:space="preserve">
     <value>Edit a backup</value>
   </data>
@@ -135,11 +138,17 @@
   <data name="entrer_bad" xml:space="preserve">
     <value>I don't understand</value>
   </data>
+  <data name="error_general" xml:space="preserve">
+    <value>An error occurred</value>
+  </data>
   <data name="info_save" xml:space="preserve">
     <value>Type 3-5 to initiate the backup from 3 TO 5, type 3;4 to backup 3 AND 4</value>
   </data>
   <data name="lunch_save" xml:space="preserve">
     <value>Lunch a backup</value>
+  </data>
+  <data name="name_save" xml:space="preserve">
+    <value>Name of the backup</value>
   </data>
   <data name="options" xml:space="preserve">
     <value>Options... (en)</value>
@@ -150,7 +159,13 @@
   <data name="settings" xml:space="preserve">
     <value>Settings</value>
   </data>
+  <data name="source_save" xml:space="preserve">
+    <value>Path of the destination of the backup</value>
+  </data>
   <data name="test" xml:space="preserve">
     <value>test (en)</value>
+  </data>
+  <data name="type_save" xml:space="preserve">
+    <value>Type of the backup</value>
   </data>
 </root>
