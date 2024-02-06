@@ -117,14 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CREATE_destination_save" xml:space="preserve">
+    <value>Destination de la sauvegarde</value>
+  </data>
+  <data name="CREATE_fail" xml:space="preserve">
+    <value>La création de la sauvegarde a échoué</value>
+  </data>
   <data name="CREATE_name_save" xml:space="preserve">
     <value>Nom de la sauvegarde</value>
   </data>
   <data name="CREATE_source_save" xml:space="preserve">
     <value>Chemin de la source de la sauvegarde</value>
   </data>
+  <data name="CREATE_succes" xml:space="preserve">
+    <value>Création réussit !</value>
+  </data>
   <data name="CREATE_type_save" xml:space="preserve">
-    <value>Type de sauvegarde</value>
+    <value>Type de sauvegarde (1: complete, 2: diff)</value>
   </data>
   <data name="EDIT_delet_save" xml:space="preserve">
     <value>Supprimer la sauvegarde</value>

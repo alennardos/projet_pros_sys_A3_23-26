@@ -117,11 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CREATE_destination_save" xml:space="preserve">
+    <value>Destination of the backup</value>
+  </data>
+  <data name="CREATE_fail" xml:space="preserve">
+    <value>An error occured</value>
+  </data>
   <data name="CREATE_name_save" xml:space="preserve">
     <value>Name of the backup</value>
   </data>
   <data name="CREATE_source_save" xml:space="preserve">
     <value>Path of the source of the backup</value>
+  </data>
+  <data name="CREATE_succes" xml:space="preserve">
+    <value>Creation succefull !</value>
   </data>
   <data name="CREATE_type_save" xml:space="preserve">
     <value>Type of the backup</value>
