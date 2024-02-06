@@ -16,7 +16,7 @@ namespace ConsoleApp1.src
                 return str;
         }
 
-        public void SetOutPut()
+        public void SetOutPut(string str)
         {
 
         }
