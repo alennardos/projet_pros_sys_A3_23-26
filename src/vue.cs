@@ -13,12 +13,6 @@ namespace ConsoleApp1.src
         public static string GetInput()
         {
             string str = Console.ReadLine();
-            if (str == null || str.Length == 0)
-            {
-                //Console.WriteLine("");
-                return "";
-            }
-            else
                 return str;
         }
 
