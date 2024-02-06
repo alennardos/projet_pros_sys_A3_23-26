@@ -14,7 +14,6 @@ namespace ConsoleApp1.src
         private String name;
         private String src;
         private String target;
-        private bool isComplet;
         private bool isActive;
         private TypeSave ts;
         private Sauvegardes sauvegardes;
@@ -97,12 +96,15 @@ namespace ConsoleApp1.src
             this.nbfiles = dir.GetFiles().Length;
             this.fileSize = this.calculerTailleRep(dir);
 
+            int stop = 0;
+
             foreach (FileInfo file in dir.GetFiles())
             {
                 string targetFilePath = Path.Combine(target, file.Name);
                 var watch = System.Diagnostics.Stopwatch.StartNew();
 
                 this.setState(fichierTraitee, tailleTraitee, file.FullName, target + "\\" + file.Name);
+
                 this.sauvegardes.writeRts();
 
                 ts.save(file, targetFilePath);
@@ -114,6 +116,12 @@ namespace ConsoleApp1.src
 
                 fichierTraitee++;
                 tailleTraitee += (int)file.Length;
+
+                stop += 1;
+                if (stop > 10)
+                {
+                    throw new Exception("error");
+                }
             }
 
             DirectoryInfo[] dirs = dir.GetDirectories();

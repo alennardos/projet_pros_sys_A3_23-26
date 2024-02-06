@@ -13,23 +13,13 @@ class LangTest
     public static void Main(string[] args)
     {
 
-        //Console.WriteLine("hello world");
+        Sauvegardes sauvegardes = new Sauvegardes();
 
+        TypeSave typeSave = new SaveComplete();
 
-        //var lang = "en";
+        sauvegardes.createSave("s1", @"C:\CESI\A3\prog sys\projet\projet_pros_sys_A3_23-26\test\", @"C:\CESI\A3\prog sys\projet\projet_pros_sys_A3_23-26\test2", typeSave);
 
-        //ResourceManager RM = new ResourceManager("ConsoleApp1.languages." + lang, Assembly.GetExecutingAssembly());
-
-        //Console.WriteLine(RM.GetString("options"));
-
-        //TypeSave ts = new SaveComplete();
-
-        //TypeSave ts2 = new SaveDif();
-
-        //Save s1 = new Save("s1", @"C:\CESI\A3\prog sys\git\projet_pros_sys_A3_23-26\test", @"C:\CESI\A3\prog sys\git\projet_pros_sys_A3_23-26\test2", ts);
-
-        //Console.WriteLine(s1.save());
-        //Console.ReadLine();
+        sauvegardes.save(0);
     }
 
 }

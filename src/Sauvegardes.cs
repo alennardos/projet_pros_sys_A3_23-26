@@ -21,14 +21,14 @@ namespace ConsoleApp1.src
             {
                 Directory.CreateDirectory(@"C:\SaveLogs");
             }
-            log = new StreamWriter(@"C:\SaveLogs\log.txt");
-            rts = new StreamWriter(@"C:\SaveLogs\rts.txt");
+            log = new StreamWriter(@"C:\SaveLogs\log.txt", true);
+            rts = new StreamWriter(@"C:\SaveLogs\rts.txt", true);
         }
 
         public bool createSave(String nom, String src, String dest, TypeSave ts)
         {
             if(this.saves.Count < 5) {
-                this.saves.Append(new Save(nom, src, dest, ts, this));
+                this.saves.Add(new Save(nom, src, dest, ts, this));
                 return true;
             }
             return false;
@@ -50,6 +50,8 @@ namespace ConsoleApp1.src
         public void save(int num)
         {
             this.writeLog(this.saves[num].save());
+            this.log.Close();
+            this.rts.Close();
         }
 
 
@@ -60,6 +62,9 @@ namespace ConsoleApp1.src
 
         public void writeRts()
         {
+
+            Console.WriteLine("ici");
+
             String res = "[";
             foreach(Save save in this.saves)
             {
@@ -68,6 +73,11 @@ namespace ConsoleApp1.src
             }
             res += "]";
             this.rts.Write(res);
+        }
+
+        public List<Save> getSaves()
+        {
+            return this.saves;
         }
     }
 }
