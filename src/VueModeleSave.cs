@@ -58,11 +58,11 @@ namespace Console_Application_Test_1.src
                         creerSauvegarde();
                         break;
 
-                    case "2":
+                    case "3":
                         modifierSauvegarde();
                         break;
 
-                    case "3":
+                    case "2":
                         effectuerSauvegarde();
                         break;
 
@@ -151,7 +151,42 @@ namespace Console_Application_Test_1.src
 
         public void effectuerSauvegarde()
         {
-            vueobject.SetOutPut(rm.GetString("HOME_lunch_save") ?? errorArgument);
+            this.vueobject.SetOutPut(this.rm.GetString("LUNCH_info_save"));
+            this.vueobject.afficher();
+            
+            this.vueobject.SetOutPut(this.rm.GetString("home"));
+            this.vueobject.afficher();
+            int i = 1;
+
+            foreach (Save s in  this.saves.getSaves())
+            {
+                this.vueobject.SetOutPut(i + ") " + s.GetName());
+                i++;
+            }
+            bool infoRecup = false;
+
+            List<int> aSauv = new List<int>();
+
+            while (!infoRecup)
+            {
+                this.userInput = this.vueobject.GetInput();
+
+                if (this.userInput.Contains(";")){
+                    foreach(string saveIndex in this.userInput.Split(";"))
+                    {
+                        aSauv.Add(Int32.Parse(saveIndex));
+                    }
+                }else if (this.userInput.Contains("-")) {
+                    for(int j = Int32.Parse(this.userInput.Split("-")[0]);  j< Int32.Parse(this.userInput.Split("-")[1]); j++)
+                    {
+                        aSauv.Add(j);
+                    }
+                }
+
+            }
+
+  
+
         }
 
         public void modifierSauvegarde()
