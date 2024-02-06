@@ -8,7 +8,7 @@ namespace ConsoleApp1.src
 {
     internal class Vue
     {
-        private string outPut;
+        private string? outPut;
 
         public static string GetInput()
         {
@@ -18,12 +18,12 @@ namespace ConsoleApp1.src
 
         public void SetOutPut(string str)
         {
-
+            outPut = str;
         }
 
         public void afficher()
         {
-            Console.WriteLine("");
+            Console.WriteLine(this.outPut);
         }
 
     }
