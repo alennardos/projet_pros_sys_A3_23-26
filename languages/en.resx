@@ -150,6 +150,9 @@
   <data name="EDIT_source_save" xml:space="preserve">
     <value>Edit the source of the backup</value>
   </data>
+  <data name="EDIT_Succes" xml:space="preserve">
+    <value>Change made</value>
+  </data>
   <data name="entrer_bad" xml:space="preserve">
     <value>I don't understand</value>
   </data>
