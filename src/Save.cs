@@ -13,7 +13,7 @@ namespace ConsoleApp1.src
 
         private String name;
         private String src;
-        private String target;
+        private String dst;
         private bool isActive;
         private TypeSave ts;
         private Sauvegardes sauvegardes;
@@ -28,7 +28,7 @@ namespace ConsoleApp1.src
         {
             this.name = name;
             this.src = src;
-            this.target = target;
+            this.dst = target;
             this.isActive = false;
             this.ts = ts;
             this.sauvegardes = s;
@@ -85,9 +85,9 @@ namespace ConsoleApp1.src
                 throw new DirectoryNotFoundException();
             }
 
-            if(!new DirectoryInfo(this.target).Exists)
+            if(!new DirectoryInfo(this.dst).Exists)
             {
-                Directory.CreateDirectory(this.target);
+                Directory.CreateDirectory(this.dst);
             }
 
             int fichierTraitee = 0;
@@ -100,10 +100,10 @@ namespace ConsoleApp1.src
 
             foreach (FileInfo file in dir.GetFiles())
             {
-                string targetFilePath = Path.Combine(target, file.Name);
+                string targetFilePath = Path.Combine(dst, file.Name);
                 var watch = System.Diagnostics.Stopwatch.StartNew();
 
-                this.setState(fichierTraitee, tailleTraitee, file.FullName, target + "\\" + file.Name);
+                this.setState(fichierTraitee, tailleTraitee, file.FullName, dst + "\\" + file.Name);
 
                 this.sauvegardes.writeRts();
 
@@ -112,7 +112,7 @@ namespace ConsoleApp1.src
 
                 watch.Stop();
                 double temps = (double)watch.ElapsedMilliseconds/1000;
-                res+=(log(file.FullName, target+"\\"+file.Name, ((int)file.Length), temps));
+                res+=(log(file.FullName, dst+"\\"+file.Name, ((int)file.Length), temps));
 
                 fichierTraitee++;
                 tailleTraitee += (int)file.Length;
@@ -128,7 +128,7 @@ namespace ConsoleApp1.src
 
             foreach (DirectoryInfo subDir in dirs)
             {
-                Save s = new Save(name, subDir.FullName, target+"\\"+subDir.Name, ts, this.sauvegardes);
+                Save s = new Save(name, subDir.FullName, dst+"\\"+subDir.Name, ts, this.sauvegardes);
                 res += s.save();
             }
 
@@ -143,7 +143,7 @@ namespace ConsoleApp1.src
             String res = "{";
             res += "\n\"Name\": \"" + name + "\",";
             res += "\n\"SourceFilePath\": \"" + this.src + "\",";
-            res += "\n\"TargetFilePath\": \"" + this.target + "\",";
+            res += "\n\"TargetFilePath\": \"" + this.dst + "\",";
             if (this.isActive)res += "\n\"State\": \"ACTIVE\",";
             if (!this.isActive) res += "\n\"State\": \"END\",";
             res += "\n\"TotalFilesToCopy\": \"" + this.nbfiles + "\",";
@@ -185,6 +185,21 @@ namespace ConsoleApp1.src
         public string GetName()
         {
             return this.name;
+        }
+
+        public void SetName(string name)
+        {
+            this.name = name;
+        }
+
+        public void SetSource(string src)
+        {
+            this.src = src;
+        }
+
+        public void SetDest(string dst)
+        {
+            this.dst = dst;
         }
     }
 }
