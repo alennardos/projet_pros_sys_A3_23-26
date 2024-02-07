@@ -226,11 +226,44 @@ namespace Console_Application_Test_1.src
 
         public void assignerParametres()
         {
-            var lang = "en";
-
-            ResourceManager RM = new ResourceManager("ConsoleApp1.languages." + lang, Assembly.GetExecutingAssembly());
 
             vueobject.SetOutPut(rm.GetString("SETTINGS_lang") ?? errorArgument);
+            vueobject.afficher();
+
+            DirectoryInfo dirLang = new DirectoryInfo(@"C:\CESI\A3\prog sys\projet\projet_pros_sys_A3_23-26\languages\");
+
+            bool skip = false;
+            int i = 1;
+
+            foreach(FileInfo file in dirLang.GetFiles())
+            {
+                if (skip)
+                {
+                    vueobject.SetOutPut(i+": "+file.Name.Split('.')[0]);
+                    vueobject.afficher();
+                    i++;
+                }
+                skip = !skip;
+            }
+
+            bool ok = false;
+
+            while (!ok)
+            {
+                try
+                {
+                    ResourceManager tempo = new ResourceManager("ConsoleApp1.languages." + vueobject.GetInput(), Assembly.GetExecutingAssembly());
+                    tempo.GetString("home");
+                    this.rm = tempo;
+                    ok = true;
+                }catch
+                {
+                    vueobject.SetOutPut(rm.GetString("enter_bad") ?? errorArgument);
+                    vueobject.afficher();
+                }
+                
+            }
+
         }
 
     }
