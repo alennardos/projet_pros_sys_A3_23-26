@@ -55,7 +55,6 @@ namespace Console_Application_Test_1.src
                 this.vueobject.SetOutPut(i + 1 + ") " + this.rm.GetString(list[i]));
                 this.vueobject.afficher();
             }
-                Console.WriteLine(" ");
 
                 this.userInput = this.vueobject.GetInput();
 
@@ -148,15 +147,13 @@ namespace Console_Application_Test_1.src
 
             if (this.saves.createSave(name, src, dst, type))
             {
-                vueobject.SetOutPut(rm.GetString("CREATE_succes"));
+                vueobject.SetOutPut(rm.GetString("CREATE_succes") + "\n");
                 this.vueobject.afficher();
-                Console.WriteLine(" ");
             }
             else
             {
-                vueobject.SetOutPut(rm.GetString("CREATE_fail"));
+                vueobject.SetOutPut(rm.GetString("CREATE_fail") + "\n");
                 this.vueobject.afficher();
-                Console.WriteLine(" ");
             }
 
 
@@ -189,7 +186,6 @@ namespace Console_Application_Test_1.src
 
                     if (this.userInput == "home")
                     {
-                        Console.WriteLine(" ");
                         return;
                     }
 
@@ -215,9 +211,9 @@ namespace Console_Application_Test_1.src
                     infoRecup = true;
                 }catch (Exception e){
                     Console.WriteLine (e.ToString());
-                    vueobject.SetOutPut(rm.GetString("enter_bad") ?? errorArgument);
+                    vueobject.SetOutPut(rm.GetString("enter_bad") ?? errorArgument + "\n");
                     vueobject.afficher();
-                    Console.WriteLine(" ");
+
                 }
 
             }
@@ -227,15 +223,13 @@ namespace Console_Application_Test_1.src
                 try
                 {
                     this.saves.save(j);
-                    vueobject.SetOutPut(j+" : "+rm.GetString("SAVE_succes") ?? errorArgument);
+                    vueobject.SetOutPut(j+1+" : "+rm.GetString("LUNCH_succes") ?? errorArgument+"\n");
                     vueobject.afficher();
-                    Console.WriteLine(" ");
-                } catch (Exception e)
+                    } catch (Exception e)
                 {
                     Console.WriteLine(e.ToString());
-                    vueobject.SetOutPut(rm.GetString("error_general") ?? errorArgument);
+                    vueobject.SetOutPut(rm.GetString("error_general") ?? errorArgument + "\n");
                     vueobject.afficher();
-                    Console.WriteLine(" ");
                 }
             }
         }
@@ -284,8 +278,6 @@ namespace Console_Application_Test_1.src
                         this.vueobject.afficher();
                     }
 
-                    Console.WriteLine(" ");
-
                     this.userInput = this.vueobject.GetInput();
 
                     switch (this.userInput)
@@ -295,23 +287,20 @@ namespace Console_Application_Test_1.src
 
                         case "1":
                             s.SetName(this.vueobject.GetInput());
-                            vueobject.SetOutPut(rm.GetString("EDIT_succes"));
+                            vueobject.SetOutPut(rm.GetString("EDIT_succes") + "\n");
                             this.vueobject.afficher();
-                            Console.WriteLine(" ");
                             break;
 
                         case "2":
                             s.SetSource(this.vueobject.GetInput());
-                            vueobject.SetOutPut(rm.GetString("EDIT_succes"));
+                            vueobject.SetOutPut(rm.GetString("EDIT_succes") + "\n");
                             this.vueobject.afficher();
-                            Console.WriteLine(" ");
                             break;
 
                         case "3":
                             s.SetDest(this.vueobject.GetInput());
-                            vueobject.SetOutPut(rm.GetString("EDIT_succes"));
+                            vueobject.SetOutPut(rm.GetString("EDIT_succes") + "\n");
                             this.vueobject.afficher();
-                            Console.WriteLine(" ");
                             break;
 
                         case "4":
@@ -333,16 +322,14 @@ namespace Console_Application_Test_1.src
                                     case4 = true;
                                 }
                             }
-                            vueobject.SetOutPut(rm.GetString("EDIT_succes"));
+                            vueobject.SetOutPut(rm.GetString("EDIT_succes") + "\n");
                             this.vueobject.afficher();
-                            Console.WriteLine(" ");
                             break;
 
                         case "5":
                             this.saves.removeSave(index-1);
-                            vueobject.SetOutPut(rm.GetString("EDIT_succes"));
+                            vueobject.SetOutPut(rm.GetString("EDIT_succes") + "\n");
                             this.vueobject.afficher();
-                            Console.WriteLine(" ");
                             break;
 
                         default:

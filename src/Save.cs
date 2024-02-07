@@ -93,17 +93,15 @@ namespace ConsoleApp1.src
             int fichierTraitee = 0;
             int tailleTraitee = 0;
 
-            this.nbfiles = dir.GetFiles().Length;
+            this.nbfiles = this.calculerNbFichier(dir);
             this.fileSize = this.calculerTailleRep(dir);
-
-            int stop = 0;
 
             foreach (FileInfo file in dir.GetFiles())
             {
                 string targetFilePath = Path.Combine(dst, file.Name);
                 var watch = System.Diagnostics.Stopwatch.StartNew();
 
-                this.setState(fichierTraitee, tailleTraitee, file.FullName, dst + "\\" + file.Name);
+                this.setState(nbfiles - fichierTraitee, fileSize - tailleTraitee, file.FullName, dst + "\\" + file.Name);
 
                 this.sauvegardes.writeRts();
 
@@ -116,12 +114,6 @@ namespace ConsoleApp1.src
 
                 fichierTraitee++;
                 tailleTraitee += (int)file.Length;
-
-                stop += 1;
-                if (stop > 10)
-                {
-                    throw new Exception("error");
-                }
             }
 
             DirectoryInfo[] dirs = dir.GetDirectories();
@@ -151,8 +143,8 @@ namespace ConsoleApp1.src
             res += "\n\"NbFilesLeftToDo\": \"" + this.nbLeft + "\",";
             res += "\n\"LeftFilesSize\": \"" + this.leftSize + "\",";
             res += "\n\"ActualFileSource\": \"" + this.actualFile + "\",";
-            res += "\n\"ActualFileTarget\": \"" + this.actualFileTarget + "\",";
-            res += "}";
+            res += "\n\"ActualFileTarget\": \"" + this.actualFileTarget + "\"";
+            res += "\n}";
             return res;
         }
 
@@ -163,6 +155,20 @@ namespace ConsoleApp1.src
             this.leftSize = leftSize;
             this.actualFile = actualFile;
             this.actualFileTarget = actualFileTarget;
+        }
+
+        public int calculerNbFichier(DirectoryInfo dir)
+        {
+            int res = 0;
+
+            res += dir.GetFiles().Length;
+
+            foreach (DirectoryInfo subDir in dir.GetDirectories())
+            {
+                res += calculerNbFichier(subDir);
+            }
+
+            return res;
         }
 
         public int calculerTailleRep(DirectoryInfo dir)

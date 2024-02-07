@@ -1,7 +1,9 @@
 ﻿using ConsoleApp1.src.SaveType;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,12 +19,20 @@ namespace ConsoleApp1.src
         public Sauvegardes()
         {
             saves = new List<Save>();
-            if (!new DirectoryInfo(@"C:\SaveLogs").Exists)
+            var path = GetThisFilePath();
+            
+
+            if (!new DirectoryInfo(path + "\\..\\..\\logs").Exists)
             {
-                Directory.CreateDirectory(@"C:\SaveLogs");
+                Directory.CreateDirectory(path + "\\..\\..\\logs");
             }
-            log = new StreamWriter(@"C:\SaveLogs\log.txt", true);
-            rts = new StreamWriter(@"C:\SaveLogs\rts.txt", true);
+            log = new StreamWriter(path + "\\..\\..\\logs\\log.txt", true);
+            rts = new StreamWriter(path + "\\..\\..\\logs\\rts.txt");
+        }
+
+        private static string GetThisFilePath([CallerFilePath] string path = null)
+        {
+            return path;
         }
 
         public bool createSave(String nom, String src, String dest, TypeSave ts)
@@ -66,7 +76,7 @@ namespace ConsoleApp1.src
                 res += save.getSaveState();
                 res += "\n";
             }
-            res += "]";
+            res += "]\n";
             this.rts.Write(res);
         }
 

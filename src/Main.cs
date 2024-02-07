@@ -13,11 +13,6 @@ namespace ConsoleApp1.src;
 class LangTest
 {
 
-    private static string GetThisFilePath([CallerFilePath] string path = null)
-    {
-        return path;
-    }
-
     public static void Main(string[] args)
     {
 
