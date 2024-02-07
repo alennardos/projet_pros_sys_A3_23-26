@@ -23,6 +23,8 @@ namespace ConsoleApp1.src
         private int leftSize;
         private String actualFile;
         private String actualFileTarget;
+        private int tailleTraitee;
+        private int fichierTraitee;
 
         public Save(String name, String src, String target, TypeSave ts, Sauvegardes s)
         {
@@ -43,7 +45,7 @@ namespace ConsoleApp1.src
         public String log(String src, String target, int size, double time)
         {
             String res = "{\n";
-            res += "\"Name\": \"" + name+"\",";
+            res += "\"Name\": \"" + name + "\",";
             res += "\n\"FileSource\": \"" + src + "\",";
             res += "\n\"FileTarget\": \"" + target + "\",";
             res += "\n\"FileSize\": " + size + ",";
@@ -77,7 +79,6 @@ namespace ConsoleApp1.src
         {
             setIsActive(true);
 
-            String res = "";
 
             var dir = new DirectoryInfo(this.src);
             if (!dir.Exists)
@@ -85,23 +86,37 @@ namespace ConsoleApp1.src
                 throw new DirectoryNotFoundException();
             }
 
-            if(!new DirectoryInfo(this.dst).Exists)
-            {
-                Directory.CreateDirectory(this.dst);
-            }
 
-            int fichierTraitee = 0;
-            int tailleTraitee = 0;
 
+            this.fichierTraitee = 0;
+            this.tailleTraitee = 0;
             this.nbfiles = this.calculerNbFichier(dir);
             this.fileSize = this.calculerTailleRep(dir);
+
+            String res = this.save(dir, dst);
+
+            setIsActive(false);
+
+            this.setState(0, 0, "", "");
+
+            return res;
+        }
+
+        private String save(DirectoryInfo dir, String dst)
+        {
+            String res = "";
+
+            if (!new DirectoryInfo(dst).Exists)
+            {
+                Directory.CreateDirectory(dst);
+            }
 
             foreach (FileInfo file in dir.GetFiles())
             {
                 string targetFilePath = Path.Combine(dst, file.Name);
                 var watch = System.Diagnostics.Stopwatch.StartNew();
 
-                this.setState(nbfiles - fichierTraitee, fileSize - tailleTraitee, file.FullName, dst + "\\" + file.Name);
+                this.setState(nbfiles - fichierTraitee, fileSize - tailleTraitee, file.FullName, dst + @"\" + file.Name);
 
                 this.sauvegardes.writeRts();
 
@@ -109,8 +124,8 @@ namespace ConsoleApp1.src
 
 
                 watch.Stop();
-                double temps = (double)watch.ElapsedMilliseconds/1000;
-                res+=(log(file.FullName, dst+"\\"+file.Name, ((int)file.Length), temps));
+                double temps = (double)watch.ElapsedMilliseconds / 1000;
+                res += (log(file.FullName, dst + @"\" + file.Name, ((int)file.Length), temps));
 
                 fichierTraitee++;
                 tailleTraitee += (int)file.Length;
@@ -120,12 +135,9 @@ namespace ConsoleApp1.src
 
             foreach (DirectoryInfo subDir in dirs)
             {
-                Save s = new Save(name, subDir.FullName, dst+"\\"+subDir.Name, ts, this.sauvegardes);
-                res += s.save();
+                Console.WriteLine(dst + subDir.Name);
+                res += this.save(subDir, dst + @"\" + subDir.Name);
             }
-
-            setIsActive(false);
-            this.setState(0, 0, "", "");
 
             return res;
         }
@@ -136,7 +148,7 @@ namespace ConsoleApp1.src
             res += "\n\"Name\": \"" + name + "\",";
             res += "\n\"SourceFilePath\": \"" + this.src + "\",";
             res += "\n\"TargetFilePath\": \"" + this.dst + "\",";
-            if (this.isActive)res += "\n\"State\": \"ACTIVE\",";
+            if (this.isActive) res += "\n\"State\": \"ACTIVE\",";
             if (!this.isActive) res += "\n\"State\": \"END\",";
             res += "\n\"TotalFilesToCopy\": \"" + this.nbfiles + "\",";
             res += "\n\"TotalFilesSize\": \"" + this.fileSize + "\",";
@@ -174,15 +186,15 @@ namespace ConsoleApp1.src
         public int calculerTailleRep(DirectoryInfo dir)
         {
             int res = 0;
-            
-            foreach(FileInfo f in dir.GetFiles())
+
+            foreach (FileInfo f in dir.GetFiles())
             {
                 res += (int)f.Length;
             }
 
             foreach (DirectoryInfo subDir in dir.GetDirectories())
             {
-                res+=calculerTailleRep(subDir);
+                res += calculerTailleRep(subDir);
             }
 
             return res;
