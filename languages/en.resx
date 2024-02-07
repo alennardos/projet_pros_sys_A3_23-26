@@ -180,6 +180,9 @@
   <data name="LUNCH_info_save" xml:space="preserve">
     <value>Type 3-5 to initiate the backup from 3 TO 5, type 3;4 to backup 3 AND 4</value>
   </data>
+  <data name="LUNCH_succes" xml:space="preserve">
+    <value>the save was successfully done </value>
+  </data>
   <data name="quit" xml:space="preserve">
     <value>Quit</value>
   </data>
