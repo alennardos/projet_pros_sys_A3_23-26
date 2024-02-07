@@ -177,6 +177,9 @@ namespace Console_Application_Test_1.src
                 {
                     this.userInput = this.vueobject.GetInput();
 
+                    if (this.userInput == "home")
+                        return;
+
                     if (this.userInput.Contains(";"))
                     {
                         foreach (string saveIndex in this.userInput.Split(";"))
