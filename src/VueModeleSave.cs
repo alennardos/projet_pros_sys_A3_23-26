@@ -71,7 +71,8 @@ namespace Console_Application_Test_1.src
                         break;
 
                     case "5":
-                            this.run = false;
+                        this.run = false;
+                        this.saves.quit();
                         break;
 
                     default:
@@ -178,21 +179,24 @@ namespace Console_Application_Test_1.src
                     {
                         foreach (string saveIndex in this.userInput.Split(";"))
                         {
-                            aSauv.Add(Int32.Parse(saveIndex));
+                            aSauv.Add(Int32.Parse(saveIndex)-1);
                         }
                     }
                     else if (this.userInput.Contains("-"))
                     {
-                        for (int j = Int32.Parse(this.userInput.Split("-")[0]); j < Int32.Parse(this.userInput.Split("-")[1]); j++)
+                        
+                        for (int j = Int32.Parse(this.userInput.Split("-")[0]); j <= Int32.Parse(this.userInput.Split("-")[1]); j++)
                         {
-                            aSauv.Add(j);
+                            aSauv.Add(j-1);
                         }
                     }
                     else {
-                        aSauv.Add(Int32.Parse(this.userInput));
+                        Console.WriteLine("val : "+Int32.Parse(this.userInput));
+                        aSauv.Add(Int32.Parse(this.userInput)-1);
                     }
                     infoRecup = true;
-                }catch {
+                }catch (Exception e){
+                    Console.WriteLine (e.ToString());
                     vueobject.SetOutPut(rm.GetString("enter_bad") ?? errorArgument);
                     vueobject.afficher();
                 }
@@ -204,9 +208,11 @@ namespace Console_Application_Test_1.src
                 try
                 {
                     this.saves.save(j);
-                    vueobject.SetOutPut(rm.GetString("SAVE_succes") ?? errorArgument);
+                    vueobject.SetOutPut(j+" : "+rm.GetString("SAVE_succes") ?? errorArgument);
                     vueobject.afficher();
-                } catch {
+                } catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
                     vueobject.SetOutPut(rm.GetString("error_general") ?? errorArgument);
                     vueobject.afficher();
                 }

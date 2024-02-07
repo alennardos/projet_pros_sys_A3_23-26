@@ -50,8 +50,6 @@ namespace ConsoleApp1.src
         public void save(int num)
         {
             this.writeLog(this.saves[num].save());
-            this.log.Close();
-            this.rts.Close();
         }
 
 
@@ -75,6 +73,12 @@ namespace ConsoleApp1.src
         public List<Save> getSaves()
         {
             return this.saves;
+        }
+
+        public void quit()
+        {
+            this.log.Close();
+            this.rts.Close();
         }
     }
 }
