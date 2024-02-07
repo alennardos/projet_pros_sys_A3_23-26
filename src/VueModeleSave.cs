@@ -161,6 +161,7 @@ namespace Console_Application_Test_1.src
             foreach (Save s in  this.saves.getSaves())
             {
                 this.vueobject.SetOutPut(i + ") " + s.GetName());
+                this.vueobject.afficher();
                 i++;
             }
             bool infoRecup = false;
@@ -169,24 +170,47 @@ namespace Console_Application_Test_1.src
 
             while (!infoRecup)
             {
-                this.userInput = this.vueobject.GetInput();
+                try
+                {
+                    this.userInput = this.vueobject.GetInput();
 
-                if (this.userInput.Contains(";")){
-                    foreach(string saveIndex in this.userInput.Split(";"))
+                    if (this.userInput.Contains(";"))
                     {
-                        aSauv.Add(Int32.Parse(saveIndex));
+                        foreach (string saveIndex in this.userInput.Split(";"))
+                        {
+                            aSauv.Add(Int32.Parse(saveIndex));
+                        }
                     }
-                }else if (this.userInput.Contains("-")) {
-                    for(int j = Int32.Parse(this.userInput.Split("-")[0]);  j< Int32.Parse(this.userInput.Split("-")[1]); j++)
+                    else if (this.userInput.Contains("-"))
                     {
-                        aSauv.Add(j);
+                        for (int j = Int32.Parse(this.userInput.Split("-")[0]); j < Int32.Parse(this.userInput.Split("-")[1]); j++)
+                        {
+                            aSauv.Add(j);
+                        }
                     }
+                    else {
+                        aSauv.Add(Int32.Parse(this.userInput));
+                    }
+                    infoRecup = true;
+                }catch {
+                    vueobject.SetOutPut(rm.GetString("enter_bad") ?? errorArgument);
+                    vueobject.afficher();
                 }
 
             }
 
-  
-
+            foreach(int j  in aSauv)
+            {
+                try
+                {
+                    this.saves.save(j);
+                    vueobject.SetOutPut(rm.GetString("SAVE_succes") ?? errorArgument);
+                    vueobject.afficher();
+                } catch {
+                    vueobject.SetOutPut(rm.GetString("error_general") ?? errorArgument);
+                    vueobject.afficher();
+                }
+            }
         }
 
         public void modifierSauvegarde()

@@ -62,9 +62,6 @@ namespace ConsoleApp1.src
 
         public void writeRts()
         {
-
-            Console.WriteLine("ici");
-
             String res = "[";
             foreach(Save save in this.saves)
             {
