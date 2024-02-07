@@ -33,6 +33,11 @@ namespace Console_Application_Test_1.src
             Console.WriteLine(vueobject);
         }
 
+        private static string GetThisFilePath([CallerFilePath] string path = null)
+        {
+            return path;
+        }
+
         public void menu()
         {
 
@@ -333,7 +338,9 @@ namespace Console_Application_Test_1.src
             vueobject.SetOutPut(rm.GetString("SETTINGS_lang") ?? errorArgument);
             vueobject.afficher();
 
-            DirectoryInfo dirLang = new DirectoryInfo(@"C:\CESI\A3\prog sys\projet\projet_pros_sys_A3_23-26\languages\");
+            var path = GetThisFilePath();
+
+            DirectoryInfo dirLang = new DirectoryInfo(path + "\\..\\..\\languages");
 
             bool skip = false;
             int i = 1;
