@@ -181,5 +181,10 @@ namespace ConsoleApp1.src
 
             return res;
         }
+
+        public string GetName()
+        {
+            return this.name;
+        }
     }
 }
