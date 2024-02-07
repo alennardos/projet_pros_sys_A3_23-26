@@ -287,6 +287,9 @@ namespace Console_Application_Test_1.src
                             bool case4 = true;
                             while (case4)
                             {
+                                this.vueobject.SetOutPut(this.rm.GetString("CREATE_type_save"));
+                                this.vueobject.afficher();
+                                this.userInput = vueobject.GetInput();
                                 case4 = false;
                                 if (this.userInput == "1")
                                     s.setTs(new SaveComplete());
