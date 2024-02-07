@@ -141,11 +141,11 @@
   <data name="EDIT_destination_save" xml:space="preserve">
     <value>Path of the destination of the backup</value>
   </data>
-  <data name="EDIT_edit_save_type" xml:space="preserve">
-    <value>Edit the type of the backup</value>
-  </data>
   <data name="EDIT_name_save" xml:space="preserve">
     <value>Edit the name of the backup</value>
+  </data>
+  <data name="EDIT_save_type" xml:space="preserve">
+    <value>Edit the type of the backup</value>
   </data>
   <data name="EDIT_source_save" xml:space="preserve">
     <value>Edit the source of the backup</value>

@@ -236,9 +236,10 @@ namespace Console_Application_Test_1.src
 
             foreach (Save s in this.saves.getSaves())
             {
+
+                this.vueobject.SetOutPut(i + ") " + s.GetName());
                 this.vueobject.afficher();
                 i++;
-                this.vueobject.SetOutPut(i + ") " + s.GetName());
             }
 
             bool runEdit = true;
