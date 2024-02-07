@@ -6,8 +6,10 @@ using System.Linq;
 using System.Reflection;
 using System.Resources;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Console_Application_Test_1.src
 {
@@ -222,6 +224,116 @@ namespace Console_Application_Test_1.src
         public void modifierSauvegarde()
         {
             vueobject.SetOutPut(rm.GetString("HOME_edit_save") ?? errorArgument);
+            this.vueobject.afficher();
+
+            this.vueobject.SetOutPut(this.rm.GetString("home"));
+            this.vueobject.afficher();
+
+            int i = 1;
+
+            foreach (Save s in this.saves.getSaves())
+            {
+                this.vueobject.afficher();
+                i++;
+                this.vueobject.SetOutPut(i + ") " + s.GetName());
+            }
+
+            if (this.userInput == "" || Int32.Parse(this.userInput) > 5 || Int32.Parse(this.userInput) <= 0)
+            {
+                i--;
+                vueobject.SetOutPut(rm.GetString("enter_bad") ?? errorArgument);
+                vueobject.afficher();
+
+            }
+            else
+            {
+
+                List<String> list = ["EDIT_name_save", "EDIT_source_save", "EDIT_destination_save", "EDIT_save_type", "EDIT_delet_save"];
+
+                for (i = 0; i < list.Count; i++)
+                {
+                    this.vueobject.SetOutPut(i + 1 + ") " + this.rm.GetString(list[i]));
+                    this.vueobject.afficher();
+                }
+
+                this.userInput = this.vueobject.GetInput();
+
+                if (this.userInput == "" || Int32.Parse(this.userInput) > 5 || Int32.Parse(this.userInput) <= 0)
+                {
+                    i--;
+                    vueobject.SetOutPut(rm.GetString("enter_bad") ?? errorArgument);
+                    vueobject.afficher();
+                }
+                else
+                {
+                    List<int> aSauv = new List<int>();
+
+                    Sauvegardes svg = new Sauvegardes();
+
+                    svg.
+                }
+
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+            for (int i = 0; i < list.Count; i++)
+            {
+                this.vueobject.SetOutPut(i + 1 + ") " + this.rm.GetString(list[i]));
+                this.vueobject.afficher();
+                this.userInput = this.vueobject.GetInput();
+
+                if (this.userInput == "")
+                {
+                    i--;
+                    vueobject.SetOutPut(rm.GetString("enter_bad") ?? errorArgument);
+                    vueobject.afficher();
+
+                }
+
+                switch (i)
+                {
+                    case 0:
+                        name = this.userInput; break;
+
+                    case 1:
+                        src = this.userInput; break;
+                    case 2:
+                        dst = this.userInput; break;
+                    case 3:
+                        if (this.userInput == "1")
+                            type = new SaveComplete();
+                        else if (this.userInput == "2")
+                            type = new SaveDif();
+                        else
+                        {
+                            i--;
+                            vueobject.SetOutPut(rm.GetString("enter_bad") ?? errorArgument);
+                            vueobject.afficher();
+                        }
+                        break;
+                }
+            }
+
+            if (this.saves.createSave(name, src, dst, type))
+            {
+                vueobject.SetOutPut(rm.GetString("CREATE_succes"));
+                this.vueobject.afficher();
+            }
+            else
+            {
+                vueobject.SetOutPut(rm.GetString("CREATE_fail"));
+                this.vueobject.afficher();
+            }
         }
 
         public void assignerParametres()

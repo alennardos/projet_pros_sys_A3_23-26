@@ -141,9 +141,6 @@
   <data name="EDIT_destination_save" xml:space="preserve">
     <value>Path of the destination of the backup</value>
   </data>
-  <data name="EDIT_edit_save_dst" xml:space="preserve">
-    <value>Edit the destination of the backup</value>
-  </data>
   <data name="EDIT_edit_save_type" xml:space="preserve">
     <value>Edit the type of the backup</value>
   </data>
