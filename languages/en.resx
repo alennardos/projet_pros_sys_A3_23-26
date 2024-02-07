@@ -157,7 +157,7 @@
     <value>An error occurred</value>
   </data>
   <data name="home" xml:space="preserve">
-    <value>Back to home</value>
+    <value>Back to home (type home)</value>
   </data>
   <data name="HOME_create_save" xml:space="preserve">
     <value>Create a backup</value>

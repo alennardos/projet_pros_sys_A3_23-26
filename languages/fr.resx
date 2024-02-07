@@ -157,7 +157,7 @@
     <value>Une erreur c'est produite</value>
   </data>
   <data name="home" xml:space="preserve">
-    <value>Retour à l'accueil</value>
+    <value>Retour à l'accueil (taper home)</value>
   </data>
   <data name="HOME_create_save" xml:space="preserve">
     <value>Créer une sauvegarde</value>
