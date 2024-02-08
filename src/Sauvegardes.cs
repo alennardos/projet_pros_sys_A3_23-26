@@ -31,9 +31,9 @@ namespace ConsoleApp1.src
             }
             log = new StreamWriter(path + "\\..\\..\\logs\\log.txt", true);
             rts = new StreamWriter(path + "\\..\\..\\logs\\rts.txt");
-            this.saveFile = new XmlDocument();
-            this.saveFile.Load(path + "\\..\\..\\save\\save.xml");
-            this.createSaveXml();
+            //this.saveFile = new XmlDocument();
+            //this.saveFile.Load(path + "\\..\\..\\save\\save.xml");
+            //this.createSaveXml();
 
         }
 

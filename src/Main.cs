@@ -19,17 +19,17 @@ class LangTest
     public static void Main(string[] args)
     {
 
-        //VueModeleSave vm = new VueModeleSave("fr");
+        VueModeleSave vm = new VueModeleSave("fr");
 
-        //vm.menu();
+        vm.menu();
 
-        XElement purchaseOrder = XElement.Load(@"C:\CESI\A3\prog sys\projet\projet_pros_sys_A3_23-26\save\save.xml");
+        //XElement purchaseOrder = XElement.Load(@"C:\CESI\A3\prog sys\projet\projet_pros_sys_A3_23-26\save\save.xml");
 
 
 
         //saveFile
 
-        Console.WriteLine(purchaseOrder.Value);
+        //Console.WriteLine(purchaseOrder.Value);
 
     }
 
