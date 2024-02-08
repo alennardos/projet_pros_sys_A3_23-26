@@ -40,6 +40,7 @@ namespace Console_Application_Test_1.src
 
         public void menu()
         {
+            Console.Clear();
 
             List<String> list = ["HOME_create_save", "HOME_lunch_save", "HOME_edit_save", "HOME_settings", "quit"];
 
@@ -93,7 +94,7 @@ namespace Console_Application_Test_1.src
 
         public void creerSauvegarde()
         {
-            
+            Console.Clear();
             vueobject.SetOutPut(rm.GetString("HOME_create_save") ?? errorArgument);
             List<String> list = ["CREATE_name_save", "CREATE_source_save", "CREATE_destination_save", "CREATE_type_save"];
             this.vueobject.SetOutPut(this.rm.GetString("home"));
@@ -147,6 +148,7 @@ namespace Console_Application_Test_1.src
 
             if (this.saves.createSave(name, src, dst, type))
             {
+                Console.Clear();
                 vueobject.SetOutPut(rm.GetString("CREATE_succes") + "\n");
                 this.vueobject.afficher();
             }
@@ -161,6 +163,7 @@ namespace Console_Application_Test_1.src
 
         public void effectuerSauvegarde()
         {
+            Console.Clear();
             this.vueobject.SetOutPut(this.rm.GetString("LUNCH_info_save"));
             this.vueobject.afficher();
             
@@ -234,8 +237,10 @@ namespace Console_Application_Test_1.src
             }
         }
 
+        //quoicoubeh
         public void modifierSauvegarde()
         {
+            Console.Clear();
             vueobject.SetOutPut(rm.GetString("HOME_edit_save") ?? errorArgument);
             this.vueobject.afficher();
 
@@ -349,6 +354,7 @@ namespace Console_Application_Test_1.src
 
             }
 
+            Console.Clear();
         }
 
         public void assignerParametres()
