@@ -1,3 +1,5 @@
-# projet_pros_sys_A3_23-26
+# EasySave by DataSoft
 
-test commit
+Ce logiciel est un logiciel permettznt d'effectuer différentes sauvegardes
+
+Projet par Adam, Alen, Antoine
