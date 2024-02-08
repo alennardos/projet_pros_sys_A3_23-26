@@ -42,6 +42,7 @@ namespace ConsoleApp1.src
             actualFileTarget = "";
         }
 
+        // Retourne un log
         public String log(String src, String target, int size, double time)
         {
             String res = "\n{\n";
@@ -86,11 +87,12 @@ namespace ConsoleApp1.src
                 throw new DirectoryNotFoundException();
             }
 
-
-
             this.fichierTraitee = 0;
+
             this.tailleTraitee = 0;
+
             this.nbfiles = this.calculerNbFichier(dir);
+
             this.fileSize = this.calculerTailleRep(dir);
 
             String res = this.save(dir, dst);
@@ -122,9 +124,10 @@ namespace ConsoleApp1.src
 
                 ts.save(file, targetFilePath);
 
-
                 watch.Stop();
+
                 double temps = (double)watch.ElapsedMilliseconds / 1000;
+
                 res += (log(file.FullName, dst + @"\" + file.Name, ((int)file.Length), temps));
 
                 fichierTraitee++;
@@ -141,6 +144,7 @@ namespace ConsoleApp1.src
             return res;
         }
 
+        // Récupere les états de sauvegardes
         public String getSaveState()
         {
             String res = "{";
@@ -159,7 +163,6 @@ namespace ConsoleApp1.src
             return res;
         }
 
-
         public void setState(int nbLeft = 0, int leftSize = 0, String actualFile = "", String actualFileTarget = "")
         {
             this.nbLeft = nbLeft;
@@ -168,6 +171,7 @@ namespace ConsoleApp1.src
             this.actualFileTarget = actualFileTarget;
         }
 
+        // Renvoi le nombre de fichiers en indiquant le directory
         public int calculerNbFichier(DirectoryInfo dir)
         {
             int res = 0;
@@ -182,6 +186,7 @@ namespace ConsoleApp1.src
             return res;
         }
 
+        // Renvoi la taille d'un répertoire en indiquant le directory
         public int calculerTailleRep(DirectoryInfo dir)
         {
             int res = 0;

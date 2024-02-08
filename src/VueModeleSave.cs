@@ -89,7 +89,8 @@ namespace Console_Application_Test_1.src
                         break;
                 }
             }
-            
+            Console.Clear();
+
         }
 
         public void creerSauvegarde()
@@ -189,6 +190,7 @@ namespace Console_Application_Test_1.src
 
                     if (this.userInput == "home")
                     {
+                        Console.Clear();
                         return;
                     }
 
@@ -225,15 +227,19 @@ namespace Console_Application_Test_1.src
                 try
                 {
                     this.saves.save(j);
+                    Console.Clear();
                     vueobject.SetOutPut(j+1+" : "+rm.GetString("LUNCH_succes") ?? errorArgument+"\n");
                     vueobject.afficher();
                     } catch (Exception e)
                 {
+                    Console.Clear();
                     Console.WriteLine(e.ToString());
+                    Console.WriteLine(" ");
                     vueobject.SetOutPut(rm.GetString("error_general") ?? errorArgument + "\n");
                     vueobject.afficher();
                 }
             }
+
         }
 
    
@@ -287,6 +293,7 @@ namespace Console_Application_Test_1.src
                     switch (this.userInput)
                     {
                         case "home":
+                            Console.Clear();
                             return;
 
                         case "1":
@@ -331,12 +338,14 @@ namespace Console_Application_Test_1.src
                             break;
 
                         case "5":
+                            Console.Clear();
                             this.saves.removeSave(index-1);
                             vueobject.SetOutPut(rm.GetString("EDIT_succes") + "\n");
                             this.vueobject.afficher();
                             break;
 
                         default:
+                            Console.Clear();
                             vueobject.SetOutPut(rm.GetString("enter_bad") ?? errorArgument);
                             vueobject.afficher();
                             break;
@@ -358,7 +367,7 @@ namespace Console_Application_Test_1.src
 
         public void assignerParametres()
         {
-
+            Console.Clear();
             vueobject.SetOutPut(rm.GetString("SETTINGS_lang") ?? errorArgument);
             vueobject.afficher();
 
