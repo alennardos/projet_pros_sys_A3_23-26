@@ -6,29 +6,31 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1.src
 {
-    internal class Vue
+    internal class View
     {
         private String outPut;
 
-        public Vue() {
+        public View() 
+        {
             outPut = "";
         }
 
-        // Récupere l'entrée utilisateur
+        // Get the user input
         public String GetInput()
         {
             String str = Console.ReadLine();
-                return str;
+
+            return str;
         }
 
-        // Définit la sortie utilisateur
+        // Define the user output
         public void SetOutPut(String str)
         {
             outPut = str;
         }
 
-        // Affiche le texte de sortie
-        public void afficher()
+        // Show the output text
+        public void show()
         {
             Console.WriteLine(this.outPut);
         }

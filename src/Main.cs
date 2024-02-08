@@ -17,14 +17,12 @@ namespace ConsoleApp1.src;
 
 class LangTest
 {
-
     public static void Main(string[] args)
     {
-        // Créer l'objet de la vue modèle
-        VueModeleSave vm = new VueModeleSave("fr");
+        // Create the object of the ViewModelSave
+        ViewModelSave vm = new ViewModelSave("fr");
 
+        // Lunch the menu for user input.
         vm.menu();
-
-
     }
 }

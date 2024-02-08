@@ -16,7 +16,7 @@ namespace ConsoleApp1.src
         private String dst;
         private bool isActive;
         private TypeSave ts;
-        private Sauvegardes sauvegardes;
+        private Saves sauvegardes;
         private int nbfiles;
         private int fileSize;
         private int nbLeft;
@@ -26,7 +26,7 @@ namespace ConsoleApp1.src
         private int tailleTraitee;
         private int fichierTraitee;
 
-        public Save(String name, String src, String target, TypeSave ts, Sauvegardes s)
+        public Save(String name, String src, String target, TypeSave ts, Saves s)
         {
             this.name = name;
             this.src = src;

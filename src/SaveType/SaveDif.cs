@@ -8,10 +8,9 @@ namespace ConsoleApp1.src.SaveType
 {
     internal class SaveDif : TypeSave
     {
-
         public SaveDif() { }
 
-        // Méthode save permettant de sauvegarder uniquement les fichiers ayant été modifiés
+        // The "save" method used to save every single file which has been modified since the last save.
         public void save(FileInfo file, string targetFilePath)
         {
             try

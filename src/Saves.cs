@@ -12,7 +12,7 @@ using System.Xml.Linq;
 
 namespace ConsoleApp1.src
 {
-    internal class Sauvegardes
+    internal class Saves
     {
 
         private List<Save> saves;
@@ -20,16 +20,16 @@ namespace ConsoleApp1.src
         private StreamWriter rts;
         private XmlTextReader saveFile;
 
-        public Sauvegardes()
+        public Saves()
         {
             saves = new List<Save>();
             var path = GetThisFilePath();
             
-
             if (!new DirectoryInfo(path + "\\..\\..\\logs").Exists)
             {
                 Directory.CreateDirectory(path + "\\..\\..\\logs");
             }
+
             log = new StreamWriter(path + "\\..\\..\\logs\\log.txt", true);
             rts = new StreamWriter(path + "\\..\\..\\logs\\rts.txt");
             saveFile = new XmlTextReader(path + "\\..\\..\\save\\save.xml");

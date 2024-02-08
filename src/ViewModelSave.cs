@@ -13,22 +13,20 @@ using System.Xml.Linq;
 
 namespace Console_Application_Test_1.src
 {
-    internal class VueModeleSave
+    internal class ViewModelSave
     {
         private String userInput;
-        private ResourceManager rm;
-        private Vue vueobject;
-        private Sauvegardes saves;
-        private String errorArgument = "Erreur CS8604 : argument invalide.";
+        private String errorArgument = "Error CS8604 : invalid argument.";
         private bool run;
+        private ResourceManager rm;
+        private View vueobject;
+        private Saves saves;
 
-        
-
-        public VueModeleSave(String str)
+        public ViewModelSave(String str)
         {
             this.run = true;
-            this.vueobject = new Vue();
-            this.saves = new Sauvegardes();
+            this.vueobject = new View();
+            this.saves = new Saves();
             this.rm = new ResourceManager("ConsoleApp1.languages." + str, Assembly.GetExecutingAssembly());
             Console.WriteLine(vueobject);
         }
@@ -38,6 +36,7 @@ namespace Console_Application_Test_1.src
             return path;
         }
 
+        // Manage the menu options for the user and the input
         public void menu()
         {
             Console.Clear();
@@ -45,37 +44,35 @@ namespace Console_Application_Test_1.src
             List<String> list = ["HOME_create_save", "HOME_lunch_save", "HOME_edit_save", "HOME_settings", "quit"];
 
             this.vueobject.SetOutPut(this.rm.GetString("HOME_hello") + "\n");
-            this.vueobject.afficher();
-
+            this.vueobject.show();
 
             while (this.run)
             {
 
-            for (int i = 0; i < list.Count; i++)
-            {
-                this.vueobject.SetOutPut(i + 1 + ") " + this.rm.GetString(list[i]));
-                this.vueobject.afficher();
-            }
+                for (int i = 0; i < list.Count; i++)
+                {
+                    this.vueobject.SetOutPut(i + 1 + ") " + this.rm.GetString(list[i]));
+                    this.vueobject.show();
+                }
 
                 this.userInput = this.vueobject.GetInput();
-
 
                 switch (this.userInput)
                 {
                     case "1":
-                        creerSauvegarde();
+                        createSave();
                         break;
 
                     case "3":
-                        modifierSauvegarde();
+                        modifySave();
                         break;
 
                     case "2":
-                        effectuerSauvegarde();
+                        makeSave();
                         break;
 
                     case "4":
-                        assignerParametres();
+                        assignParameter();
                         break;
 
                     case "5":
@@ -85,39 +82,38 @@ namespace Console_Application_Test_1.src
 
                     default:
                         vueobject.SetOutPut(rm.GetString("enter_bad") ?? errorArgument);
-                        vueobject.afficher();
+                        vueobject.show();
                         break;
                 }
             }
             Console.Clear();
-
         }
 
-        public void creerSauvegarde()
+        // Manage the save creation menu options for the user and the input
+        public void createSave()
         {
             Console.Clear();
             vueobject.SetOutPut(rm.GetString("HOME_create_save") ?? errorArgument);
             List<String> list = ["CREATE_name_save", "CREATE_source_save", "CREATE_destination_save", "CREATE_type_save"];
             this.vueobject.SetOutPut(this.rm.GetString("home"));
-            this.vueobject.afficher();
+            this.vueobject.show();
 
             string name = "";
-            string src = "";
-            string dst = "";
+            string source = "";
+            string destination = "";
             TypeSave type = null;
-            
 
             for (int i = 0; i < list.Count; i++)
             {
                 this.vueobject.SetOutPut(i + 1 + ") " + this.rm.GetString(list[i]));
-                this.vueobject.afficher();
+                this.vueobject.show();
                 this.userInput = this.vueobject.GetInput();
 
                 if (this.userInput == "")
                 {
                     i--;
                     vueobject.SetOutPut(rm.GetString("enter_bad") ?? errorArgument);
-                    vueobject.afficher();
+                    vueobject.show();
 
                 }
                 
@@ -127,9 +123,9 @@ namespace Console_Application_Test_1.src
                         name = this.userInput; break;
 
                     case 1:
-                        src = this.userInput;break;
+                        source = this.userInput;break;
                     case 2:
-                        dst = this.userInput; break;
+                        destination = this.userInput; break;
                     case 3:
                         if (this.userInput == "1")
                             type = new SaveComplete();
@@ -139,7 +135,7 @@ namespace Console_Application_Test_1.src
                         {
                             i--;
                             vueobject.SetOutPut(rm.GetString("enter_bad") ?? errorArgument);
-                            vueobject.afficher();
+                            vueobject.show();
                         }
                         break;
                 }
@@ -147,42 +143,44 @@ namespace Console_Application_Test_1.src
             }
 
 
-            if (this.saves.createSave(name, src, dst, type))
+            if (this.saves.createSave(name, source, destination, type))
             {
                 Console.Clear();
                 vueobject.SetOutPut(rm.GetString("CREATE_succes") + "\n");
-                this.vueobject.afficher();
+                this.vueobject.show();
             }
             else
             {
                 vueobject.SetOutPut(rm.GetString("CREATE_fail") + "\n");
-                this.vueobject.afficher();
+                this.vueobject.show();
             }
 
 
         }
 
-        public void effectuerSauvegarde()
+        // Manage the save making menu options for the user and the input
+        public void makeSave()
         {
             Console.Clear();
             this.vueobject.SetOutPut(this.rm.GetString("LUNCH_info_save"));
-            this.vueobject.afficher();
+            this.vueobject.show();
             
             this.vueobject.SetOutPut(this.rm.GetString("home"));
-            this.vueobject.afficher();  
+            this.vueobject.show();  
             int i = 1;
 
             foreach (Save s in  this.saves.getSaves())
             {
                 this.vueobject.SetOutPut(i + ") " + s.GetName());
-                this.vueobject.afficher();
+                this.vueobject.show();
                 i++;
             }
-            bool infoRecup = false;
+
+            bool getInfo = false;
 
             List<int> aSauv = new List<int>();
 
-            while (!infoRecup)
+            while (!getInfo)
             {
                 try
                 {
@@ -209,14 +207,18 @@ namespace Console_Application_Test_1.src
                             aSauv.Add(j-1);
                         }
                     }
-                    else {
+                    else 
+                    {
                         aSauv.Add(Int32.Parse(this.userInput)-1);
                     }
-                    infoRecup = true;
-                }catch (Exception e){
+
+                    getInfo = true;
+                }
+                catch (Exception e)
+                {
                     Console.WriteLine (e.ToString());
                     vueobject.SetOutPut(rm.GetString("enter_bad") ?? errorArgument + "\n");
-                    vueobject.afficher();
+                    vueobject.show();
 
                 }
 
@@ -229,28 +231,28 @@ namespace Console_Application_Test_1.src
                     this.saves.save(j);
                     Console.Clear();
                     vueobject.SetOutPut(j+1+" : "+rm.GetString("LUNCH_succes") ?? errorArgument+"\n");
-                    vueobject.afficher();
+                    vueobject.show();
                     } catch (Exception e)
                 {
                     Console.Clear();
                     Console.WriteLine(e.ToString());
                     Console.WriteLine(" ");
                     vueobject.SetOutPut(rm.GetString("error_general") ?? errorArgument + "\n");
-                    vueobject.afficher();
+                    vueobject.show();
                 }
             }
 
         }
 
-   
-        public void modifierSauvegarde()
+        // Manage the save modifier menu options for the user and the input
+        public void modifySave()
         {
             Console.Clear();
             vueobject.SetOutPut(rm.GetString("HOME_edit_save") ?? errorArgument);
-            this.vueobject.afficher();
+            this.vueobject.show();
 
             this.vueobject.SetOutPut(this.rm.GetString("home"));
-            this.vueobject.afficher();
+            this.vueobject.show();
             Console.WriteLine(" ");
 
             int i = 1;
@@ -259,7 +261,7 @@ namespace Console_Application_Test_1.src
             {
 
                 this.vueobject.SetOutPut(i + ") " + s.GetName());
-                this.vueobject.afficher();
+                this.vueobject.show();
                 i++;
             }
 
@@ -285,7 +287,7 @@ namespace Console_Application_Test_1.src
                     for (i = 0; i < list.Count; i++)
                     {
                         this.vueobject.SetOutPut(i + 1 + ") " + this.rm.GetString(list[i]));
-                        this.vueobject.afficher();
+                        this.vueobject.show();
                     }
 
                     this.userInput = this.vueobject.GetInput();
@@ -299,19 +301,19 @@ namespace Console_Application_Test_1.src
                         case "1":
                             s.SetName(this.vueobject.GetInput());
                             vueobject.SetOutPut(rm.GetString("EDIT_succes") + "\n");
-                            this.vueobject.afficher();
+                            this.vueobject.show();
                             break;
 
                         case "2":
                             s.SetSource(this.vueobject.GetInput());
                             vueobject.SetOutPut(rm.GetString("EDIT_succes") + "\n");
-                            this.vueobject.afficher();
+                            this.vueobject.show();
                             break;
 
                         case "3":
                             s.SetDest(this.vueobject.GetInput());
                             vueobject.SetOutPut(rm.GetString("EDIT_succes") + "\n");
-                            this.vueobject.afficher();
+                            this.vueobject.show();
                             break;
 
                         case "4":
@@ -319,7 +321,7 @@ namespace Console_Application_Test_1.src
                             while (case4)
                             {
                                 this.vueobject.SetOutPut(this.rm.GetString("CREATE_type_save"));
-                                this.vueobject.afficher();
+                                this.vueobject.show();
                                 this.userInput = vueobject.GetInput();
                                 case4 = false;
                                 if (this.userInput == "1")
@@ -329,25 +331,25 @@ namespace Console_Application_Test_1.src
                                 else
                                 {
                                     vueobject.SetOutPut(rm.GetString("enter_bad") ?? errorArgument);
-                                    vueobject.afficher();
+                                    vueobject.show();
                                     case4 = true;
                                 }
                             }
                             vueobject.SetOutPut(rm.GetString("EDIT_succes") + "\n");
-                            this.vueobject.afficher();
+                            this.vueobject.show();
                             break;
 
                         case "5":
                             Console.Clear();
                             this.saves.removeSave(index-1);
                             vueobject.SetOutPut(rm.GetString("EDIT_succes") + "\n");
-                            this.vueobject.afficher();
+                            this.vueobject.show();
                             break;
 
                         default:
                             Console.Clear();
                             vueobject.SetOutPut(rm.GetString("enter_bad") ?? errorArgument);
-                            vueobject.afficher();
+                            vueobject.show();
                             break;
                     }
 
@@ -356,7 +358,7 @@ namespace Console_Application_Test_1.src
                 catch (Exception e) 
                 {
                     vueobject.SetOutPut(rm.GetString("enter_bad") ?? errorArgument);
-                    vueobject.afficher();
+                    vueobject.show();
                     runEdit = true;
                 }
 
@@ -365,11 +367,12 @@ namespace Console_Application_Test_1.src
             Console.Clear();
         }
 
-        public void assignerParametres()
+        // Manage the parameter assigner menu options for the user and the input
+        public void assignParameter()
         {
             Console.Clear();
             vueobject.SetOutPut(rm.GetString("SETTINGS_lang") ?? errorArgument);
-            vueobject.afficher();
+            vueobject.show();
 
             var path = GetThisFilePath();
 
@@ -383,7 +386,7 @@ namespace Console_Application_Test_1.src
                 if (skip)
                 {
                     vueobject.SetOutPut("- "+file.Name.Split('.')[0]);
-                    vueobject.afficher();
+                    vueobject.show();
                     i++;
                 }
                 skip = !skip;
@@ -402,7 +405,7 @@ namespace Console_Application_Test_1.src
                 }catch
                 {
                     vueobject.SetOutPut(rm.GetString("enter_bad") ?? errorArgument);
-                    vueobject.afficher();
+                    vueobject.show();
                 }
                 
             }
