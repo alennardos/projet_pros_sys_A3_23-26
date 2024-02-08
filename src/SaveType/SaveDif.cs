@@ -11,6 +11,7 @@ namespace ConsoleApp1.src.SaveType
 
         public SaveDif() { }
 
+        // Méthode save permettant de sauvegarder uniquement les fichiers ayant été modifiés
         public void save(FileInfo file, string targetFilePath)
         {
             try

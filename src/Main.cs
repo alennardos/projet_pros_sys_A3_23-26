@@ -18,9 +18,10 @@ class LangTest
 
     public static void Main(string[] args)
     {
-
+        // Créer l'objet de la vue modèle
         VueModeleSave vm = new VueModeleSave("fr");
 
+        // Lance le menu à l'exécution
         vm.menu();
 
         //XElement purchaseOrder = XElement.Load(@"C:\CESI\A3\prog sys\projet\projet_pros_sys_A3_23-26\save\save.xml");

@@ -8,6 +8,7 @@ namespace ConsoleApp1.src.SaveType
 
         }
 
+        // Méthode save permettant de sauvegarder tous les fichiers d'un répertoire
         public void save(FileInfo file, string targetFilePath)
         {
             try
