@@ -133,7 +133,7 @@
     <value>Creation succefull !</value>
   </data>
   <data name="CREATE_type_save" xml:space="preserve">
-    <value>Type of the backup</value>
+    <value>Type of the backup (1: complet, 2:differential)</value>
   </data>
   <data name="EDIT_delet_save" xml:space="preserve">
     <value>Delet a backup</value>
