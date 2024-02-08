@@ -237,7 +237,7 @@ namespace Console_Application_Test_1.src
             }
         }
 
-        //quoicoubeh
+   
         public void modifierSauvegarde()
         {
             Console.Clear();
@@ -398,7 +398,7 @@ namespace Console_Application_Test_1.src
                 }
                 
             }
-
+            Console.Clear();
         }
 
     }
