@@ -31,5 +31,10 @@ namespace ConsoleApp1.src.SaveType
                 }
             }
         }
+
+        public String toString()
+        {
+            return "diff";
+        }
     }
 }

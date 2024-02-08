@@ -6,5 +6,6 @@ namespace ConsoleApp1.src.SaveType
 
         void save(FileInfo file, string targetFilePath);
 
+        String toString();
     }
 }

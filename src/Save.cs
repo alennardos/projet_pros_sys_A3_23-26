@@ -218,5 +218,16 @@ namespace ConsoleApp1.src
         {
             this.dst = dst;
         }
+
+        public String GetSrc()
+        {
+            return this.src;
+        }
+
+        public String GetDest()
+        {
+            return this.dst;
+        }
+   
     }
 }

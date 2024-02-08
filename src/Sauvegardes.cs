@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection.PortableExecutable;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +18,7 @@ namespace ConsoleApp1.src
         private List<Save> saves;
         private StreamWriter log;
         private StreamWriter rts;
-        private XmlDocument saveFile;
+        private XmlTextReader saveFile;
 
         public Sauvegardes()
         {
@@ -31,10 +32,9 @@ namespace ConsoleApp1.src
             }
             log = new StreamWriter(path + "\\..\\..\\logs\\log.txt", true);
             rts = new StreamWriter(path + "\\..\\..\\logs\\rts.txt");
-            this.saveFile = new XmlDocument();
-            this.saveFile.Load(path + "\\..\\..\\save\\save.xml");
-            this.createSaveXml();
-
+            saveFile = new XmlTextReader(path + "\\..\\..\\save\\save.xml");
+            createSaveXml();
+            saveFile.Close();
         }
 
         private static string GetThisFilePath([CallerFilePath] string path = null)
@@ -44,7 +44,77 @@ namespace ConsoleApp1.src
 
         private void createSaveXml()
         {
-            Console.Write(this.saveFile.Attributes["saves"].Value);
+
+            Console.WriteLine("ici");
+            int i = 0;
+
+            String name = null;
+            String src = null;
+            String dest = null;
+            TypeSave ts = null;
+
+            bool cree = false;
+            while (saveFile.Read())
+            {
+
+                if (saveFile.NodeType == XmlNodeType.Text)
+                {
+      
+                    switch (i)
+                    {
+                        case 0:
+                            name = saveFile.Value;
+                            
+                            break;
+                        case 1:
+                            src = saveFile.Value;
+                            break;
+                        case 2:
+                            dest = saveFile.Value;
+                            break;
+                        case 3:
+                            if (saveFile.Value == "comp")
+                            {
+                                ts = new SaveComplete();
+                            }
+                            else
+                            {
+                                ts = new SaveDif();
+                            }
+                            cree = true;
+                            break;
+                    }
+
+                    if (cree)
+                    {
+                        createSave(name, src, dest, ts);
+                        cree = false;
+                    }
+                    i++;
+                    i = i % 4;
+                }
+            }
+        }
+
+        public void writeXmlSave()
+        {
+            var path = GetThisFilePath();
+            StreamWriter xml = new StreamWriter(path + "\\..\\..\\save\\save.xml");
+            xml.Write("<saves>");
+            foreach (Save s in this.saves)
+            {
+                xml.Write("<save>");
+
+                xml.Write("<name>" + s.GetName() + "</name>");
+                xml.Write("<src>" + s.GetSrc() + "</src>");
+                xml.Write("<dst>" + s.GetDest() + "</dst>");
+                xml.Write("<type>" + s.getTs().ToString() + "</type>");
+
+                xml.Write("</save>");
+            }
+            xml.Write("</saves>");
+
+            xml.Close();
         }
 
         public bool createSave(String nom, String src, String dest, TypeSave ts)
@@ -101,6 +171,7 @@ namespace ConsoleApp1.src
         {
             this.log.Close();
             this.rts.Close();
+            this.writeXmlSave();
         }
     }
 }

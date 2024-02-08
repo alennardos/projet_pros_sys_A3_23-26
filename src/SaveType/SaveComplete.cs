@@ -36,5 +36,10 @@ namespace ConsoleApp1.src.SaveType
                 //erreur
             }
         }
+
+        public String toString()
+        {
+            return "comp";
+        }
     }
 }

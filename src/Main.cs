@@ -10,6 +10,8 @@ using System.Runtime.CompilerServices;
 using System;
 using System.Xml;
 using System.Xml.Linq;
+using System.Reflection.PortableExecutable;
+using System.Data.SqlTypes;
 
 namespace ConsoleApp1.src;
 
@@ -19,20 +21,10 @@ class LangTest
     public static void Main(string[] args)
     {
 
-        //VueModeleSave vm = new VueModeleSave("fr");
+        VueModeleSave vm = new VueModeleSave("fr");
 
-        //vm.menu();
+        vm.menu();
 
-        XElement purchaseOrder = XElement.Load(@"C:\CESI\A3\prog sys\projet\projet_pros_sys_A3_23-26\save\save.xml");
-
-
-
-        //saveFile
-
-        Console.WriteLine(purchaseOrder.Value);
 
     }
-
-
-
 }
