@@ -7,6 +7,9 @@ using ConsoleApp1.src.SaveType;
 using Console_Application_Test_1.src;
 using System.IO;
 using System.Runtime.CompilerServices;
+using System;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace ConsoleApp1.src;
 
@@ -16,20 +19,18 @@ class LangTest
     public static void Main(string[] args)
     {
 
-        VueModeleSave vm = new VueModeleSave("fr");
+        //VueModeleSave vm = new VueModeleSave("fr");
 
-        vm.menu();
+        //vm.menu();
 
-        //ResourceManager rm = new ResourceManager("ConsoleApp1.languages.fr", Assembly.GetExecutingAssembly());
+        XElement purchaseOrder = XElement.Load(@"C:\CESI\A3\prog sys\projet\projet_pros_sys_A3_23-26\save\save.xml");
 
-        //Console.WriteLine(rm.GetString("HOME_hello"));
 
-        //Console.WriteLine(CallerFilePath);
 
-        //var path = GetThisFilePath(); // path = @"path\to\your\source\code\file.cs"
-        //var directory = Path.GetDirectoryName(path); // directory = @"path\to\your\source\code"
+        //saveFile
 
-        //Console.WriteLine(path + "\\..\\..\\languages");
+        Console.WriteLine(purchaseOrder.Value);
+
     }
 
 

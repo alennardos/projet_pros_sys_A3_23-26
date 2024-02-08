@@ -205,7 +205,6 @@ namespace Console_Application_Test_1.src
                         }
                     }
                     else {
-                        Console.WriteLine("val : "+Int32.Parse(this.userInput));
                         aSauv.Add(Int32.Parse(this.userInput)-1);
                     }
                     infoRecup = true;

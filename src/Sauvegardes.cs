@@ -6,6 +6,8 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace ConsoleApp1.src
 {
@@ -15,6 +17,7 @@ namespace ConsoleApp1.src
         private List<Save> saves;
         private StreamWriter log;
         private StreamWriter rts;
+        private XmlDocument saveFile;
 
         public Sauvegardes()
         {
@@ -28,11 +31,20 @@ namespace ConsoleApp1.src
             }
             log = new StreamWriter(path + "\\..\\..\\logs\\log.txt", true);
             rts = new StreamWriter(path + "\\..\\..\\logs\\rts.txt");
+            this.saveFile = new XmlDocument();
+            this.saveFile.Load(path + "\\..\\..\\save\\save.xml");
+            this.createSaveXml();
+
         }
 
         private static string GetThisFilePath([CallerFilePath] string path = null)
         {
             return path;
+        }
+
+        private void createSaveXml()
+        {
+            Console.Write(this.saveFile.Attributes["saves"].Value);
         }
 
         public bool createSave(String nom, String src, String dest, TypeSave ts)

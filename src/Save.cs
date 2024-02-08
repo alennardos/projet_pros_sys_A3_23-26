@@ -44,7 +44,7 @@ namespace ConsoleApp1.src
 
         public String log(String src, String target, int size, double time)
         {
-            String res = "{\n";
+            String res = "\n{\n";
             res += "\"Name\": \"" + name + "\",";
             res += "\n\"FileSource\": \"" + src + "\",";
             res += "\n\"FileTarget\": \"" + target + "\",";
@@ -135,7 +135,6 @@ namespace ConsoleApp1.src
 
             foreach (DirectoryInfo subDir in dirs)
             {
-                Console.WriteLine(dst + subDir.Name);
                 res += this.save(subDir, dst + @"\" + subDir.Name);
             }
 

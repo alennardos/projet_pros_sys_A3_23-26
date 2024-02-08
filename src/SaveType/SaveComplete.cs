@@ -18,11 +18,9 @@ namespace ConsoleApp1.src.SaveType
                     {
                         string tempFilePath = Path.Combine(Path.GetTempPath(), "tempfile");
                         file.CopyTo(tempFilePath, true);
-                        Console.WriteLine("copie dans fichier temp réussit");
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine("erreur de copie dans temp");
                     }
 
                     File.Delete(targetFilePath);
