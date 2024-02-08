@@ -12,28 +12,28 @@ namespace ConsoleApp1.src
     {
 
         private String name;
-        private String src;
-        private String dst;
-        private bool isActive;
-        private TypeSave ts;
-        private Saves sauvegardes;
+        private String source;
+        private String destination;
+        private String actualFile;
+        private String actualFileTarget;
         private int nbfiles;
         private int fileSize;
         private int nbLeft;
         private int leftSize;
-        private String actualFile;
-        private String actualFileTarget;
-        private int tailleTraitee;
-        private int fichierTraitee;
+        private int sizeTreated;
+        private int fileTreated;
+        private bool isActive;
+        private TypeSave ts;
+        private Saves saves;
 
-        public Save(String name, String src, String target, TypeSave ts, Saves s)
+        public Save(String name, String source, String target, TypeSave ts, Saves save)
         {
             this.name = name;
-            this.src = src;
-            this.dst = target;
+            this.source = source;
+            this.destination = target;
             this.isActive = false;
             this.ts = ts;
-            this.sauvegardes = s;
+            this.saves = save;
             nbfiles = 0;
             fileSize = 0;
             nbLeft = 0;
@@ -42,12 +42,12 @@ namespace ConsoleApp1.src
             actualFileTarget = "";
         }
 
-        // Retourne un log
-        public String log(String src, String target, int size, double time)
+        // Return a log
+        public String log(String source, String target, int size, double time)
         {
             String res = "\n{\n";
             res += "\"Name\": \"" + name + "\",";
-            res += "\n\"FileSource\": \"" + src + "\",";
+            res += "\n\"FileSource\": \"" + source + "\",";
             res += "\n\"FileTarget\": \"" + target + "\",";
             res += "\n\"FileSize\": " + size + ",";
             res += "\n\"FileTransferTime\": " + time + ",";
@@ -76,26 +76,26 @@ namespace ConsoleApp1.src
             this.isActive = isActive;
         }
 
+        // Call the method save with arguments
         public String save()
         {
             setIsActive(true);
 
-
-            var dir = new DirectoryInfo(this.src);
-            if (!dir.Exists)
+            var directory = new DirectoryInfo(this.source);
+            if (!directory.Exists)
             {
                 throw new DirectoryNotFoundException();
             }
 
-            this.fichierTraitee = 0;
+            this.fileTreated = 0;
 
-            this.tailleTraitee = 0;
+            this.sizeTreated = 0;
 
-            this.nbfiles = this.calculerNbFichier(dir);
+            this.nbfiles = this.calculNumberFiles(directory);
 
-            this.fileSize = this.calculerTailleRep(dir);
+            this.fileSize = this.calculDirectorySize(directory);
 
-            String res = this.save(dir, dst);
+            String res = this.save(directory, destination);
 
             setIsActive(false);
 
@@ -104,53 +104,54 @@ namespace ConsoleApp1.src
             return res;
         }
 
-        private String save(DirectoryInfo dir, String dst)
+        // Save the files
+        private String save(DirectoryInfo directory, String destination)
         {
             String res = "";
 
-            if (!new DirectoryInfo(dst).Exists)
+            if (!new DirectoryInfo(destination).Exists)
             {
-                Directory.CreateDirectory(dst);
+                Directory.CreateDirectory(destination);
             }
 
-            foreach (FileInfo file in dir.GetFiles())
+            foreach (FileInfo file in directory.GetFiles())
             {
-                string targetFilePath = Path.Combine(dst, file.Name);
+                string targetFilePath = Path.Combine(destination, file.Name);
                 var watch = System.Diagnostics.Stopwatch.StartNew();
 
-                this.setState(nbfiles - fichierTraitee, fileSize - tailleTraitee, file.FullName, dst + @"\" + file.Name);
+                this.setState(nbfiles - fileTreated, fileSize - sizeTreated, file.FullName, destination + @"\" + file.Name);
 
-                this.sauvegardes.writeRts();
+                this.saves.writeRts();
 
                 ts.save(file, targetFilePath);
 
                 watch.Stop();
 
-                double temps = (double)watch.ElapsedMilliseconds / 1000;
+                double time = (double)watch.ElapsedMilliseconds / 1000;
 
-                res += (log(file.FullName, dst + @"\" + file.Name, ((int)file.Length), temps));
+                res += (log(file.FullName, destination + @"\" + file.Name, ((int)file.Length), time));
 
-                fichierTraitee++;
-                tailleTraitee += (int)file.Length;
+                fileTreated++;
+                sizeTreated += (int)file.Length;
             }
 
-            DirectoryInfo[] dirs = dir.GetDirectories();
+            DirectoryInfo[] directorys = directory.GetDirectories();
 
-            foreach (DirectoryInfo subDir in dirs)
+            foreach (DirectoryInfo subDirectory in directorys)
             {
-                res += this.save(subDir, dst + @"\" + subDir.Name);
+                res += this.save(subDirectory, destination + @"\" + subDirectory.Name);
             }
 
             return res;
         }
 
-        // Récupere les états de sauvegardes
+        // Get the save state
         public String getSaveState()
         {
             String res = "{";
             res += "\n\"Name\": \"" + name + "\",";
-            res += "\n\"SourceFilePath\": \"" + this.src + "\",";
-            res += "\n\"TargetFilePath\": \"" + this.dst + "\",";
+            res += "\n\"SourceFilePath\": \"" + this.source + "\",";
+            res += "\n\"TargetFilePath\": \"" + this.destination + "\",";
             if (this.isActive) res += "\n\"State\": \"ACTIVE\",";
             if (!this.isActive) res += "\n\"State\": \"END\",";
             res += "\n\"TotalFilesToCopy\": \"" + this.nbfiles + "\",";
@@ -171,34 +172,34 @@ namespace ConsoleApp1.src
             this.actualFileTarget = actualFileTarget;
         }
 
-        // Renvoi le nombre de fichiers en indiquant le directory
-        public int calculerNbFichier(DirectoryInfo dir)
+        // Return the number of files of a directory
+        public int calculNumberFiles(DirectoryInfo directory)
         {
             int res = 0;
 
-            res += dir.GetFiles().Length;
+            res += directory.GetFiles().Length;
 
-            foreach (DirectoryInfo subDir in dir.GetDirectories())
+            foreach (DirectoryInfo subDirectory in directory.GetDirectories())
             {
-                res += calculerNbFichier(subDir);
+                res += calculNumberFiles(subDirectory);
             }
 
             return res;
         }
 
-        // Renvoi la taille d'un répertoire en indiquant le directory
-        public int calculerTailleRep(DirectoryInfo dir)
+        // Return the size of a directory
+        public int calculDirectorySize(DirectoryInfo directory)
         {
             int res = 0;
 
-            foreach (FileInfo f in dir.GetFiles())
+            foreach (FileInfo f in directory.GetFiles())
             {
                 res += (int)f.Length;
             }
 
-            foreach (DirectoryInfo subDir in dir.GetDirectories())
+            foreach (DirectoryInfo subDirectory in directory.GetDirectories())
             {
-                res += calculerTailleRep(subDir);
+                res += calculDirectorySize(subDirectory);
             }
 
             return res;
@@ -216,22 +217,22 @@ namespace ConsoleApp1.src
 
         public void SetSource(string src)
         {
-            this.src = src;
+            this.source = src;
         }
 
-        public void SetDest(string dst)
+        public void SetDestination(string destination)
         {
-            this.dst = dst;
+            this.destination = destination;
         }
 
-        public String GetSrc()
+        public String GetSource()
         {
-            return this.src;
+            return this.source;
         }
 
-        public String GetDest()
+        public String GetDestination()
         {
-            return this.dst;
+            return this.destination;
         }
    
     }

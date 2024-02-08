@@ -311,7 +311,7 @@ namespace Console_Application_Test_1.src
                             break;
 
                         case "3":
-                            s.SetDest(this.vueobject.GetInput());
+                            s.SetDestination(this.vueobject.GetInput());
                             vueobject.SetOutPut(rm.GetString("EDIT_succes") + "\n");
                             this.vueobject.show();
                             break;

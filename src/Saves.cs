@@ -42,6 +42,7 @@ namespace ConsoleApp1.src
             return path;
         }
 
+        // Create a XML save
         private void createSaveXml()
         {
 
@@ -49,11 +50,11 @@ namespace ConsoleApp1.src
             int i = 0;
 
             String name = null;
-            String src = null;
-            String dest = null;
+            String source = null;
+            String destination = null;
             TypeSave ts = null;
 
-            bool cree = false;
+            bool create = false;
             while (saveFile.Read())
             {
 
@@ -67,10 +68,10 @@ namespace ConsoleApp1.src
                             
                             break;
                         case 1:
-                            src = saveFile.Value;
+                            source = saveFile.Value;
                             break;
                         case 2:
-                            dest = saveFile.Value;
+                            destination = saveFile.Value;
                             break;
                         case 3:
                             if (saveFile.Value == "comp")
@@ -81,14 +82,14 @@ namespace ConsoleApp1.src
                             {
                                 ts = new SaveDif();
                             }
-                            cree = true;
+                            create = true;
                             break;
                     }
 
-                    if (cree)
+                    if (create)
                     {
-                        createSave(name, src, dest, ts);
-                        cree = false;
+                        createSave(name, source, destination, ts);
+                        create = false;
                     }
                     i++;
                     i = i % 4;
@@ -96,19 +97,20 @@ namespace ConsoleApp1.src
             }
         }
 
+        // Write a XML save
         public void writeXmlSave()
         {
             var path = GetThisFilePath();
             StreamWriter xml = new StreamWriter(path + "\\..\\..\\save\\save.xml");
             xml.Write("<saves>");
-            foreach (Save s in this.saves)
+            foreach (Save save in this.saves)
             {
                 xml.Write("<save>");
 
-                xml.Write("<name>" + s.GetName() + "</name>");
-                xml.Write("<src>" + s.GetSrc() + "</src>");
-                xml.Write("<dst>" + s.GetDest() + "</dst>");
-                xml.Write("<type>" + s.getTs().ToString() + "</type>");
+                xml.Write("<name>" + save.GetName() + "</name>");
+                xml.Write("<source>" + save.GetSource() + "</source>");
+                xml.Write("<destination>" + save.GetDestination() + "</destination>");
+                xml.Write("<type>" + save.getTs().ToString() + "</type>");
 
                 xml.Write("</save>");
             }
@@ -117,15 +119,17 @@ namespace ConsoleApp1.src
             xml.Close();
         }
 
-        public bool createSave(String nom, String src, String dest, TypeSave ts)
+        // Create a save only if list isn't full
+        public bool createSave(String name, String source, String destination, TypeSave ts)
         {
             if(this.saves.Count < 5) {
-                this.saves.Add(new Save(nom, src, dest, ts, this));
+                this.saves.Add(new Save(name, source, destination, ts, this));
                 return true;
             }
             return false;
         }
 
+        // Remove a save with the method, only if it exists
         public void removeSave(int num)
         {
             if (this.saves[num] != null)
@@ -134,22 +138,25 @@ namespace ConsoleApp1.src
             }
         }
 
+        // Change a save parameter about typeSave
         public void changeSaveParam(int num, TypeSave ts)
         {
             this.saves[num].setTs(ts);
         }
 
+        // Write a save into a Log File
         public void save(int num)
         {
             this.writeLog(this.saves[num].save());
         }
 
-
-        public void writeLog(String str)
+        // Write a Log File
+        public void writeLog(String log)
         {
-            this.log.Write(str);
+            this.log.Write(log);
         }
 
+        // Write a RTS File
         public void writeRts()
         {
             String res = "[";
@@ -167,6 +174,7 @@ namespace ConsoleApp1.src
             return this.saves;
         }
 
+        // Quit the menu and close the app
         public void quit()
         {
             this.log.Close();
