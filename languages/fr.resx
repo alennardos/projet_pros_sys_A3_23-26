@@ -133,7 +133,7 @@
     <value>Création réussit !</value>
   </data>
   <data name="CREATE_type_save" xml:space="preserve">
-    <value>Type de sauvegarde (1: complete, 2: diff)</value>
+    <value>Type de sauvegarde (1: complete, 2: différentiellef)</value>
   </data>
   <data name="EDIT_delet_save" xml:space="preserve">
     <value>Supprimer la sauvegarde</value>
