@@ -42,6 +42,7 @@ namespace Console_Application_Test_1.src
             makeSave = 2,
             modifySave = 3,
             assignParameter = 4,
+            quit = 5,
 
         }
 
@@ -85,6 +86,11 @@ namespace Console_Application_Test_1.src
 
                         case menu_home.assignParameter:
                             assignParameter();
+                            break;
+
+                        case menu_home.quit:
+                            this.run = false;
+                            this.saves.quit();
                             break;
 
                         default:
