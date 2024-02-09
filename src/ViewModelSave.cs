@@ -35,8 +35,17 @@ namespace Console_Application_Test_1.src
         {
             return path;
         }
+        //Enum use for the home menu
+        enum menu_home
+        { 
+            createSave = 1,
+            makeSave = 2,
+            modifySave = 3,
+            assignParameter = 4,
 
-        // Manage the menu options for the user and the input
+        }
+
+        // Manage the home menu for the user and the input
         public void menu()
         {
             Console.Clear();
@@ -54,6 +63,46 @@ namespace Console_Application_Test_1.src
                     this.vueobject.SetOutPut(i + 1 + ") " + this.rm.GetString(list[i]));
                     this.vueobject.show();
                 }
+
+                this.userInput = this.vueobject.GetInput();
+                menu_home userInputEnum;
+
+                if (Enum.TryParse(this.userInput, out userInputEnum))
+                {
+                    switch (userInputEnum)
+                    {
+                        case menu_home.createSave:
+                            createSave();
+                            break;
+
+                        case menu_home.modifySave:
+                            modifySave();
+                            break;
+
+                        case menu_home.makeSave:
+                            makeSave();
+                            break;
+
+                        case menu_home.assignParameter:
+                            assignParameter();
+                            break;
+
+                        default:
+                            vueobject.SetOutPut(rm.GetString("enter_bad") ?? errorArgument);
+                            vueobject.show();
+                            break;
+                    }
+                }
+                else
+                {
+                    vueobject.SetOutPut(rm.GetString("enter_bad") ?? errorArgument);
+                    vueobject.show();
+                }
+
+
+
+                /*
+                ======  Old code with old switch case =======
 
                 this.userInput = this.vueobject.GetInput();
 
@@ -84,7 +133,8 @@ namespace Console_Application_Test_1.src
                         vueobject.SetOutPut(rm.GetString("enter_bad") ?? errorArgument);
                         vueobject.show();
                         break;
-                }
+                   }
+                    */
             }
             Console.Clear();
         }
@@ -273,6 +323,7 @@ namespace Console_Application_Test_1.src
 
                 if (this.userInput == "home") 
                 {
+                    Console.Clear();
                     return;
                 }
 
