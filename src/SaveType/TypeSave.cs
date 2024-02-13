@@ -3,7 +3,7 @@ namespace ConsoleApp1.src.SaveType
 
     public interface TypeSave
     {
-        // Méthode save (Contenant Différentielle ou Complète)
+        // The "save" method (Complete or differential)
         void save(FileInfo file, string targetFilePath);
 
         String toString();

@@ -133,7 +133,7 @@
     <value>Création réussit !</value>
   </data>
   <data name="CREATE_type_save" xml:space="preserve">
-    <value>Type de sauvegarde (1: complete, 2: diff)</value>
+    <value>Type de sauvegarde (1: complete, 2: différentiellef)</value>
   </data>
   <data name="EDIT_delet_save" xml:space="preserve">
     <value>Supprimer la sauvegarde</value>
@@ -176,6 +176,9 @@
   </data>
   <data name="HOME_settings" xml:space="preserve">
     <value>Paramètres</value>
+  </data>
+  <data name="LUNCH_cantrun" xml:space="preserve">
+    <value>Impossible de lancer une sauvegarde tant qu'un logiciel metier est en fonctionnement</value>
   </data>
   <data name="LUNCH_info_save" xml:space="preserve">
     <value>Taper 3-5 pour lancer les sauvegarde de 3 À 5, taper 3;4 pour sauvegarder la 3 ET la 4</value>

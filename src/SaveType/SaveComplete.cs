@@ -2,13 +2,12 @@ namespace ConsoleApp1.src.SaveType
 {
     internal class SaveComplete : TypeSave
     {
-
         public SaveComplete()
         {
 
         }
 
-        // Méthode save permettant de sauvegarder tous les fichiers d'un répertoire
+        // The "save" method used to save every single file of a folder.
         public void save(FileInfo file, string targetFilePath)
         {
             try
@@ -34,7 +33,7 @@ namespace ConsoleApp1.src.SaveType
 
             catch (Exception ex)
             {
-                //erreur
+                // Error
             }
         }
 

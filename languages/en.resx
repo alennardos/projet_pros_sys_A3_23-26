@@ -133,7 +133,7 @@
     <value>Creation succefull !</value>
   </data>
   <data name="CREATE_type_save" xml:space="preserve">
-    <value>Type of the backup</value>
+    <value>Type of the backup (1: complet, 2:differential)</value>
   </data>
   <data name="EDIT_delet_save" xml:space="preserve">
     <value>Delet a backup</value>
@@ -176,6 +176,9 @@
   </data>
   <data name="HOME_settings" xml:space="preserve">
     <value>Settings</value>
+  </data>
+  <data name="LUNCH_cantrun" xml:space="preserve">
+    <value>Impossible to lunch a save because a "Logiciel Metier" is working</value>
   </data>
   <data name="LUNCH_info_save" xml:space="preserve">
     <value>Type 3-5 to initiate the backup from 3 TO 5, type 3;4 to backup 3 AND 4</value>
