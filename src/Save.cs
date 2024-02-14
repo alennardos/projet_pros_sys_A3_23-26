@@ -45,14 +45,29 @@ namespace ConsoleApp1.src
         // Return a log
         public String log(String source, String target, int size, double time)
         {
-            String res = "\n{\n";
-            res += "\"Name\": \"" + name + "\",";
-            res += "\n\"FileSource\": \"" + source + "\",";
-            res += "\n\"FileTarget\": \"" + target + "\",";
-            res += "\n\"FileSize\": " + size + ",";
-            res += "\n\"FileTransferTime\": " + time + ",";
-            res += "\n \"time\": \"" + DateTime.Now.ToString() + "\"";
-            res += "\n},\n";
+            String res;
+            if (this.saves.getFormat() == "json")
+            {
+                res = "\n{\n";
+                res += "\"Name\": \"" + name + "\",";
+                res += "\n\"FileSource\": \"" + source + "\",";
+                res += "\n\"FileTarget\": \"" + target + "\",";
+                res += "\n\"FileSize\": " + size + ",";
+                res += "\n\"FileTransferTime\": " + time + ",";
+                res += "\n \"time\": \"" + DateTime.Now.ToString() + "\"";
+                res += "\n},\n";
+            }
+            else
+            {
+                res = "\n<Save>";
+                res += "\n<Name>" + name + "</Name>";
+                res += "\n<FileSource> " + source + "</FileSource>";
+                res += "\n<FileTarget> " + target + "</FileTarget>";
+                res += "\n<FileSize> " + size + "</FileSize>";
+                res += "\n<FileTransferTime> " + time + "</FileTransferTime>";
+                res += "\n<time>" + DateTime.Now.ToString() + "</time>";
+                res += "\n</Save>";
+            }
             return res;
         }
 
