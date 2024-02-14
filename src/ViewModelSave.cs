@@ -36,6 +36,7 @@ namespace Console_Application_Test_1.src
         {
             return path;
         }
+
         //Enum use for the home menu
         enum menu_home
         { 
@@ -45,6 +46,13 @@ namespace Console_Application_Test_1.src
             assignParameter = 4,
             quit = 5,
 
+        }
+
+        //Enum use for the settings menu
+        enum menu_settings
+        {
+            modifyLangage = 1,
+            modifyLogType = 2,
         }
 
         // Manage the home menu for the user and the input
@@ -253,8 +261,6 @@ namespace Console_Application_Test_1.src
 
             List<int> aSauv = new List<int>();
 
-            //
-
             while (!getInfo)
             {
                 try
@@ -439,7 +445,6 @@ namespace Console_Application_Test_1.src
                 }
 
             }
-
             Console.Clear();
         }
 
@@ -447,45 +452,108 @@ namespace Console_Application_Test_1.src
         public void assignParameter()
         {
             Console.Clear();
-            vueobject.SetOutPut(rm.GetString("SETTINGS_lang") ?? errorArgument);
-            vueobject.show();
 
-            var path = GetThisFilePath();
+            vueobject.SetOutPut(rm.GetString("SETTINGS_menu") ?? errorArgument);
+            this.vueobject.show();
 
-            DirectoryInfo dirLang = new DirectoryInfo(path + "\\..\\..\\languages");
+            this.vueobject.SetOutPut(this.rm.GetString("home"));
+            this.vueobject.show();
 
-            bool skip = false;
-            int i = 1;
+            bool runEdit = true;
 
-            foreach(FileInfo file in dirLang.GetFiles())
+            while (runEdit)
             {
-                if (skip)
-                {
-                    vueobject.SetOutPut("- "+file.Name.Split('.')[0]);
-                    vueobject.show();
-                    i++;
-                }
-                skip = !skip;
-            }
 
-            bool ok = false;
+                List<String> list = ["SETTINGS_lang", "SETTINGS_log_type"];
 
-            while (!ok)
-            {
-                try
+                for (int j = 0; j < list.Count; j++)
                 {
-                    ResourceManager tempo = new ResourceManager("ConsoleApp1.languages." + vueobject.GetInput(), Assembly.GetExecutingAssembly());
-                    tempo.GetString("home");
-                    this.rm = tempo;
-                    ok = true;
-                }catch
-                {
-                    vueobject.SetOutPut(rm.GetString("enter_bad") ?? errorArgument);
-                    vueobject.show();
+                    this.vueobject.SetOutPut(j + 1 + ") " + this.rm.GetString(list[j]));
+                    this.vueobject.show();
                 }
-                
+
+                this.userInput = this.vueobject.GetInput();
+
+                if (this.userInput == "home")
+                {
+                    Console.Clear();
+                    return;
+                }
+
+                switch (this.userInput)
+                {
+                    case "home":
+                        Console.Clear();
+                        return;
+
+                    case "1":
+                        Console.Clear();
+
+                        vueobject.SetOutPut(rm.GetString("SETTINGS_lang") ?? errorArgument);
+                        vueobject.show();
+
+                        var path = GetThisFilePath();
+
+                        DirectoryInfo dirLang = new DirectoryInfo(path + "\\..\\..\\languages");
+
+                        bool skip = false;
+                        int i = 1;
+
+                        foreach (FileInfo file in dirLang.GetFiles())
+                        {
+                            if (skip)
+                            {
+                                vueobject.SetOutPut("- " + file.Name.Split('.')[0]);
+                                vueobject.show();
+                                i++;
+                            }
+                            skip = !skip;
+                        }
+
+                        bool ok = false;
+
+                        while (!ok)
+                        {
+                            try
+                            {
+                                ResourceManager tempo = new ResourceManager("ConsoleApp1.languages." + vueobject.GetInput(), Assembly.GetExecutingAssembly());
+                                tempo.GetString("home");
+                                this.rm = tempo;
+                                ok = true;
+                            }
+                            catch
+                            {
+                                vueobject.SetOutPut(rm.GetString("enter_bad") ?? errorArgument);
+                                vueobject.show();
+                            }
+                        }
+
+                        Console.Clear();
+
+                        this.vueobject.SetOutPut(this.rm.GetString("home"));
+                        this.vueobject.show();
+
+                        break;
+
+                    case "2":
+
+                        this.vueobject.show();
+                        break;
+
+                    default:
+
+                        Console.Clear();
+                        vueobject.SetOutPut(rm.GetString("enter_bad") ?? errorArgument);
+                        vueobject.show();
+                        this.vueobject.SetOutPut(this.rm.GetString("home"));
+                        this.vueobject.show();
+                        break;
+
+                }
+
+
             }
-            Console.Clear();
+ 
         }
 
     }

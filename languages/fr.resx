@@ -192,4 +192,10 @@
   <data name="SETTINGS_lang" xml:space="preserve">
     <value>Choisir une langue</value>
   </data>
+  <data name="SETTINGS_log_type" xml:space="preserve">
+    <value>Choisir un type de fichier</value>
+  </data>
+  <data name="SETTINGS_menu" xml:space="preserve">
+    <value>Choisir un paramètre à modifier</value>
+  </data>
 </root>
