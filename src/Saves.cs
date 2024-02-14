@@ -43,8 +43,8 @@ namespace ConsoleApp1.src
         {
             return path;
         }
-
-        private void changeFormat(string format)
+        
+        public void changeFormat(string format)
         {
             var path = GetThisFilePath();
             this.format = format;
