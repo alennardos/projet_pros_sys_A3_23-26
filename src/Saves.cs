@@ -19,6 +19,7 @@ namespace ConsoleApp1.src
         private StreamWriter log;
         private StreamWriter rts;
         private XmlTextReader saveFile;
+        private bool crypt;
 
         public Saves()
         {
@@ -35,6 +36,7 @@ namespace ConsoleApp1.src
             saveFile = new XmlTextReader(path + "\\..\\..\\save\\save.xml");
             createSaveXml();
             saveFile.Close();
+            this.crypt = true;
         }
 
         private static string GetThisFilePath([CallerFilePath] string path = null)
@@ -180,6 +182,11 @@ namespace ConsoleApp1.src
             this.log.Close();
             this.rts.Close();
             this.writeXmlSave();
+        }
+
+        public bool getCrypt()
+        {
+            return this.crypt;
         }
     }
 }
