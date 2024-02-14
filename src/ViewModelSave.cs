@@ -253,7 +253,7 @@ namespace Console_Application_Test_1.src
 
             List<int> aSauv = new List<int>();
 
-
+            //
 
             while (!getInfo)
             {
