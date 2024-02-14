@@ -4,44 +4,32 @@ namespace ConsoleApp1.src.SaveType
 {
     internal class SaveComplete : TypeSave
     {
+
+        Process cryptosoft;
         public SaveComplete()
         {
-
+            this.cryptosoft = new Process();
+            string pathcrypto = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), @"Cryptosoft\Cryptosoft.exe");
+            cryptosoft.StartInfo.FileName = pathcrypto;
         }
 
         // The "save" method used to save every single file of a folder.
         public void save(FileInfo file, string targetFilePath)
         {
+            Console.WriteLine("Saving " + file.FullName);
             try
             {
                 if (File.Exists(targetFilePath))
                 {
-                    try
-                    {
-                        string tempFilePath = Path.Combine(Path.GetTempPath(), "tempfile");
-
-                        Process cryptosoft = new Process();
-                        cryptosoft.StartInfo.FileName = "C:\\Users\\mahra\\Desktop\\COURS CESI\\2 - Prog System\\projet_pros_sys_A3_23-26\\cryptoSoft\\cryptoSoft.exe";
-                        cryptosoft.StartInfo.Arguments = $"\"{targetFilePath}\" \"{tempFilePath}\"";
-
-                        cryptosoft.Start();
-                        cryptosoft.WaitForExit();
-                        int exit = cryptosoft.ExitCode;
-
-                        Console.WriteLine("exit code = " + exit);
-
-                        file.CopyTo(tempFilePath, true);
-                    }
-                    catch (Exception ex)
-                    {
-                    }
-
                     File.Delete(targetFilePath);
-                    file.CopyTo(targetFilePath);
                 }
+                cryptosoft.StartInfo.Arguments = file.FullName + " " + targetFilePath;
 
-                else
-                    file.CopyTo(targetFilePath);
+                cryptosoft.Start();
+                cryptosoft.WaitForExit();
+                int exit = cryptosoft.ExitCode;
+
+                Console.WriteLine("exit code = " + exit);
             }
 
             catch (Exception ex)
