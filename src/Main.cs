@@ -20,7 +20,7 @@ class LangTest
     public static void Main(string[] args)
     {
         // Créer l'objet de la vue modèle
-        ViewModelSave vm = new ViewModelSave("fr", "xml");
+        ViewModelSave vm = new ViewModelSave("fr");
 
         vm.menu();
     }

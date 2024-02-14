@@ -23,12 +23,12 @@ namespace Console_Application_Test_1.src
         private View vueobject;
         private Saves saves;
 
-        public ViewModelSave(String langue, String format)
+        public ViewModelSave(String str)
         {
             this.run = true;
             this.vueobject = new View();
-            this.saves = new Saves(format);
-            this.rm = new ResourceManager("ConsoleApp1.languages." + langue, Assembly.GetExecutingAssembly());
+            this.saves = new Saves();
+            this.rm = new ResourceManager("ConsoleApp1.languages." + str, Assembly.GetExecutingAssembly());
             Console.WriteLine(vueobject);
         }
 
