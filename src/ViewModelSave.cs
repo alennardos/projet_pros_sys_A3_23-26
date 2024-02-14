@@ -2,6 +2,7 @@
 using ConsoleApp1.src.SaveType;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Resources;
@@ -214,9 +215,25 @@ namespace Console_Application_Test_1.src
 
         }
 
+        //Verify if the process "name" is not active (use for block the lunch of a save if it is active)
+        public bool processIsActive(string name)
+        {
+            Process[] localByName = Process.GetProcessesByName(name);
+            return localByName.Length > 0;
+
+        }
+
         // Manage the save making menu options for the user and the input
         public void makeSave()
         {
+            if (processIsActive("Minecraft") == true)
+            {
+                Console.Clear();
+                this.vueobject.SetOutPut(this.rm.GetString("LUNCH_cantrun"));
+                this.vueobject.show();
+                return;
+            }
+
             Console.Clear();
             this.vueobject.SetOutPut(this.rm.GetString("LUNCH_info_save"));
             this.vueobject.show();
@@ -235,6 +252,8 @@ namespace Console_Application_Test_1.src
             bool getInfo = false;
 
             List<int> aSauv = new List<int>();
+
+
 
             while (!getInfo)
             {

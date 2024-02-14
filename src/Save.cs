@@ -116,6 +116,8 @@ namespace ConsoleApp1.src
 
             foreach (FileInfo file in directory.GetFiles())
             {
+
+
                 string targetFilePath = Path.Combine(destination, file.Name);
                 var watch = System.Diagnostics.Stopwatch.StartNew();
 
