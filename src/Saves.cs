@@ -19,9 +19,11 @@ namespace ConsoleApp1.src
         private StreamWriter log;
         private StreamWriter rts;
         private XmlTextReader saveFile;
+        private String format;
 
-        public Saves()
+        public Saves(string format)
         {
+            this.format = format;
             saves = new List<Save>();
             var path = GetThisFilePath();
             
@@ -30,8 +32,8 @@ namespace ConsoleApp1.src
                 Directory.CreateDirectory(path + "\\..\\..\\logs");
             }
 
-            log = new StreamWriter(path + "\\..\\..\\logs\\log.txt", true);
-            rts = new StreamWriter(path + "\\..\\..\\logs\\rts.txt");
+            log = new StreamWriter(path + "\\..\\..\\logs\\log."+format, true);
+            rts = new StreamWriter(path + "\\..\\..\\logs\\rts.json");
             saveFile = new XmlTextReader(path + "\\..\\..\\save\\save.xml");
             createSaveXml();
             saveFile.Close();
@@ -42,7 +44,15 @@ namespace ConsoleApp1.src
             return path;
         }
 
-        // Create a XML save
+        private void changeFormat(string format)
+        {
+            var path = GetThisFilePath();
+            this.format = format;
+            log.Close();
+            log = new StreamWriter(path + "\\..\\..\\logs\\log." + format, true);
+        }
+
+        // Create a save with XML file
         private void createSaveXml()
         {
 
@@ -180,6 +190,11 @@ namespace ConsoleApp1.src
             this.log.Close();
             this.rts.Close();
             this.writeXmlSave();
+        }
+
+        public string getFormat()
+        {
+            return this.format;
         }
     }
 }
