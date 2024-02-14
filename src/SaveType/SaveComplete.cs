@@ -14,7 +14,7 @@ namespace ConsoleApp1.src.SaveType
         }
 
         // The "save" method used to save every single file of a folder.
-        public void save(FileInfo file, string targetFilePath)
+        public int save(FileInfo file, string targetFilePath, bool crypt)
         {
             Console.WriteLine("Saving " + file.FullName);
             try
@@ -23,17 +23,28 @@ namespace ConsoleApp1.src.SaveType
                 {
                     File.Delete(targetFilePath);
                 }
-                cryptosoft.StartInfo.Arguments = file.FullName + " " + targetFilePath;
 
-                cryptosoft.Start();
-                cryptosoft.WaitForExit();
-                int exit = cryptosoft.ExitCode;
+                if (crypt == true)
+                {
+                    cryptosoft.StartInfo.Arguments = file.FullName + " " + targetFilePath;
 
-                Console.WriteLine("exit code = " + exit);
+                    cryptosoft.Start();
+                    cryptosoft.WaitForExit();
+                    int exit = cryptosoft.ExitCode;
+
+                    return exit;
+                }
+                else
+                {
+                    file.CopyTo(targetFilePath);
+                    return 0;
+                }
+                
             }
 
             catch (Exception ex)
             {
+                return -1;
                 // Error
             }
         }

@@ -25,7 +25,7 @@ namespace ConsoleApp1.src
         private bool isActive;
         private TypeSave ts;
         private Saves saves;
-
+        
         public Save(String name, String source, String target, TypeSave ts, Saves save)
         {
             this.name = name;
@@ -40,6 +40,7 @@ namespace ConsoleApp1.src
             leftSize = 0;
             actualFile = "";
             actualFileTarget = "";
+            
         }
 
         // Return a log
@@ -125,7 +126,7 @@ namespace ConsoleApp1.src
 
                 this.saves.writeRts();
 
-                ts.save(file, targetFilePath);
+                ts.save(file, targetFilePath, this.saves.getCrypt());
 
                 watch.Stop();
 
@@ -236,6 +237,8 @@ namespace ConsoleApp1.src
         {
             return this.destination;
         }
+
+
    
     }
 }
