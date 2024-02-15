@@ -17,7 +17,7 @@ namespace ConsoleApp1.src;
 
 class LangTest
 {
-    public static void Main(string[] args)
+    public static void pain(string[] args)
     {
         // Create the object of the ViewModelSave
         ViewModelSave vm = new ViewModelSave("fr");
