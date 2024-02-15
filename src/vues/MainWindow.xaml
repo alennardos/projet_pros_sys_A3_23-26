@@ -5,8 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="740" Width="1280">
     <Grid>
+
+        <Image Margin="0,105,298,352" Source="/Resources/logo.png" HorizontalAlignment="Right" Width="677" Grid.ColumnSpan="2" Grid.Column="2">
+            <Image.OpacityMask>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FFEA0000" Offset="1"/>
+                </LinearGradientBrush>
+            </Image.OpacityMask>
+        </Image>
+        <Grid Margin="442,347,442,10">
+            <Button Content="Button" HorizontalAlignment="Center" VerticalAlignment="Top" Height="40" Width="190" Margin="0,73,0,0"/>
+            <Button Content="Button" HorizontalAlignment="Center" VerticalAlignment="Top" Height="40" Width="190" Margin="0,143,0,0"/>
+            <Button Content="Button" HorizontalAlignment="Center" VerticalAlignment="Top" Height="40" Width="190" Margin="0,220,0,0" Background="#FFF01313"/>
+        </Grid>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="10,634,0,0" VerticalAlignment="Top" Height="60" Width="60">
+            <Button.Background>
+                <ImageBrush/>
+            </Button.Background>
+        </Button>
 
     </Grid>
 </Window>
