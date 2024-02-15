@@ -1,0 +1,16 @@
+﻿<Window x:Class="WpfApp1.Settings_menu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="Settings_menu" Height="500" Width="500">
+    <Grid x:Name="settings_windows">
+        <Label x:Name="settings_title" Content="Settings" HorizontalAlignment="Center" Margin="0,70,0,0" VerticalAlignment="Top" Height="45" Width="268" FontFamily="Calibri" FontSize="24" HorizontalContentAlignment="Center"/>
+        <Button x:Name="button_langage" Content="Langage" HorizontalAlignment="Center" Margin="0,169,0,0" VerticalAlignment="Top" Height="38" Width="138" FontFamily="Calibri"/>
+        <Button x:Name="button_log_type" Content="Logs type" HorizontalAlignment="Center" Margin="0,242,0,0" VerticalAlignment="Top" Height="38" Width="138" FontFamily="Calibri"/>
+        <Button x:Name="button_home" Content="Home" HorizontalAlignment="Center" Margin="0,355,0,0" VerticalAlignment="Top" Height="38" Width="138" FontFamily="Calibri"/>
+
+    </Grid>
+</Window>
