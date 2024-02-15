@@ -14,13 +14,16 @@ namespace ConsoleApp1.src
 {
     internal class Saves
     {
-
+        string EasySavepath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "EasySave");
+        string logsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),"EasySave", "logs");
+        string savePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "EasySave", "save");
         private List<Save> saves;
         private StreamWriter log;
         private StreamWriter rts;
         private XmlTextReader saveFile;
         private String format;
 
+        /*
         public Saves(string format)
         {
             this.format = format;
@@ -38,18 +41,56 @@ namespace ConsoleApp1.src
             createSaveXml();
             saveFile.Close();
         }
-
-        private static string GetThisFilePath([CallerFilePath] string path = null)
+        */
+        public Saves(string format)
         {
-            return path;
+            this.format = format;
+            saves = new List<Save>();
+
+
+            if(!Directory.Exists(EasySavepath))
+            { 
+                Directory.CreateDirectory(EasySavepath);
+            }
+            if (!Directory.Exists(logsPath))
+            {
+                Directory.CreateDirectory(logsPath);
+            }
+            if (!Directory.Exists(savePath))
+            {
+                Directory.CreateDirectory(savePath);
+            }
+
+            string logFilePath = Path.Combine(logsPath, "log." + format);
+            string rtsFilePath = Path.Combine(logsPath, "rts.json");
+            string saveFilePath = Path.Combine(savePath, "save.xml");
+
+            if (!File.Exists(saveFilePath))
+            {
+                XmlWriterSettings settings = new XmlWriterSettings();
+                settings.Indent = true;
+                using (XmlWriter writer = XmlWriter.Create(saveFilePath, settings))
+                {
+                    writer.WriteStartElement("saves");
+                    writer.WriteEndElement();
+                    writer.Close();
+                }
+            }
+
+            log = new StreamWriter(logFilePath, true);
+            rts = new StreamWriter(rtsFilePath);
+            new StreamWriter(saveFilePath, true).Close();
+            saveFile = new XmlTextReader(saveFilePath);
+            createSaveXml();
+            saveFile.Close();
         }
+
         
         public void changeFormat(string format)
         {
-            var path = GetThisFilePath();
             this.format = format;
             log.Close();
-            log = new StreamWriter(path + "\\..\\..\\logs\\log." + format, true);
+            log = new StreamWriter(logsPath + "\\log." + format, true);
         }
 
         // Create a save with XML file
@@ -59,10 +100,10 @@ namespace ConsoleApp1.src
             Console.WriteLine("ici");
             int i = 0;
 
-            String name = null;
-            String source = null;
-            String destination = null;
-            TypeSave ts = null;
+            String? name = null;
+            String? source = null;
+            String? destination = null;
+            TypeSave? ts = null;
 
             bool create = false;
             while (saveFile.Read())
@@ -110,8 +151,7 @@ namespace ConsoleApp1.src
         // Write a XML save
         public void writeXmlSave()
         {
-            var path = GetThisFilePath();
-            StreamWriter xml = new StreamWriter(path + "\\..\\..\\save\\save.xml");
+            StreamWriter xml = new StreamWriter(savePath + "\\save.xml");
             xml.Write("<saves>");
             foreach (Save save in this.saves)
             {

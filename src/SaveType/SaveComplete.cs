@@ -21,6 +21,7 @@ namespace ConsoleApp1.src.SaveType
                     }
                     catch (Exception ex)
                     {
+                        throw new Exception("error :" + ex);
                     }
 
                     File.Delete(targetFilePath);
@@ -33,7 +34,7 @@ namespace ConsoleApp1.src.SaveType
 
             catch (Exception ex)
             {
-                // Error
+                throw new Exception("error :"+ex);
             }
         }
 
