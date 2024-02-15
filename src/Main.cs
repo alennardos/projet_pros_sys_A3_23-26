@@ -19,10 +19,9 @@ class LangTest
 {
     public static void pain(string[] args)
     {
-        // Create the object of the ViewModelSave
-        ViewModelSave vm = new ViewModelSave("fr");
+        // Créer l'objet de la vue modèle
+        ViewModelSave vm = new ViewModelSave("fr", "xml");
 
-        // Lunch the menu for user input.
         vm.menu();
     }
 }
