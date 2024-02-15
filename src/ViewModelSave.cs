@@ -176,7 +176,7 @@ namespace Console_Application_Test_1.src
             string name = "";
             string source = "";
             string destination = "";
-            TypeSave type = null;
+            TypeSave? type = null;
 
             for (int i = 0; i < list.Count; i++)
             {
@@ -449,7 +449,7 @@ namespace Console_Application_Test_1.src
 
 
                 }
-                catch (Exception e) 
+                catch (Exception ex) 
                 {
                     vueobject.SetOutPut(rm.GetString("enter_bad") ?? errorArgument);
                     vueobject.show();
