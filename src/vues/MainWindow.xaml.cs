@@ -1,4 +1,7 @@
-﻿using System.Text;
+﻿using ConsoleApp1.src;
+using System.Reflection;
+using System.Resources;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -8,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Console_Application_Test_1.src;
 
 namespace WpfApp1
 {
@@ -16,9 +20,30 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        ViewModelSave vm = ViewModelSave.Instance;
+
         public MainWindow()
         {
             InitializeComponent();
+            create.Content = ViewModelSave.Instance.GetResourceManager().GetString("HOME_create_save");
+            lunch.Content = ViewModelSave.Instance.GetResourceManager().GetString("HOME_lunch_save");
+            edit.Content = ViewModelSave.Instance.GetResourceManager().GetString("HOME_edit_save");
+        }
+
+        private void create_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void lunch_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void edit_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

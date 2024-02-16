@@ -1,4 +1,4 @@
-using ConsoleApp1.languages;
+using WpfApp1.languages;
 using System.Resources;
 using System.ComponentModel;
 using System.Reflection;
@@ -19,9 +19,5 @@ class LangTest
 {
     public static void pain(string[] args)
     {
-        // Créer l'objet de la vue modèle
-        ViewModelSave vm = new ViewModelSave("fr", "xml");
-
-        vm.menu();
     }
 }

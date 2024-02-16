@@ -17,7 +17,7 @@ using System.Xml.Linq;
 
 namespace Console_Application_Test_1.src
 {
-    internal class ViewModelSave
+    internal class ViewModelSave 
     {
         private String userInput;
         private String errorArgument = "Error CS8604 : invalid argument.";
@@ -25,19 +25,37 @@ namespace Console_Application_Test_1.src
         private ResourceManager rm;
         private View vueobject;
         private Saves saves;
+        private static ViewModelSave _instance;
 
-        public ViewModelSave(String langue, String format)
+        public static ViewModelSave Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new ViewModelSave("fr", "json");
+                }
+                return _instance;
+            }
+        }
+
+        private ViewModelSave(String langue, String format)
         {
             this.run = true;
             this.vueobject = new View();
             this.saves = new Saves(format);
-            this.rm = new ResourceManager("ConsoleApp1.languages." + langue, Assembly.GetExecutingAssembly());
+            this.rm = new ResourceManager("WpfApp1.languages." + langue, Assembly.GetExecutingAssembly());
             Console.WriteLine(vueobject);
         }
 
         private static string GetThisFilePath([CallerFilePath] string path = null)
         {
             return path;
+        }
+
+        public ResourceManager GetResourceManager()
+        {
+            return this.rm;
         }
 
         //Enum use for the home menu
@@ -528,7 +546,7 @@ namespace Console_Application_Test_1.src
                             {
                                 try
                                 {
-                                    ResourceManager tempo = new ResourceManager("ConsoleApp1.languages." + vueobject.GetInput(), Assembly.GetExecutingAssembly());
+                                    ResourceManager tempo = new ResourceManager("WpfApp1.languages." + vueobject.GetInput(), Assembly.GetExecutingAssembly());
                                     tempo.GetString("home");
                                     this.rm = tempo;
                                     ok = true;

@@ -6,5 +6,14 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Compile Update="src\vues\CreateSave.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="src\vues\CreateSave.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
 </Project>

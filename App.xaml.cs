@@ -1,5 +1,8 @@
-﻿using System.Configuration;
+﻿using ConsoleApp1.src;
+using System.Configuration;
 using System.Data;
+using System.Reflection;
+using System.Resources;
 using System.Windows;
 
 namespace WpfApp1
@@ -9,6 +12,7 @@ namespace WpfApp1
     /// </summary>
     public partial class App : Application
     {
+        
     }
 
 }

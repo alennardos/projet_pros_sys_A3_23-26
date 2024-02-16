@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ConsoleApp1.languages {
+namespace WpfApp1.languages {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace ConsoleApp1.languages {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ConsoleApp1.languages.en", typeof(en).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WpfApp1.languages.en", typeof(en).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
