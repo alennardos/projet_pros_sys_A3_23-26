@@ -39,10 +39,15 @@ namespace WpfApp1.src.vues
 
         private void lunch_Click(object sender, RoutedEventArgs e)
         {
-
+            m.afficher("lunch");
         }
 
         private void edit_Click(object sender, RoutedEventArgs e)
+        {
+            m.afficher("edit");
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
 
         }

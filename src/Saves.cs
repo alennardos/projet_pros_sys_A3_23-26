@@ -174,11 +174,8 @@ namespace ConsoleApp1.src
         // Create a save only if list isn't full
         public bool createSave(String name, String source, String destination, TypeSave ts)
         {
-            if(this.saves.Count < 5) {
                 this.saves.Add(new Save(name, source, destination, ts, this));
                 return true;
-            }
-            return false;
         }
 
         // Remove a save with the method, only if it exists

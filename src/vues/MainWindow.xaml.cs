@@ -23,7 +23,7 @@ namespace WpfApp1
     public partial class MainWindow : Window
     {
 
-        ViewModelSave vm = ViewModelSave.Instance;
+        private ViewModelSave vm = ViewModelSave.Instance;
         CreateSave vueSave;
         Home vueHome;
         public MainWindow()
@@ -45,6 +45,11 @@ namespace WpfApp1
                     this.Content = vueSave;
                     break;
             }
+        }
+
+        public ViewModelSave getVm()
+        {
+            return this.vm;
         }
     }
 }

@@ -17,7 +17,7 @@ using System.Xml.Linq;
 
 namespace Console_Application_Test_1.src
 {
-    internal class ViewModelSave 
+    public class ViewModelSave 
     {
         private String userInput;
         private String errorArgument = "Error CS8604 : invalid argument.";
@@ -45,7 +45,6 @@ namespace Console_Application_Test_1.src
             this.vueobject = new ViewAppConsole();
             this.saves = new Saves(format);
             this.rm = new ResourceManager("WpfApp1.languages." + langue, Assembly.GetExecutingAssembly());
-            Console.WriteLine(vueobject);
         }
 
         private static string GetThisFilePath([CallerFilePath] string path = null)
@@ -109,9 +108,6 @@ namespace Console_Application_Test_1.src
                 {
                     switch (userInputEnum)
                     {
-                        case menu_home.createSave:
-                            createSave();
-                            break;
 
                         case menu_home.modifySave:
                             modifySave();
@@ -183,72 +179,19 @@ namespace Console_Application_Test_1.src
         }
 
         // Manage the save creation menu options for the user and the input
-        public void createSave()
+        public void createSave(String saveName, String pathSrc, String pathDest, String type)
         {
-            Console.Clear();
-            vueobject.SetOutPut(rm.GetString("HOME_create_save") ?? errorArgument);
-            List<String> list = ["CREATE_name_save", "CREATE_source_save", "CREATE_destination_save", "CREATE_type_save"];
-            this.vueobject.SetOutPut(this.rm.GetString("home"));
-            this.vueobject.show();
-
-            string name = "";
-            string source = "";
-            string destination = "";
-            TypeSave? type = null;
-
-            for (int i = 0; i < list.Count; i++)
+            TypeSave ts = null;
+            if(type == "complete")
             {
-                this.vueobject.SetOutPut(i + 1 + ") " + this.rm.GetString(list[i]));
-                this.vueobject.show();
-                this.userInput = this.vueobject.GetInput();
-
-                if (this.userInput == "")
-                {
-                    i--;
-                    vueobject.SetOutPut(rm.GetString("enter_bad") ?? errorArgument);
-                    vueobject.show();
-
-                }
-                
-                switch (i)
-                {
-                    case 0:
-                        name = this.userInput; break;
-
-                    case 1:
-                        source = this.userInput;break;
-                    case 2:
-                        destination = this.userInput; break;
-                    case 3:
-                        if (this.userInput == "1")
-                            type = new SaveComplete();
-                        else if (this.userInput == "2")
-                            type = new SaveDif();
-                        else
-                        {
-                            i--;
-                            vueobject.SetOutPut(rm.GetString("enter_bad") ?? errorArgument);
-                            vueobject.show();
-                        }
-                        break;
-                }
-                
-            }
-
-
-            if (this.saves.createSave(name, source, destination, type))
-            {
-                Console.Clear();
-                vueobject.SetOutPut(rm.GetString("CREATE_succes") + "\n");
-                this.vueobject.show();
+                ts = new SaveComplete();
             }
             else
             {
-                vueobject.SetOutPut(rm.GetString("CREATE_fail") + "\n");
-                this.vueobject.show();
+                ts = new SaveDif();
             }
-
-
+            this.saves.createSave(saveName, pathSrc, pathDest, ts);
+            this.saves.quit();
         }
 
         //Verify if the process "name" is not active (use for block the lunch of a save if it is active)

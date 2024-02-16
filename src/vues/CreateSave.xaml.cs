@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -41,13 +42,25 @@ namespace WpfApp1.src.vues
             }
             return selectedPath;
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
+
+        private void HomeButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.m.afficher("menu");
+        }
+
+        private void selectSrc_Click(object sender, RoutedEventArgs e)
         {
             srcPath.Text = OpenFolderDialog();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void selectDest_Click(object sender, RoutedEventArgs e)
         {
+            dstPath.Text = OpenFolderDialog();
+        }
+
+        private void create_Click(object sender, RoutedEventArgs e)
+        {
+            this.m.getVm().createSave(saveName.Text, srcPath.Text, dstPath.Text, "complete");
             this.m.afficher("menu");
         }
     }
