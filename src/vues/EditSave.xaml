@@ -1,0 +1,14 @@
+﻿<Window x:Class="WpfApp1.src.vues.EditSave"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1.src.vues"
+        mc:Ignorable="d"
+        Title="EditSave" Height="740" Width="1280">
+    <Grid>
+        <Button Content="Home" HorizontalAlignment="Left" Height="69" Margin="1195,640
+                ,0,0" VerticalAlignment="Top" Width="69" Click="Button_Click"/>
+    </Grid>
+    
+</Window>
