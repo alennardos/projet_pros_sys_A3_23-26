@@ -6,26 +6,5 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="MainWindow" Height="740" Width="1280">
-    <Grid>
-
-        <Image Margin="0,105,298,352" Source="/Resources/logo.png" HorizontalAlignment="Right" Width="677" Grid.ColumnSpan="2" Grid.Column="2">
-            <Image.OpacityMask>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="Black"/>
-                    <GradientStop Color="#FFEA0000" Offset="1"/>
-                </LinearGradientBrush>
-            </Image.OpacityMask>
-        </Image>
-        <Grid Margin="442,347,442,10">
-            <Button Content="[create save]" Name="create" HorizontalAlignment="Center" VerticalAlignment="Top" Height="40" Width="190" Margin="0,73,0,0" Click="create_Click"/>
-            <Button Content="[lunch save]" Name="lunch" HorizontalAlignment="Center" VerticalAlignment="Top" Height="40" Width="190" Margin="0,143,0,0" Click="lunch_Click"/>
-            <Button Content="[edit save]" Name="edit" HorizontalAlignment="Center" VerticalAlignment="Top" Height="40" Width="190" Margin="0,220,0,0" Background="#FFF01313" Click="edit_Click"/>
-        </Grid>
-        <Button Content="[settings]" Name="settings" HorizontalAlignment="Left" Margin="10,634,0,0" VerticalAlignment="Top" Height="60" Width="60">
-            <Button.Background>
-                <ImageBrush/>
-            </Button.Background>
-        </Button>
-
-    </Grid>
+    
 </Window>

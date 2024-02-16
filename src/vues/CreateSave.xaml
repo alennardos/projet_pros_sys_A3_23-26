@@ -10,10 +10,14 @@
 
     <Grid>
         <Grid Margin="239,-10,270,10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="377*"/>
+                <RowDefinition Height="73*"/>
+            </Grid.RowDefinitions>
             <TextBox HorizontalAlignment="Left" Margin="161,115,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-            <TextBox HorizontalAlignment="Left" Name ="srcPath"  Margin="161,158,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="19" Width="120"/>
-            <TextBox HorizontalAlignment="Left" Margin="161,199,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-            <Button Content="Button" HorizontalAlignment="Left" Margin="129,205,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+            <TextBox HorizontalAlignment="Left" Name ="srcPath"  Margin="27,158,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="57" Width="254"/>
+            <Button Content="Button" HorizontalAlignment="Center" Margin="0,225,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+            <Button Content="Button" HorizontalAlignment="Left" Margin="221,296,0,0" VerticalAlignment="Top" Click="Button_Click_1"/>
         </Grid>
     </Grid>
 </Page>

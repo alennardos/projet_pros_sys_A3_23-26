@@ -24,29 +24,27 @@ namespace WpfApp1
     {
 
         ViewModelSave vm = ViewModelSave.Instance;
-
+        CreateSave vueSave;
+        Home vueHome;
         public MainWindow()
         {
             InitializeComponent();
-            create.Content = ViewModelSave.Instance.GetResourceManager().GetString("HOME_create_save");
-            lunch.Content = ViewModelSave.Instance.GetResourceManager().GetString("HOME_lunch_save");
-            edit.Content = ViewModelSave.Instance.GetResourceManager().GetString("HOME_edit_save");
+            vueSave = new CreateSave(this);
+            vueHome = new Home(this);
+            this.Content = vueHome;
         }
 
-        private void create_Click(object sender, RoutedEventArgs e)
+        public void afficher(string page)
         {
-            CreateSave cs = new CreateSave(this);
-            this.Content = cs;
-        }
-
-        private void lunch_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void edit_Click(object sender, RoutedEventArgs e)
-        {
-
+            switch(page)
+            {
+                case "menu":
+                    this.Content = vueHome;
+                    break;
+                case "create":
+                    this.Content = vueSave;
+                    break;
+            }
         }
     }
 }

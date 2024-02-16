@@ -1,0 +1,20 @@
+﻿<Page x:Class="WpfApp1.src.vues.Home"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp1.src.vues"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1080"
+      Title="Home">
+
+    <Grid>
+        <Grid Margin="408,178,408,65">
+            <Button Content="[create]" Name="create" HorizontalAlignment="Center" Margin="0,158,0,0" VerticalAlignment="Top" Height="39" Width="118" Click="Button_Click"/>
+            <Button Content="[lunch]" Name="lunch" HorizontalAlignment="Center" Margin="0,250,0,0" VerticalAlignment="Top" Height="39" Width="118" Click="lunch_Click"/>
+            <Button Content="[edit]" Name="edit" HorizontalAlignment="Center" Margin="0,339,0,0" VerticalAlignment="Top" Height="39" Width="118" Click="edit_Click"/>
+        </Grid>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="10,640,0,0" VerticalAlignment="Top" Height="70" Width="70
+                "/>
+    </Grid>
+</Page>
