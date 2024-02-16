@@ -11,7 +11,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Forms;
 using Console_Application_Test_1.src;
+using WpfApp1.src.vues;
 
 namespace WpfApp1
 {
@@ -33,7 +35,8 @@ namespace WpfApp1
 
         private void create_Click(object sender, RoutedEventArgs e)
         {
-
+            CreateSave cs = new CreateSave(this);
+            this.Content = cs;
         }
 
         private void lunch_Click(object sender, RoutedEventArgs e)

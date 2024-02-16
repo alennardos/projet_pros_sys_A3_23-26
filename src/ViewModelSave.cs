@@ -23,7 +23,7 @@ namespace Console_Application_Test_1.src
         private String errorArgument = "Error CS8604 : invalid argument.";
         private bool run;
         private ResourceManager rm;
-        private View vueobject;
+        private ViewAppConsole vueobject;
         private Saves saves;
         private static ViewModelSave _instance;
 
@@ -42,7 +42,7 @@ namespace Console_Application_Test_1.src
         private ViewModelSave(String langue, String format)
         {
             this.run = true;
-            this.vueobject = new View();
+            this.vueobject = new ViewAppConsole();
             this.saves = new Saves(format);
             this.rm = new ResourceManager("WpfApp1.languages." + langue, Assembly.GetExecutingAssembly());
             Console.WriteLine(vueobject);

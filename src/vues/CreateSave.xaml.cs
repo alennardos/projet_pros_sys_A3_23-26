@@ -10,18 +10,28 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace WpfApp1.src.vues
 {
     /// <summary>
-    /// Logique d'interaction pour Window1.xaml
+    /// Logique d'interaction pour CreateSave2.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class CreateSave : Page
     {
-        public Window1()
+
+        MainWindow main;
+
+        public CreateSave(MainWindow main)
         {
+            this.main = main;
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Content = new MainWindow();
         }
     }
 }
