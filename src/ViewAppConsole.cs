@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1.src
 {
-    internal class View
+    internal class ViewAppConsole
     {
         private String outPut;
 
-        public View() 
+        public ViewAppConsole() 
         {
             outPut = "";
         }
