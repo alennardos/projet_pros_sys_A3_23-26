@@ -26,12 +26,17 @@ namespace WpfApp1
         private ViewModelSave vm = ViewModelSave.Instance;
         CreateSave vueSave;
         Home vueHome;
+        EditSave vueEdit;
+        Settings_menu vueSettings;
         public MainWindow()
         {
             InitializeComponent();
             vueSave = new CreateSave(this);
             vueHome = new Home(this);
             this.Content = vueHome;
+            vueEdit = new EditSave(this);
+            //vueSettings = new Settings_page(this);
+
         }
 
         public void afficher(string page)
@@ -43,6 +48,12 @@ namespace WpfApp1
                     break;
                 case "create":
                     this.Content = vueSave;
+                    break;
+                case "edit":
+                    this.Content = vueHome;
+                    break;
+                case "settings":
+                    this.Content = vueSettings;
                     break;
             }
         }

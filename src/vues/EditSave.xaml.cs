@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace WpfApp1.src.vues
@@ -19,15 +20,16 @@ namespace WpfApp1.src.vues
     /// </summary>
     public partial class EditSave : Page
     {
-        public EditSave()
+        public EditSave(MainWindow m)
         {
             InitializeComponent();
+            this.m = m;
         }
+        MainWindow m;
 
         private void HomeButton_Click(object sender, RoutedEventArgs e)
         {
-            //back to home
-            NavigationService?.Navigate(new MainWindow());
+            this.m.afficher("menu");
         }
     }
 }
