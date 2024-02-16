@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace WpfApp1.src.vues
@@ -17,19 +18,17 @@ namespace WpfApp1.src.vues
     /// <summary>
     /// Logique d'interaction pour EditSave.xaml
     /// </summary>
-    public partial class EditSave : Window
+    public partial class EditSave : Page
     {
         public EditSave()
         {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void HomeButton_Click(object sender, RoutedEventArgs e)
         {
-            // Back to home
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-            this.Close();
+            //back to home
+            NavigationService?.Navigate(new MainWindow());
         }
     }
 }
