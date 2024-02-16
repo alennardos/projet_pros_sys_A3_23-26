@@ -44,7 +44,7 @@ namespace WpfApp1.src.vues
 
         private void edit_Click(object sender, RoutedEventArgs e)
         {
-
+            m.afficher("edit");
         }
     }
 }
