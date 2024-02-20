@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using System.Windows.Forms;
 using Console_Application_Test_1.src;
 using WpfApp1.src.vues;
+using ConsoleApp1;
 
 namespace WpfApp1
 {
@@ -27,7 +28,8 @@ namespace WpfApp1
         CreateSave vueSave;
         Home vueHome;
         EditSave vueEdit;
-        Settings_menu vueSettings;
+        SettingsPageMenu vueSettings;
+
         public MainWindow()
         {
             InitializeComponent();
