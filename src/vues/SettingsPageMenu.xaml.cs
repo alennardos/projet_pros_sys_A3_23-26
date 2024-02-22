@@ -30,8 +30,8 @@ namespace ConsoleApp1
             InitializeComponent();
             this.m = m;
 
-            combo_langages.Items.Add("xml");
-            combo_langages.Items.Add("json");
+            combo_typeLogs.Items.Add("xml");
+            combo_typeLogs.Items.Add("json");
 
             combo_langages.Items.Add("fr");
             combo_langages.Items.Add("en");
@@ -87,7 +87,7 @@ namespace ConsoleApp1
 
         private void HomeButton_Click(object sender, RoutedEventArgs e)
         {
-
+            this.m.afficher("menu");
         }
     }
 }
