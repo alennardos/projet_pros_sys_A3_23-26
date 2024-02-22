@@ -19,6 +19,7 @@ using ConsoleApp1.src.SaveType;
 using System.Diagnostics;
 using System.Collections;
 using ConsoleApp1;
+using System.Linq.Expressions;
 
 namespace WpfApp1
 {
@@ -53,13 +54,11 @@ namespace WpfApp1
             vueSettings = new SettingsPageMenu(this);
             vueLunch = new LunchSave(this);
 
-
-            
         }
 
         public void afficher(string page)
         {
-            switch(page)
+            switch (page)
             {
                 case "menu":
                     this.Content = vueHome;
@@ -125,5 +124,29 @@ namespace WpfApp1
                 this.saves.getSaves()[index].save();
             }
         }
+
+        public void changeLanguage(string langue)
+        {
+            try
+            {
+                rm = new ResourceManager("WpfApp1.languages." + langue, Assembly.GetExecutingAssembly());
+            }
+            catch (Exception e)
+            {
+                
+            }
+        }
+        public void changeLogTypes(string type)
+        {
+            try
+            {
+                saves.changeFormat(type);
+            }
+            catch (Exception e)
+            {
+
+            }
+        }
+
     }
 }
