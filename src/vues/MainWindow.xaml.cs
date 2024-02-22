@@ -12,8 +12,12 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Forms;
-using Console_Application_Test_1.src;
 using WpfApp1.src.vues;
+using static System.Windows.Forms.DataFormats;
+using System;
+using ConsoleApp1.src.SaveType;
+using System.Diagnostics;
+using System.Collections;
 
 namespace WpfApp1
 {
@@ -22,21 +26,32 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
-
-        private ViewModelSave vm = ViewModelSave.Instance;
         CreateSave vueSave;
         Home vueHome;
         EditSave vueEdit;
-        Settings_menu vueSettings;
+        LunchSave vueLunch;
+
+        private Saves saves;
+        private ResourceManager rm;
+        private bool run;
+
+        //Settings_menu vueSettings;
         public MainWindow()
         {
             InitializeComponent();
+
+            this.run = true;
+            this.saves = new Saves("xml");
+            this.rm = new ResourceManager("WpfApp1.languages.fr", Assembly.GetExecutingAssembly());
+
             vueSave = new CreateSave(this);
             vueHome = new Home(this);
             this.Content = vueHome;
             vueEdit = new EditSave(this);
+            vueLunch = new LunchSave(this);
             //vueSettings = new Settings_page(this);
 
+            
         }
 
         public void afficher(string page)
@@ -52,15 +67,58 @@ namespace WpfApp1
                 case "edit":
                     this.Content = vueHome;
                     break;
-                case "settings":
-                    this.Content = vueSettings;
+                case "lunch":
+                    this.Content = vueLunch;
+                    vueLunch.addSavesListeSave();
                     break;
+                //case "settings":
+                //    this.Content = vueSettings;
+                //    break;
             }
         }
-
-        public ViewModelSave getVm()
+        public Saves GetSaves()
         {
-            return this.vm;
+            return this.saves;
+        }
+
+        public ResourceManager GetResourceManager()
+        {
+            return this.rm;
+        }
+
+        public void createSave(String saveName, String pathSrc, String pathDest, String type)
+        {
+            TypeSave ts = null;
+            if (type == "complete")
+            {
+                ts = new SaveComplete();
+            }
+            else
+            {
+                ts = new SaveDif();
+            }
+            this.saves.createSave(saveName, pathSrc, pathDest, ts);
+        }
+
+        public bool processIsActive(string name)
+        {
+            Process[] localByName = Process.GetProcessesByName(name);
+            return localByName.Length > 0;
+
+        }
+
+        public void makeSave(List<int> savesIndex)
+        {
+            if (processIsActive("Minecraft") == true)
+            {
+                //TODO
+                return;
+            }
+
+            foreach (int index in savesIndex)
+            {
+                this.saves.getSaves()[index].save();
+            }
         }
     }
 }

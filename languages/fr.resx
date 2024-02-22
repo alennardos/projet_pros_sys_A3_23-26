@@ -183,11 +183,23 @@
   <data name="LUNCH_info_save" xml:space="preserve">
     <value>Taper 3-5 pour lancer les sauvegarde de 3 À 5, taper 3;4 pour sauvegarder la 3 ET la 4</value>
   </data>
+  <data name="LUNCH_lunch" xml:space="preserve">
+    <value>lancer les sauvegardes selectionner</value>
+  </data>
   <data name="LUNCH_succes" xml:space="preserve">
     <value>sauvegarde reussi</value>
   </data>
   <data name="quit" xml:space="preserve">
     <value>Quitter</value>
+  </data>
+  <data name="SAVE_dest" xml:space="preserve">
+    <value>destination de la sauvegarde</value>
+  </data>
+  <data name="SAVE_name" xml:space="preserve">
+    <value>nom de la sauvegarde</value>
+  </data>
+  <data name="SAVE_src" xml:space="preserve">
+    <value>source de la sauvegarde</value>
   </data>
   <data name="SETTINGS_lang" xml:space="preserve">
     <value>Choisir une langue</value>

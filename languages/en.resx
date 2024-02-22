@@ -183,11 +183,23 @@
   <data name="LUNCH_info_save" xml:space="preserve">
     <value>Type 3-5 to initiate the backup from 3 TO 5, type 3;4 to backup 3 AND 4</value>
   </data>
+  <data name="LUNCH_lunch" xml:space="preserve">
+    <value>lunch selected saves</value>
+  </data>
   <data name="LUNCH_succes" xml:space="preserve">
     <value>the save was successfully done </value>
   </data>
   <data name="quit" xml:space="preserve">
     <value>Quit</value>
+  </data>
+  <data name="SAVE_dest" xml:space="preserve">
+    <value>destination</value>
+  </data>
+  <data name="SAVE_name" xml:space="preserve">
+    <value>name</value>
+  </data>
+  <data name="SAVE_src" xml:space="preserve">
+    <value>source</value>
   </data>
   <data name="SETTINGS_lang" xml:space="preserve">
     <value>Choose a language</value>

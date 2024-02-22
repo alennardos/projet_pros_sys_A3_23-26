@@ -1,0 +1,17 @@
+﻿<Page x:Class="WpfApp1.src.vues.LunchSave"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp1.src.vues"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1080"
+      Title="LunchSave">
+
+    <Grid>
+        <ListBox Margin="80,80,80,151" x:Name ="listeSaves" SelectionChanged="listeSaves_SelectionChanged"/>
+        <Button Content="Home" HorizontalAlignment="Left" Height="69" Margin="990,630,0,0" VerticalAlignment="Top" Width="69" Click="HomeButton_Click"></Button>
+        <Button Content="[lunchSave]" Name="lunchSave" HorizontalAlignment="Center" Margin="0,630,0,0" VerticalAlignment="Top" Height="34" Width="154" Click="Lunch_save_Click"/>
+
+    </Grid>
+</Page>

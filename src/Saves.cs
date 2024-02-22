@@ -12,7 +12,7 @@ using System.Xml.Linq;
 
 namespace ConsoleApp1.src
 {
-    internal class Saves
+    public class Saves
     {
         string EasySavepath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "EasySave");
         string logsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),"EasySave", "logs");

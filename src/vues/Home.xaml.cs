@@ -1,5 +1,4 @@
-﻿using Console_Application_Test_1.src;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,11 +24,11 @@ namespace WpfApp1.src.vues
         MainWindow m;
         public Home(MainWindow m)
         {
-            InitializeComponent();
-            create.Content = ViewModelSave.Instance.GetResourceManager().GetString("HOME_create_save");
-            lunch.Content = ViewModelSave.Instance.GetResourceManager().GetString("HOME_lunch_save");
-            edit.Content = ViewModelSave.Instance.GetResourceManager().GetString("HOME_edit_save");
             this.m = m;
+            InitializeComponent();
+            create.Content = m.GetResourceManager().GetString("HOME_create_save");
+            lunch.Content = m.GetResourceManager().GetString("HOME_lunch_save");
+            edit.Content = m.GetResourceManager().GetString("HOME_edit_save");
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

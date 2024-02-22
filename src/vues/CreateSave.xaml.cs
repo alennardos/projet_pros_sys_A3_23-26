@@ -60,7 +60,7 @@ namespace WpfApp1.src.vues
 
         private void create_Click(object sender, RoutedEventArgs e)
         {
-            this.m.getVm().createSave(saveName.Text, srcPath.Text, dstPath.Text, "complete");
+            this.m.createSave(saveName.Text, srcPath.Text, dstPath.Text, "complete");
             this.m.afficher("menu");
         }
     }

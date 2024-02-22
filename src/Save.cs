@@ -9,7 +9,7 @@ using ConsoleApp1.src.SaveType;
 
 namespace ConsoleApp1.src
 {
-    internal class Save
+    public class Save
     {
 
         private String name;
