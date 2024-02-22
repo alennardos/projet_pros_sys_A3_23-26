@@ -131,6 +131,17 @@ namespace WpfApp1
             }
             catch (Exception e)
             {
+                
+            }
+        }
+        public void changeLogTypes(string type)
+        {
+            try
+            {
+                saves.changeFormat(type);
+            }
+            catch (Exception e)
+            {
 
             }
         }

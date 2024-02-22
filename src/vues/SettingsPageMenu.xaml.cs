@@ -23,11 +23,12 @@ namespace ConsoleApp1
     public partial class SettingsPageMenu : Page
     {
         Saves saves;
+        MainWindow m;
 
         public SettingsPageMenu(MainWindow m)
         {
-
             InitializeComponent();
+
             this.m = m;
 
             combo_typeLogs.Items.Add("xml");
@@ -36,53 +37,18 @@ namespace ConsoleApp1
             combo_langages.Items.Add("fr");
             combo_langages.Items.Add("en");
 
-            this.saves = new Saves("a");
-
+            combo_langages.SelectedIndex = 0;
+            combo_typeLogs.SelectedIndex = 0;
         }
-        MainWindow m;
 
         private void combo_langages_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ResourceManager rm = m.GetResourceManager();
-            ResourceManager tempo;
-
-            if (combo_langages.SelectedIndex == 0)
-            {
-                tempo = new ResourceManager("WpfApp1.languages.fr", Assembly.GetExecutingAssembly());
-                tempo.GetString("home");
-                rm = tempo;
-            }
-            else if (combo_langages.SelectedIndex == 1)
-            {
-                tempo = new ResourceManager("WpfApp1.languages.en", Assembly.GetExecutingAssembly());
-                tempo.GetString("home");
-                rm = tempo;
-            }
-            else
-            {
-                //this.vueobject.SetOutPut(rm.GetString("home"));
-                //this.vueobject.show();
-            }
-
+            m.changeLanguage(combo_langages.SelectedItem as string);
         }
 
         private void combo_typeLogs_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ResourceManager rm = m.GetResourceManager();
-
-            if (combo_langages.SelectedIndex == 0)
-            {
-                saves.changeFormat("xml");
-            }
-            else if (combo_langages.SelectedIndex == 1)
-            {
-                saves.changeFormat("json");
-            }
-            else
-            {
-               // vueobject.SetOutPut(rm.GetString("home"));
-               // vueobject.show();
-            }
+            m.changeLogTypes(combo_typeLogs.SelectedItem as string);
         }
 
         private void HomeButton_Click(object sender, RoutedEventArgs e)
