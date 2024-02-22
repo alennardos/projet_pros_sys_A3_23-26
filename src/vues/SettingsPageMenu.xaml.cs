@@ -43,8 +43,7 @@ namespace ConsoleApp1
 
         private void combo_langages_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ViewModelSave vm = m.getVm();
-            ResourceManager rm = vm.GetResourceManager();
+            ResourceManager rm = m.GetResourceManager();
             ResourceManager tempo;
 
             if (combo_langages.SelectedIndex == 0)
@@ -69,8 +68,7 @@ namespace ConsoleApp1
 
         private void combo_typeLogs_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ViewModelSave vm = m.getVm();
-            ResourceManager rm = vm.GetResourceManager();
+            ResourceManager rm = m.GetResourceManager();
 
             if (combo_langages.SelectedIndex == 0)
             {
