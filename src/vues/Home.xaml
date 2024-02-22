@@ -14,7 +14,7 @@
             <Button Content="[lunch]" Name="lunch" HorizontalAlignment="Center" Margin="0,250,0,0" VerticalAlignment="Top" Height="39" Width="118" Click="lunch_Click"/>
             <Button Content="[edit]" Name="edit" HorizontalAlignment="Center" Margin="0,339,0,0" VerticalAlignment="Top" Height="39" Width="118" Click="edit_Click"/>
         </Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="10,640,0,0" VerticalAlignment="Top" Height="70" Width="70
-                " Click="Button_Click_1"/>
+        <Button Content="settings" Name="settings" HorizontalAlignment="Left" Margin="10,640,0,0" VerticalAlignment="Top" Height="70" Width="70
+                " Click="settings_Click"/>
     </Grid>
 </Page>

@@ -46,9 +46,9 @@ namespace WpfApp1.src.vues
             m.afficher("edit");
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void settings_Click(object sender, RoutedEventArgs e)
         {
-            m.afficher("edit");
+            m.afficher("settings");
         }
     }
 }

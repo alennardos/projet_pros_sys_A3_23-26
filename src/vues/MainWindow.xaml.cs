@@ -52,7 +52,7 @@ namespace WpfApp1
             vueEdit = new EditSave(this);
             vueSettings = new SettingsPageMenu(this);
             vueLunch = new LunchSave(this);
-            //vueSettings = new Settings_page(this);
+
 
             
         }
@@ -68,15 +68,15 @@ namespace WpfApp1
                     this.Content = vueSave;
                     break;
                 case "edit":
-                    this.Content = vueHome;
+                    this.Content = vueEdit;
                     break;
                 case "lunch":
                     this.Content = vueLunch;
                     vueLunch.addSavesListeSave();
                     break;
-                //case "settings":
-                //    this.Content = vueSettings;
-                //    break;
+                case "settings":
+                    this.Content = vueSettings;
+                    break;
             }
         }
         public Saves GetSaves()

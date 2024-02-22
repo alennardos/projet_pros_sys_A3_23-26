@@ -22,12 +22,13 @@ namespace ConsoleApp1
 {
     public partial class SettingsPageMenu : Page
     {
-        MainWindow m;
         Saves saves;
 
         public SettingsPageMenu(MainWindow m)
         {
+
             InitializeComponent();
+            this.m = m;
 
             combo_langages.Items.Add("xml");
             combo_langages.Items.Add("json");
@@ -35,10 +36,10 @@ namespace ConsoleApp1
             combo_langages.Items.Add("fr");
             combo_langages.Items.Add("en");
 
-            this.m  = m;
             this.saves = new Saves("a");
 
         }
+        MainWindow m;
 
         private void combo_langages_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
