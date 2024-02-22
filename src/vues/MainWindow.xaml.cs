@@ -69,6 +69,7 @@ namespace WpfApp1
                     break;
                 case "edit":
                     this.Content = vueEdit;
+                    vueEdit.addSavesListeSave();
                     break;
                 case "lunch":
                     this.Content = vueLunch;
@@ -101,6 +102,7 @@ namespace WpfApp1
                 ts = new SaveDif();
             }
             this.saves.createSave(saveName, pathSrc, pathDest, ts);
+            this.saves.quit();
         }
 
         public bool processIsActive(string name)

@@ -9,10 +9,10 @@
       Title="EditSave">
 
     <Grid>
-        <Button Content="Home" HorizontalAlignment="Left" Height="69" Margin="990,630,0,0" VerticalAlignment="Top" Width="69" Click="HomeButton_Click"></Button>
+        <Button Content="Home" HorizontalAlignment="Left" Height="69" Margin="990,630,0,0" VerticalAlignment="Top" Width="69" Click="HomeButton_Click"/>
 
-        <ListBox Name="save_list" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="281,69,238,112">
-            <!-- Définissez ici les éléments de votre liste -->
-        </ListBox>
+        <ListBox Margin="80,80,80,151" x:Name ="listeSaves" SelectionChanged="listeSaves_SelectionChanged"/>
+
+        <Button Content="[edit]" Name="Edit" HorizontalAlignment="Left" Margin="80,0,0,120" VerticalAlignment="Bottom" Width="100" Click="editSave_Click"/>
     </Grid>
 </Page>
