@@ -80,7 +80,7 @@ namespace ConsoleApp1.src
             }
 
             log = new StreamWriter(logFilePath, true);
-            rts = new StreamWriter(rtsFilePath);
+            //rts = new StreamWriter(rtsFilePath);
             new StreamWriter(saveFilePath, true).Close();
             saveFile = new XmlTextReader(saveFilePath);
             createSaveXml();
@@ -215,7 +215,7 @@ namespace ConsoleApp1.src
                 res += "\n";
             }
             res += "]\n";
-            this.rts.Write(res);
+            //this.rts.Write(res);
         }
 
         public List<Save> getSaves()
@@ -227,7 +227,7 @@ namespace ConsoleApp1.src
         public void quit()
         {
             this.log.Close();
-            this.rts.Close();
+            //this.rts.Close();
             this.writeXmlSave();
         }
 

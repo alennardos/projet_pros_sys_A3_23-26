@@ -1,5 +1,4 @@
-﻿using Console_Application_Test_1.src;
-using ConsoleApp1.src;
+﻿using ConsoleApp1.src;
 using System;
 using System.Collections.Generic;
 using System.DirectoryServices.ActiveDirectory;
@@ -83,6 +82,11 @@ namespace ConsoleApp1
                // vueobject.SetOutPut(rm.GetString("home"));
                // vueobject.show();
             }
+        }
+
+        private void HomeButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

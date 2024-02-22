@@ -18,6 +18,7 @@ using System;
 using ConsoleApp1.src.SaveType;
 using System.Diagnostics;
 using System.Collections;
+using ConsoleApp1;
 
 namespace WpfApp1
 {
@@ -30,6 +31,7 @@ namespace WpfApp1
         Home vueHome;
         EditSave vueEdit;
         LunchSave vueLunch;
+        SettingsPageMenu vueSettings;
 
         private Saves saves;
         private ResourceManager rm;
