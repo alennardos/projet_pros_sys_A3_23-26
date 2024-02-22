@@ -48,6 +48,7 @@ namespace WpfApp1
             vueHome = new Home(this);
             this.Content = vueHome;
             vueEdit = new EditSave(this);
+            vueSettings = new SettingsPageMenu(this);
             vueLunch = new LunchSave(this);
             //vueSettings = new Settings_page(this);
 
