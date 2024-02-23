@@ -33,6 +33,7 @@ namespace WpfApp1
         EditSave vueEdit;
         LunchSave vueLunch;
         SettingsPageMenu vueSettings;
+        second_edit vueSecondEdit;
 
         private Saves saves;
         private ResourceManager rm;
@@ -53,6 +54,7 @@ namespace WpfApp1
             vueEdit = new EditSave(this);
             vueSettings = new SettingsPageMenu(this);
             vueLunch = new LunchSave(this);
+            vueSecondEdit = new second_edit(this);
 
         }
 
@@ -76,6 +78,9 @@ namespace WpfApp1
                     break;
                 case "settings":
                     this.Content = vueSettings;
+                    break;
+                case "secondEdit":
+                    this.Content = vueSecondEdit;
                     break;
             }
         }

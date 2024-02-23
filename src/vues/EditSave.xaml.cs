@@ -43,12 +43,7 @@ namespace WpfApp1.src.vues
 
         private void editSave_Click(object sender, RoutedEventArgs e)
         {
-            // Créer une instance de la fenêtre edit_edit
-            edit_edit popup = new edit_edit();
-            
-            popup.Width = 400; 
-            popup.Height = 300;
-            popup.Show();
+            this.m.afficher("secondEdit");
 
         }
 
