@@ -20,15 +20,15 @@
         </Grid.RowDefinitions>
 
         <Label Grid.Row="0" Content="Nom:"/>
-        <TextBox Grid.Row="0" Margin="5" />
+        <TextBox Grid.Row="0" Margin="5"  Name="saveName" />
 
-        <Label Grid.Row="1" Content="Source:"/>
-        <TextBox Grid.Row="1" Margin="5"/>
-        <Button Grid.Row="1" Content="Parcourir..." Margin="5,5,5,0" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+        <Label Grid.Row="1" Content="Chemin de Source:"/>
+        <TextBox Grid.Row="1" Margin="5" Name="saveSrcPath"/>
+        <Button Grid.Row="1" Content="Parcourir..." Margin="5,5,5,0" VerticalAlignment="Top" HorizontalAlignment="Right" Click="src_Click"/>
 
-        <Label Grid.Row="2" Content="Destination:"/>
-        <TextBox Grid.Row="2" Margin="5"/>
-        <Button Grid.Row="2" Content="Parcourir..." Margin="5,5,5,0" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+        <Label Grid.Row="2" Content="Chemin de Destination:" RenderTransformOrigin="0.463,-0.021"/>
+        <TextBox Grid.Row="2" Margin="5" Name="saveDestPath"/>
+        <Button Grid.Row="2" Content="Parcourir..." Margin="5,5,5,0" VerticalAlignment="Top" HorizontalAlignment="Right" Click="dst_Click"/>
 
         <Label Grid.Row="3" Content="Type de Sauvegarde:"/>
         <ComboBox Grid.Row="3" Margin="5"/>

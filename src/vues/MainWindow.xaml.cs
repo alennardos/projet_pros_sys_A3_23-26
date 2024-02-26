@@ -38,6 +38,7 @@ namespace WpfApp1
         private Saves saves;
         private ResourceManager rm;
         private bool run;
+        private Save saveModif;
 
         //Settings_menu vueSettings;
         public MainWindow()
@@ -80,6 +81,7 @@ namespace WpfApp1
                     this.Content = vueSettings;
                     break;
                 case "secondEdit":
+                    vueSecondEdit.setSaveModif();
                     this.Content = vueSecondEdit;
                     break;
             }
@@ -151,6 +153,15 @@ namespace WpfApp1
             {
 
             }
+        }
+
+        public void setSaveModif(int index)
+        {
+            this.saveModif = this.saves.getSaves()[index];
+        }
+        public Save getSaveModif()
+        {
+            return this.saveModif;
         }
 
     }

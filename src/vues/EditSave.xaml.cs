@@ -43,6 +43,7 @@ namespace WpfApp1.src.vues
 
         private void editSave_Click(object sender, RoutedEventArgs e)
         {
+            this.m.setSaveModif(listeSaves.SelectedIndex);
             this.m.afficher("secondEdit");
 
         }
