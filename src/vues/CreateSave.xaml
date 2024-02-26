@@ -5,27 +5,40 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfApp1.src.vues"
       mc:Ignorable="d" 
-      d:DesignHeight="720" d:DesignWidth="1080"
+      d:DesignHeight="450" d:DesignWidth="800"
       Title="CreateSave2">
 
     <Grid>
-        <Grid Margin="254,0,254,0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="377*"/>
-                <RowDefinition Height="73*"/>
-            </Grid.RowDefinitions>
-            <TextBox HorizontalAlignment="Center" Name="saveName" Margin="0,93,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-            <TextBox HorizontalAlignment="Left" Name ="srcPath"  Margin="114,158,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="62" Width="448"/>
-            <Button Content="[SelectPathSource]" Name="selectPathSrc" HorizontalAlignment="Left" Margin="10,174,0,0" VerticalAlignment="Top" Click="selectSrc_Click" Height="20" Width="73"/>
-            <TextBox HorizontalAlignment="Left" Name ="dstPath"  Margin="114,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Height="62" Width="448"/>
-            <Button Content="[SelectPathDest]" Name="selectPathDst" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Click="selectDest_Click" Height="20" Width="73"/>
-            <Grid>
-                <RadioButton Content="[complete]" Name="SaveComplete" HorizontalAlignment="Left" Margin="114,417,0,0" VerticalAlignment="Top" IsChecked="True"/>
-                <RadioButton Content="[diff]" Name="SaveDiff"  HorizontalAlignment="Left" Margin="261,417,0,0" VerticalAlignment="Top"/>
-            </Grid>
-            <Button Content="[create]" Name="create" HorizontalAlignment="Center" Margin="0,528,0,0" VerticalAlignment="Top" Height="39" Width="142" Click="create_Click"/>
-            <Label Content="[save name]" Name="saveNameLabel" HorizontalAlignment="Left" Margin="138,89,0,0" VerticalAlignment="Top"/>
-        </Grid>
-        <Button Content="[Home]" Name="home" HorizontalAlignment="Left" Height="69" Margin="990,630,0,0" VerticalAlignment="Top" Width="69" Click="HomeButton_Click"></Button>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Content="[save name]" Name="saveNameLabel"/>
+        <TextBox Grid.Row="0" Margin="150,5,70,5"  Name="saveName" />
+
+        <Label Grid.Row="1" Content="[SelectPathSource]"/>
+        <TextBox Grid.Row="1" Name ="srcPath"  Margin="150,5,70,5" TextWrapping="Wrap" Text=""/>
+        <Button Grid.Row="1" Content="[open]" Name="selectPathSrc" Margin="5,5,5,0" VerticalAlignment="Top" HorizontalAlignment="Right" Click="selectSrc_Click"/>
+
+        <Label Grid.Row="2" Content="[SelectPathDest]" RenderTransformOrigin="0.463,-0.021"/>
+        <TextBox Grid.Row="2"  Name ="dstPath" Margin="150,5,70,5" TextWrapping="Wrap" Text=""/>
+        <Button Grid.Row="2" Name="selectPathDst" Content="[open]" Margin="5,5,5,0" VerticalAlignment="Top" HorizontalAlignment="Right" Click="selectDest_Click"/>
+
+        <Label Grid.Row="3"  Content="[SelectSaveType]"/>
+
+        <RadioButton Grid.Row="3"  Content="[complete]" Name="SaveComplete" HorizontalAlignment="Left" Margin="150,0,0,0" VerticalAlignment="Center" IsChecked="True"/>
+        <RadioButton Grid.Row="3"  Content="[diff]" Name="SaveDiff"  HorizontalAlignment="Left" Margin="252,0,0,0" VerticalAlignment="Center"/>
+
+        <Button Grid.Row ="5"  Content="[create]" Name="create" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Click="create_Click"/>
+
+
+        <Button Grid.Row="6" Content="[Home]" Name="home" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="69" Width="69" Click="HomeButton_Click"  RenderTransformOrigin="0.754,1.061"></Button>
     </Grid>
 </Page>
