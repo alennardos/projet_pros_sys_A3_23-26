@@ -13,6 +13,8 @@
         <Label Content="Settings" HorizontalAlignment="Left" VerticalAlignment="Top" Height="58" Width="378" Margin="362,132,0,0" FontFamily="Calibri" FontSize="32" HorizontalContentAlignment="Center"/>
         <ComboBox x:Name="combo_langages" HorizontalAlignment="Left" VerticalAlignment="Center" Width="256" Height="57" Margin="423,0,0,0" SelectionChanged="combo_langages_SelectionChanged"/>
         <ComboBox x:Name="combo_typeLogs" HorizontalAlignment="Left" Margin="423,503,0,0" VerticalAlignment="Top" Width="256" Height="58" SelectionChanged="combo_typeLogs_SelectionChanged"/>
+        <Label x:Name="label_langage" Content="Langage" HorizontalAlignment="Left" Margin="423,301,0,0" VerticalAlignment="Top" Width="256"/>
+        <Label x:Name="label_logType" Content="Logs type" HorizontalAlignment="Left" Margin="423,472,0,0" VerticalAlignment="Top" Width="256"/>
 
     </Grid>
 </Page>
