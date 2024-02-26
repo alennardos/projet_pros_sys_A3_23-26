@@ -48,11 +48,12 @@ namespace WpfApp1
             this.saves = new Saves("xml");
             this.rm = new ResourceManager("WpfApp1.languages.fr", Assembly.GetExecutingAssembly());
 
+            vueSettings = new SettingsPageMenu(this);
+            Thread.Sleep(100);
             vueSave = new CreateSave(this);
             vueHome = new Home(this);
             this.Content = vueHome;
             vueEdit = new EditSave(this);
-            vueSettings = new SettingsPageMenu(this);
             vueLunch = new LunchSave(this);
             vueSecondEdit = new second_edit(this);
 
@@ -63,24 +64,23 @@ namespace WpfApp1
             switch (page)
             {
                 case "menu":
-                    this.Content = vueHome;
+                    this.Content = vueHome.charger();
                     break;
                 case "create":
-                    this.Content = vueSave;
+                    this.Content = vueSave.charger();
                     break;
                 case "edit":
-                    this.Content = vueEdit;
-                    vueEdit.addSavesListeSave();
+                    this.Content = vueEdit.charger();
+
                     break;
                 case "lunch":
-                    this.Content = vueLunch;
-                    vueLunch.addSavesListeSave();
+                    this.Content = vueLunch.charger();
                     break;
                 case "settings":
-                    this.Content = vueSettings;
+                    this.Content = vueSettings.charger();
                     break;
                 case "secondEdit":
-                    this.Content = vueSecondEdit;
+                    this.Content = vueSecondEdit.charger();
                     break;
             }
         }

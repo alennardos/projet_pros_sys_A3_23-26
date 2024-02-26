@@ -29,6 +29,17 @@ namespace WpfApp1.src.vues
         {
             InitializeComponent();
             this.m = m;
+            loadLanguage();
+        }
+
+        private void loadLanguage()
+        {
+            saveNameLabel.Content = m.GetResourceManager().GetString("CREATE_name_save");
+            selectPathSrc.Content = m.GetResourceManager().GetString("CREATE_source_save");
+            selectPathDst.Content = m.GetResourceManager().GetString("CREATE_destination_save");
+            SaveComplete.Content = m.GetResourceManager().GetString("TYPE_complete");
+            SaveDiff.Content = m.GetResourceManager().GetString("TYPE_diff");
+            create.Content = m.GetResourceManager().GetString("CREATE_create");
         }
 
         private string OpenFolderDialog()
@@ -62,6 +73,12 @@ namespace WpfApp1.src.vues
         {
             this.m.createSave(saveName.Text, srcPath.Text, dstPath.Text, "complete");
             this.m.afficher("menu");
+        }
+
+        public Object charger()
+        {
+            loadLanguage();
+            return this.Content;
         }
     }
 }

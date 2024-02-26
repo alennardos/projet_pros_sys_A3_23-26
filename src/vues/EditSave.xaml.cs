@@ -58,6 +58,11 @@ namespace WpfApp1.src.vues
             }
         }
 
+        public Object charger()
+        {
+            addSavesListeSave();
+            return this.Content;
+        }
 
     }
 }

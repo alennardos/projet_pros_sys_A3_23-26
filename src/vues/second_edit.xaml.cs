@@ -43,5 +43,10 @@ namespace WpfApp1.src.vues
 
         }
 
+        public Object charger()
+        {
+            return this.Content;
+        }
+
     }
 }

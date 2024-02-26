@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CREATE_create" xml:space="preserve">
+    <value>create</value>
+  </data>
   <data name="CREATE_destination_save" xml:space="preserve">
     <value>Destination of the backup</value>
   </data>
@@ -209,5 +212,11 @@
   </data>
   <data name="SETTINGS_menu" xml:space="preserve">
     <value>Choose a parameter to modify</value>
+  </data>
+  <data name="TYPE_complete" xml:space="preserve">
+    <value>complete</value>
+  </data>
+  <data name="TYPE_diff" xml:space="preserve">
+    <value>differentiel</value>
   </data>
 </root>
