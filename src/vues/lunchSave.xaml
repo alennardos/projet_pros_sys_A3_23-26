@@ -10,8 +10,8 @@
 
     <Grid>
         <ListBox Margin="80,80,80,151" x:Name ="listeSaves" SelectionChanged="listeSaves_SelectionChanged"/>
-        <Button Content="Home" HorizontalAlignment="Left" Height="69" Margin="990,630,0,0" VerticalAlignment="Top" Width="69" Click="HomeButton_Click"></Button>
-        <Button Content="[lunchSave]" Name="lunchSave" HorizontalAlignment="Center" Margin="0,630,0,0" VerticalAlignment="Top" Height="34" Width="154" Click="Lunch_save_Click"/>
+        <Button Content="Home" HorizontalAlignment="Left" Height="69" Margin="931,602,0,0" VerticalAlignment="Top" Width="69" Click="HomeButton_Click"></Button>
+        <Button Content="[lunchSave]" Name="lunchSave" HorizontalAlignment="Center" Margin="0,618,0,0" VerticalAlignment="Top" Height="46" Width="198" Click="Lunch_save_Click"/>
 
     </Grid>
 </Page>
