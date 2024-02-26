@@ -60,8 +60,52 @@ namespace WpfApp1.src.vues
 
         private void create_Click(object sender, RoutedEventArgs e)
         {
-            this.m.createSave(saveName.Text, srcPath.Text, dstPath.Text, "complete");
-            this.m.afficher("menu");
+            bool good = true;
+
+            if (saveName.Text.Equals(""))
+            { 
+                saveName.BorderBrush = System.Windows.Media.Brushes.Red;
+                good = false;
+            }
+            else
+            {
+                saveName.BorderBrush = null;
+            }
+
+            if (dstPath.Text.Equals(""))
+            {
+                dstPath.BorderBrush = System.Windows.Media.Brushes.Red;
+                good = false;
+
+            }
+            else
+            {
+                dstPath.BorderBrush = null;
+            }
+
+            if (srcPath.Text.Equals(""))
+            {
+                srcPath.BorderBrush = System.Windows.Media.Brushes.Red;
+                good = false;
+            }
+            else
+            {
+                srcPath.BorderBrush = null;
+            }
+
+            if (good == true)
+            {
+                this.m.createSave(saveName.Text, srcPath.Text, dstPath.Text, "complete");
+
+                srcPath.Text = "";
+                dstPath.Text = "";
+                saveName.Text = "";
+
+                SaveComplete.IsChecked = true;
+                SaveDiff.IsChecked = false;
+
+                HomeButton_Click(this, new RoutedEventArgs());
+            }
         }
     }
 }
