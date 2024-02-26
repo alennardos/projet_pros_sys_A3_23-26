@@ -26,6 +26,11 @@ namespace WpfApp1.src.vues
         {
             this.m = m;
             InitializeComponent();
+            loadLanguage();
+        }
+
+        private void loadLanguage()
+        {
             create.Content = m.GetResourceManager().GetString("HOME_create_save");
             lunch.Content = m.GetResourceManager().GetString("HOME_lunch_save");
             edit.Content = m.GetResourceManager().GetString("HOME_edit_save");
@@ -49,6 +54,12 @@ namespace WpfApp1.src.vues
         private void settings_Click(object sender, RoutedEventArgs e)
         {
             m.afficher("settings");
+        }
+
+        public Object charger()
+        {
+            loadLanguage();
+            return this.Content;
         }
     }
 }

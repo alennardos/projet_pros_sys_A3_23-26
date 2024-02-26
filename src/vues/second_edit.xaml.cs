@@ -56,16 +56,10 @@ namespace WpfApp1.src.vues
            
         }
 
-
-       
-
         private void cancel_Click(object sender, RoutedEventArgs e)
         {
             this.m.afficher("edit");
         }
-        
-        
-
 
         private void save_Click(object sender, RoutedEventArgs e)
         {
@@ -79,6 +73,12 @@ namespace WpfApp1.src.vues
         private void src_Click(object sender, RoutedEventArgs e)
         {
             saveSrcPath.Text = OpenFolderDialog();
+        }
+
+        public Object charger()
+        {
+            setSaveModif();
+            return this.Content;
         }
 
         private void dst_Click(object sender, RoutedEventArgs e)

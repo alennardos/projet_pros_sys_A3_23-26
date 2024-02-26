@@ -33,6 +33,11 @@ namespace WpfApp1.src.vues
         {
             InitializeComponent();
             this.m = m;
+            loadLanguage();
+        }
+
+        private void loadLanguage()
+        {
             lunchSave.Content = m.GetResourceManager().GetString("LUNCH_lunch");
         }
 
@@ -66,6 +71,13 @@ namespace WpfApp1.src.vues
             }
 
             this.m.makeSave(index);
+        }
+
+        public Object charger()
+        {
+            addSavesListeSave();
+            loadLanguage();
+            return this.Content;
         }
     }
 }
