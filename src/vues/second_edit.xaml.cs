@@ -56,9 +56,6 @@ namespace WpfApp1.src.vues
            
         }
 
-
-       
-
         private void cancel_Click(object sender, RoutedEventArgs e)
         {
             this.m.afficher("edit");
@@ -80,6 +77,7 @@ namespace WpfApp1.src.vues
 
         public Object charger()
         {
+            setSaveModif();
             return this.Content;
         }
 
