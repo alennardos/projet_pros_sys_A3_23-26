@@ -6,12 +6,12 @@
       xmlns:local="clr-namespace:WpfApp1.src.vues"
       mc:Ignorable="d" 
       d:DesignHeight="720" d:DesignWidth="1080"
-      Title="LunchSave">
+      Title="LaunchSave">
 
     <Grid>
         <ListBox Margin="80,80,80,151" x:Name ="listeSaves" SelectionChanged="listeSaves_SelectionChanged"/>
         <Button Name="Home" Content="[Home]" HorizontalAlignment="Left" Height="69" Margin="931,602,0,0" VerticalAlignment="Top" Width="69" Click="HomeButton_Click"></Button>
-        <Button Content="[lunchSave]" Name="lunchSave" HorizontalAlignment="Left" Margin="559,602,0,0" VerticalAlignment="Top" Height="69" Width="351" Click="Lunch_save_Click"/>
+        <Button Content="[launchSave]" Name="launchSave" HorizontalAlignment="Left" Margin="559,602,0,0" VerticalAlignment="Top" Height="69" Width="351" Click="Launch_save_Click"/>
 
     </Grid>
 </Page>

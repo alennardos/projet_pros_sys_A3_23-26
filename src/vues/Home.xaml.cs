@@ -33,7 +33,7 @@ namespace WpfApp1.src.vues
         private void loadLanguage()
         {
             create.Content = m.GetResourceManager().GetString("HOME_create_save");
-            lunch.Content = m.GetResourceManager().GetString("HOME_lunch_save");
+            lunch.Content = m.GetResourceManager().GetString("HOME_launch_save");
             edit.Content = m.GetResourceManager().GetString("HOME_edit_save");
             settings.Content = m.GetResourceManager().GetString("HOME_settings");
         }
