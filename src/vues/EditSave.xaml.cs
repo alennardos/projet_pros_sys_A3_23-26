@@ -43,6 +43,13 @@ namespace WpfApp1.src.vues
 
         private void editSave_Click(object sender, RoutedEventArgs e)
         {
+            if (listeSaves.SelectedIndex == -1)
+            {
+                
+                System.Windows.MessageBox.Show("[noSaveChosen]", "[error]", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             this.m.setSaveModif(listeSaves.SelectedIndex);
             this.m.afficher("secondEdit");
 
