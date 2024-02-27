@@ -9,7 +9,7 @@
       Title="SettingsPageMenu">
 
     <Grid>
-        <Button Content="Home" Height="70" Width="70" Margin="505,533,505,0" VerticalAlignment="Top" Click="HomeButton_Click"/>
+        <Button x:Name="home" Content="Home" Height="70" Width="70" Margin="505,533,505,0" VerticalAlignment="Top" Click="HomeButton_Click"/>
         <ComboBox x:Name="combo_langages" HorizontalAlignment="Center" VerticalAlignment="Top" Width="198" Height="47" Margin="0,227,0,0" SelectionChanged="combo_langages_SelectionChanged"/>
         <ComboBox x:Name="combo_typeLogs" HorizontalAlignment="Center" Margin="0,393,0,0" VerticalAlignment="Top" Width="198" Height="47" SelectionChanged="combo_typeLogs_SelectionChanged"/>
         <Label x:Name="label_langage" Content="[langage]" HorizontalAlignment="Center" Margin="0,196,0,0" VerticalAlignment="Top" Width="198" HorizontalContentAlignment="Center"/>

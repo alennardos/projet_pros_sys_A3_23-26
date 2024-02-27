@@ -40,6 +40,11 @@ namespace WpfApp1.src.vues
             SaveComplete.Content = m.GetResourceManager().GetString("TYPE_complete");
             SaveDiff.Content = m.GetResourceManager().GetString("TYPE_diff");
             create.Content = m.GetResourceManager().GetString("CREATE_create");
+            home.Content = m.GetResourceManager().GetString("home");
+
+            label_selectPathDest.Content = m.GetResourceManager().GetString("CREATE_destination_instructions");
+            label_selectPathSource.Content = m.GetResourceManager().GetString("CREATE_source_instructions");
+            label_selectSaveType.Content = m.GetResourceManager().GetString("CREATE_save_type_instructions");
         }
 
         private string OpenFolderDialog()

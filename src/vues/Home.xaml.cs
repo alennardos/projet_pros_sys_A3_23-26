@@ -35,6 +35,7 @@ namespace WpfApp1.src.vues
             create.Content = m.GetResourceManager().GetString("HOME_create_save");
             lunch.Content = m.GetResourceManager().GetString("HOME_lunch_save");
             edit.Content = m.GetResourceManager().GetString("HOME_edit_save");
+            settings.Content = m.GetResourceManager().GetString("HOME_settings");
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

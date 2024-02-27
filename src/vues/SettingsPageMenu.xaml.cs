@@ -20,6 +20,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfApp1;
+using WpfApp1.src.vues;
 
 namespace ConsoleApp1
 {
@@ -41,6 +42,8 @@ namespace ConsoleApp1
 
             combo_langages.SelectedIndex = 0;
             combo_typeLogs.SelectedIndex = 0;
+
+            loadLanguage();
         }
 
         private static string GetThisFilePath([CallerFilePath] string path = null)
@@ -51,6 +54,8 @@ namespace ConsoleApp1
         private void combo_langages_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             m.changeLanguage(combo_langages.SelectedItem as string);
+
+            loadLanguage();
         }
 
         private void combo_typeLogs_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -79,6 +84,13 @@ namespace ConsoleApp1
                 }
                 skip = !skip;
             }
+        }
+
+        private void loadLanguage()
+        {
+            label_langage.Content = m.GetResourceManager().GetString("SETTINGS_lang");
+            label_logType.Content = m.GetResourceManager().GetString("SETTINGS_log_type");
+            home.Content = m.GetResourceManager().GetString("home");
         }
 
         public Object charger()

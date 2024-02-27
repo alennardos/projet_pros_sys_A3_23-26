@@ -24,12 +24,16 @@ namespace WpfApp1.src.vues
     /// </summary>
     public partial class EditSave : Page
     {
+        MainWindow m;
+
         public EditSave(MainWindow m)
         {
             InitializeComponent();
             this.m = m;
+
+            loadLanguage();
         }
-        MainWindow m;
+        
 
         private void HomeButton_Click(object sender, RoutedEventArgs e)
         {
@@ -39,6 +43,12 @@ namespace WpfApp1.src.vues
         private void listeSaves_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void loadLanguage()
+        {
+            edit.Content = m.GetResourceManager().GetString("EDIT_edit");
+            home.Content = m.GetResourceManager().GetString("home");
         }
 
         private void editSave_Click(object sender, RoutedEventArgs e)
