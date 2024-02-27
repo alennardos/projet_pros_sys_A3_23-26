@@ -19,10 +19,10 @@ namespace ConsoleApp1.src
         private String actualFile;
         private String actualFileTarget;
         private int nbfiles;
-        private int fileSize;
+        private long fileSize;
         private int nbLeft;
-        private int leftSize;
-        private int sizeTreated;
+        private long leftSize;
+        private long sizeTreated;
         private int fileTreated;
         private bool isActive;
         private TypeSave ts;
@@ -120,6 +120,7 @@ namespace ConsoleApp1.src
             setIsActive(false);
 
             this.setState(0, 0, "", "");
+            this.saves.writeRts();
 
             return res;
         }
@@ -138,7 +139,7 @@ namespace ConsoleApp1.src
             {
                 while (Interlocked.Equals(this.run, 1))
                 {
-                    Thread.Sleep(100);
+                    Thread.Sleep(500);
                 }
 
                 Thread.Sleep(300);
@@ -146,7 +147,7 @@ namespace ConsoleApp1.src
                 string targetFilePath = Path.Combine(destination, file.Name);
                 var watch = System.Diagnostics.Stopwatch.StartNew();
 
-                this.setState(nbfiles - fileTreated, fileSize - sizeTreated, file.FullName, destination + @"\" + file.Name);
+                this.setState(nbfiles - fileTreated, (int)(fileSize - sizeTreated), file.FullName, destination + @"\" + file.Name);
 
                 this.saves.writeRts();
 
@@ -170,6 +171,7 @@ namespace ConsoleApp1.src
             }
 
             return res;
+            
         }
 
         // Get the save state
@@ -277,10 +279,10 @@ namespace ConsoleApp1.src
             while (this.fileSize == 0) { Thread.Sleep(200); }
             while (this.isActive)
             {
-                (sender as BackgroundWorker).ReportProgress((((this.fileSize/100) - (this.leftSize/100))*100)/(this.fileSize/100));
+                (sender as BackgroundWorker).ReportProgress((int)((this.sizeTreated*100) / this.fileSize));
                 Thread.Sleep(400);
             }
-            
+            (sender as BackgroundWorker).ReportProgress(100);
         }
 
     }
