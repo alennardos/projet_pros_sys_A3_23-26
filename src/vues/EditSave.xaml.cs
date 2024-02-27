@@ -30,8 +30,6 @@ namespace WpfApp1.src.vues
         {
             InitializeComponent();
             this.m = m;
-
-            loadLanguage();
         }
         
 
@@ -78,6 +76,7 @@ namespace WpfApp1.src.vues
 
         public Object charger()
         {
+            loadLanguage();
             addSavesListeSave();
             return this.Content;
         }
