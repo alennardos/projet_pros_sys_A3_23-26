@@ -32,7 +32,7 @@ namespace WpfApp1
         CreateSave vueSave;
         Home vueHome;
         EditSave vueEdit;
-        LaunchSave vueLunch;
+        LaunchSave vueLaunch;
         SettingsPageMenu vueSettings;
         second_edit vueSecondEdit;
 
@@ -56,7 +56,7 @@ namespace WpfApp1
             vueHome = new Home(this);
             this.Content = vueHome;
             vueEdit = new EditSave(this);
-            vueLunch = new LaunchSave(this);
+            vueLaunch = new LaunchSave(this);
             vueSecondEdit = new second_edit(this);
 
         }
@@ -87,8 +87,8 @@ namespace WpfApp1
                     this.Content = vueEdit.charger();
 
                     break;
-                case "lunch":
-                    this.Content = vueLunch.charger();
+                case "launch":
+                    this.Content = vueLaunch.charger();
                     break;
                 case "settings":
                     this.Content = vueSettings.charger();
