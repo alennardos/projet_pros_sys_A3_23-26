@@ -33,7 +33,7 @@ namespace WpfApp1.src.vues
         private void loadLanguage()
         {
             create.Content = m.GetResourceManager().GetString("HOME_create_save");
-            lunch.Content = m.GetResourceManager().GetString("HOME_lunch_save");
+            launch.Content = m.GetResourceManager().GetString("HOME_launch_save");
             edit.Content = m.GetResourceManager().GetString("HOME_edit_save");
             settings.Content = m.GetResourceManager().GetString("HOME_settings");
         }
@@ -43,9 +43,9 @@ namespace WpfApp1.src.vues
             m.afficher("create");
         }
 
-        private void lunch_Click(object sender, RoutedEventArgs e)
+        private void launch_Click(object sender, RoutedEventArgs e)
         {
-            m.afficher("lunch");
+            m.afficher("launch");
         }
 
         private void edit_Click(object sender, RoutedEventArgs e)

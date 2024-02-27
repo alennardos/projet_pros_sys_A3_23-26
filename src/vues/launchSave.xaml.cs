@@ -38,7 +38,7 @@ namespace WpfApp1.src.vues
 
         private void loadLanguage()
         {
-            lunchSave.Content = m.GetResourceManager().GetString("LUNCH_lunch");
+            launchSave.Content = m.GetResourceManager().GetString("LAUNCH_launch");
             Home.Content = m.GetResourceManager().GetString("home");
         }
 
@@ -63,7 +63,7 @@ namespace WpfApp1.src.vues
 
         }
 
-        private void Lunch_save_Click(object sender, RoutedEventArgs e)
+        private void Launch_save_Click(object sender, RoutedEventArgs e)
         {
             List<int> index = new List<int>();
             foreach(var item in listeSaves.SelectedItems)
@@ -76,7 +76,8 @@ namespace WpfApp1.src.vues
             }
             catch (Exception ex)
             {
-                System.Windows.MessageBox.Show("" + ex, "EasySave", MessageBoxButton.OK, MessageBoxImage.Error);
+                string error_business_software = m.GetResourceManager().GetString("error_business_software");
+                System.Windows.MessageBox.Show(""+ error_business_software +"\n"+ ex, "EasySave", MessageBoxButton.OK);
             }
             
         }
