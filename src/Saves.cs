@@ -25,6 +25,7 @@ namespace ConsoleApp1.src
         private String format;
         private bool crypt;
         private String rtsFilePath;
+        private int heavyFileSize;
 
         private static Saves _instance;
 

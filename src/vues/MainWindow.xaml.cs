@@ -63,15 +63,9 @@ namespace WpfApp1
 
         public static void save(Object save)
         {
-            ((Save)save).save();
+            ((Saves)((List<Object>)save).ElementAt(0)).save((int)((List<Object>)save).ElementAt(1));
         }
 
-        public static void saveProgress(Object save)
-        {
-            //ProgressBar pb = new ProgressBar((Save)save);
-            //pb.Show();
-
-        }
 
         public void afficher(string page)
         {
@@ -140,7 +134,7 @@ namespace WpfApp1
             foreach (int index in savesIndex)
             {
                 Thread save = new Thread(MainWindow.save);
-                save.Start(this.saves.getSaves()[index]);
+                save.Start(new List<object>() {this.saves, index});
                 ProgressBar pb = new ProgressBar(this.saves.getSaves()[index]);
                 pb.Show();
                 //Thread saveProgress = new Thread(MainWindow.saveProgress);
