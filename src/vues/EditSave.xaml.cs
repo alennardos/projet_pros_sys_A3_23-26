@@ -47,8 +47,8 @@ namespace WpfApp1.src.vues
 
         private void loadLanguage()
         {
-            edit.Content = m.GetResourceManager().GetString("EDIT_edit");
-            home.Content = m.GetResourceManager().GetString("home");
+            Edit.Content = m.GetResourceManager().GetString("EDIT_edit");
+            Home.Content = m.GetResourceManager().GetString("home");
         }
 
         private void editSave_Click(object sender, RoutedEventArgs e)

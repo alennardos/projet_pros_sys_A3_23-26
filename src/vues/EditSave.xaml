@@ -9,10 +9,10 @@
       Title="EditSave">
 
     <Grid>
-        <Button x:Name="home" Content="Home" HorizontalAlignment="Left" Height="69" Margin="189,595,0,0" VerticalAlignment="Top" Width="69" Click="HomeButton_Click"/>
+        <Button Name="Home" Content="[Home]" HorizontalAlignment="Left" Height="69" Margin="189,595,0,0" VerticalAlignment="Top" Width="69" Click="HomeButton_Click"/>
 
-        <ListBox Margin="80,80,80,151" x:Name ="listeSaves" SelectionChanged="listeSaves_SelectionChanged"/>
+        <ListBox Margin="80,80,80,151" Name ="listeSaves" SelectionChanged="listeSaves_SelectionChanged"/>
 
-        <Button Content="[edit]" x:Name="edit" HorizontalAlignment="Left" Margin="80,595,0,0" VerticalAlignment="Top" Width="69" Click="editSave_Click" Height="69"/>
+        <Button Content="[edit]" Name="Edit" HorizontalAlignment="Left" Margin="80,595,0,0" VerticalAlignment="Top" Width="69" Click="editSave_Click" Height="69"/>
     </Grid>
 </Page>

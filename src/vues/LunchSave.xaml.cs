@@ -39,6 +39,7 @@ namespace WpfApp1.src.vues
         private void loadLanguage()
         {
             lunchSave.Content = m.GetResourceManager().GetString("LUNCH_lunch");
+            Home.Content = m.GetResourceManager().GetString("home");
         }
 
         private void HomeButton_Click(object sender, RoutedEventArgs e)

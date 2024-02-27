@@ -95,6 +95,7 @@ namespace ConsoleApp1
             label_langage.Content = m.GetResourceManager().GetString("SETTINGS_lang");
             label_logType.Content = m.GetResourceManager().GetString("SETTINGS_log_type");
             label_crypt.Content = m.GetResourceManager().GetString("SETTINGS_crypt");
+            home.Content = m.GetResourceManager().GetString("home");
         }
 
         public Object charger()
