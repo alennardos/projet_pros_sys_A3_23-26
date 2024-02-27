@@ -107,18 +107,7 @@ namespace ConsoleApp1
         {
             String value = combo_crypt.SelectedItem as string;
 
-            bool crypt = true;
-
-            if(value.Equals("true"))
-            {
-                crypt = true;
-            }
-            else
-            {
-                crypt = false;
-            }
-
-            m.changeCrypt(crypt);
+            m.changeCrypt(value.Equals("true"));
         }
     }
 }
