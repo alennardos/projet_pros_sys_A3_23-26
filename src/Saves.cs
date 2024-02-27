@@ -7,6 +7,7 @@ using System.Reflection.PortableExecutable;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Xml;
 using System.Xml.Linq;
 
@@ -80,7 +81,11 @@ namespace ConsoleApp1.src
             saveFile.Close();
         }
 
-        
+        public void changeCrypt(bool crypt)
+        {
+            this.crypt = crypt;
+        }
+
         public void changeFormat(string format)
         {
             this.format = format;
@@ -178,6 +183,12 @@ namespace ConsoleApp1.src
             {
                 this.saves.RemoveAt(num);
             }
+        }
+
+        //Remove a save without index
+        public void removeSave(Save save)
+        {
+                this.saves.Remove(save);
         }
 
         // Change a save parameter about typeSave

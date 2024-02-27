@@ -128,13 +128,13 @@ namespace WpfApp1
             return localByName.Length > 0;
 
         }
-
+        // A
         public void makeSave(List<int> savesIndex)
         {
-            if (processIsActive("Minecraft") == true)
+            string software = "Minecraft";
+            if (processIsActive(software) == true)
             {
-                //TODO
-                return;
+                throw new Exception("The business software " + software + " is active \n Please close "+software);
             }
 
             foreach (int index in savesIndex)
@@ -166,6 +166,18 @@ namespace WpfApp1
             try
             {
                 saves.changeFormat(type);
+            }
+            catch (Exception e)
+            {
+
+            }
+        }
+
+        public void changeCrypt(bool crypt)
+        {
+            try
+            {
+                saves.changeCrypt(crypt);
             }
             catch (Exception e)
             {

@@ -134,5 +134,15 @@ namespace WpfApp1.src.vues
         {
 
         }
+
+        private void SaveDiff_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void SaveComplete_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
