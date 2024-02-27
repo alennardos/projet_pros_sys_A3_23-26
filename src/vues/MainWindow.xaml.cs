@@ -134,7 +134,7 @@ namespace WpfApp1
             string software = "Minecraft";
             if (processIsActive(software) == true)
             {
-                throw new Exception("The business software " + software + " is active");
+                throw new Exception("The business software " + software + " is active \n Please close "+software);
             }
 
             foreach (int index in savesIndex)

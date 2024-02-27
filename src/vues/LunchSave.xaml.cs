@@ -69,8 +69,15 @@ namespace WpfApp1.src.vues
             {
                 index.Add(listeSaves.Items.IndexOf(item));
             }
-
-            this.m.makeSave(index);
+            try
+            {
+                this.m.makeSave(index);
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show("" + ex, "EasySave", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            
         }
 
         public Object charger()
