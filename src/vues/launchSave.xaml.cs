@@ -76,7 +76,8 @@ namespace WpfApp1.src.vues
             }
             catch (Exception ex)
             {
-                System.Windows.MessageBox.Show("" + ex, "EasySave", MessageBoxButton.OK, MessageBoxImage.Error);
+                string error_business_software = m.GetResourceManager().GetString("error_business_software");
+                System.Windows.MessageBox.Show(""+ error_business_software +"\n"+ ex, "EasySave", MessageBoxButton.OK);
             }
             
         }
