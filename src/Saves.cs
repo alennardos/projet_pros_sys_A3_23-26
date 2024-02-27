@@ -233,7 +233,6 @@ namespace ConsoleApp1.src
         public void quit()
         {
             this.log.Close();
-            this.rts.Close();
             this.writeXmlSave();
         }
 
