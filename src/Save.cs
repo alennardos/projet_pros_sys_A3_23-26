@@ -26,6 +26,7 @@ namespace ConsoleApp1.src
         private bool isActive;
         private TypeSave ts;
         private Saves saves;
+        private int run;
         
         public Save(String name, String source, String target, TypeSave ts, Saves save)
         {
@@ -41,6 +42,7 @@ namespace ConsoleApp1.src
             leftSize = 0;
             actualFile = "";
             actualFileTarget = "";
+            this.run = 0;
             
         }
 
@@ -133,7 +135,12 @@ namespace ConsoleApp1.src
 
             foreach (FileInfo file in directory.GetFiles())
             {
+                while (Interlocked.Equals(this.run, 1))
+                {
+                    Thread.Sleep(100);
+                }
 
+                Thread.Sleep(300);
 
                 string targetFilePath = Path.Combine(destination, file.Name);
                 var watch = System.Diagnostics.Stopwatch.StartNew();
@@ -173,6 +180,8 @@ namespace ConsoleApp1.src
             res += "\n\"TargetFilePath\": \"" + this.destination + "\",";
             if (this.isActive) res += "\n\"State\": \"ACTIVE\",";
             if (!this.isActive) res += "\n\"State\": \"END\",";
+            if(this.run == 1) res+= "\n\"State\": \"Pause\",";
+            res += "\n\"value run:"+run;
             res += "\n\"TotalFilesToCopy\": \"" + this.nbfiles + "\",";
             res += "\n\"TotalFilesSize\": \"" + this.fileSize + "\",";
             res += "\n\"NbFilesLeftToDo\": \"" + this.nbLeft + "\",";
@@ -254,7 +263,14 @@ namespace ConsoleApp1.src
             return this.destination;
         }
 
+        public void pausePlay()
+        {
+            Interlocked.Increment(ref this.run);
+            if(run == 2)
+            {
+                Interlocked.Add(ref this.run, -2);
+            }
+        }
 
-   
     }
 }

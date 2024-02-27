@@ -20,6 +20,7 @@ using System.Diagnostics;
 using System.Collections;
 using ConsoleApp1;
 using System.Linq.Expressions;
+using ProgressBar = WpfApp1.src.vues.ProgressBar;
 
 namespace WpfApp1
 {
@@ -46,7 +47,7 @@ namespace WpfApp1
             InitializeComponent();
 
             this.run = true;
-            this.saves = new Saves("xml");
+            this.saves = Saves.Instance();
             this.rm = new ResourceManager("WpfApp1.languages.fr", Assembly.GetExecutingAssembly());
 
             vueSettings = new SettingsPageMenu(this);
@@ -57,6 +58,18 @@ namespace WpfApp1
             vueEdit = new EditSave(this);
             vueLunch = new LunchSave(this);
             vueSecondEdit = new second_edit(this);
+
+        }
+
+        public static void save(Object save)
+        {
+            ((Save)save).save();
+        }
+
+        public static void saveProgress(Object save)
+        {
+            //ProgressBar pb = new ProgressBar((Save)save);
+            //pb.Show();
 
         }
 
@@ -107,7 +120,6 @@ namespace WpfApp1
                 ts = new SaveDif();
             }
             this.saves.createSave(saveName, pathSrc, pathDest, ts);
-            this.saves.quit();
         }
 
         public bool processIsActive(string name)
@@ -127,7 +139,13 @@ namespace WpfApp1
 
             foreach (int index in savesIndex)
             {
-                this.saves.getSaves()[index].save();
+                ProgressBar pb = new ProgressBar(this.saves.getSaves()[index]);
+                pb.Show();
+                //Thread saveProgress = new Thread(MainWindow.saveProgress);
+                //saveProgress.SetApartmentState(ApartmentState.STA);
+                //saveProgress.Start(this.saves.getSaves()[index]);
+                Thread save = new Thread(MainWindow.save);
+                save.Start(this.saves.getSaves()[index]);
             }
         }
 
