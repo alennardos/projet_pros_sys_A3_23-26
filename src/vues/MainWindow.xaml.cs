@@ -44,20 +44,28 @@ namespace WpfApp1
         //Settings_menu vueSettings;
         public MainWindow()
         {
-            InitializeComponent();
+            //single instance case
+            if (processIsActive("EasySave") == true)
+            {
+                return;
+            }
+            else
+            {
+                InitializeComponent();
 
-            this.run = true;
-            this.saves = Saves.Instance();
-            this.rm = new ResourceManager("WpfApp1.languages.fr", Assembly.GetExecutingAssembly());
+                this.run = true;
+                this.saves = Saves.Instance();
+                this.rm = new ResourceManager("WpfApp1.languages.fr", Assembly.GetExecutingAssembly());
 
-            vueSettings = new SettingsPageMenu(this);
-            Thread.Sleep(100);
-            vueSave = new CreateSave(this);
-            vueHome = new Home(this);
-            this.Content = vueHome;
-            vueEdit = new EditSave(this);
-            vueLaunch = new LaunchSave(this);
-            vueSecondEdit = new second_edit(this);
+                vueSettings = new SettingsPageMenu(this);
+                Thread.Sleep(100);
+                vueSave = new CreateSave(this);
+                vueHome = new Home(this);
+                this.Content = vueHome;
+                vueEdit = new EditSave(this);
+                vueLaunch = new LaunchSave(this);
+                vueSecondEdit = new second_edit(this);
+            }
 
         }
 
@@ -85,7 +93,6 @@ namespace WpfApp1
                     break;
                 case "edit":
                     this.Content = vueEdit.charger();
-
                     break;
                 case "launch":
                     this.Content = vueLaunch.charger();
