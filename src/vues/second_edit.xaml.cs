@@ -36,6 +36,25 @@ namespace WpfApp1.src.vues
             InitializeComponent();
             this.m = m;
         }
+
+        private void loadLanguage()
+        {
+            /*
+            saveNameLabel.Content = m.GetResourceManager().GetString();
+            selectPathSourceLabel.Content = m.GetResourceManager().GetString();
+            selectPathSrc.Content = m.GetResourceManager().GetString();
+            selectPathDest.Content = m.GetResourceManager().GetString();
+            SelectSaveTypeLabel.Content = m.GetResourceManager().GetString();
+            SaveComplete.Content = m.GetResourceManager().GetString();
+            SaveDiff.Content = m.GetResourceManager().GetString();
+            saveButton.Content = m.GetResourceManager().GetString();
+            cancelButton.Content = m.GetResourceManager().GetString();
+            removeButton.Content = m.GetResourceManager().GetString();
+            */
+            
+
+
+        }
         private string OpenFolderDialog()
         {
             string selectedPath = "";
@@ -98,9 +117,9 @@ namespace WpfApp1.src.vues
             if (good)
             {
                 if (SaveDiff.IsChecked == true)
-                    //TODO
+                    saveModif.setTs(new SaveDif());
                 if(SaveComplete.IsChecked == true)
-                    //TODO
+                    saveModif.setTs(new SaveComplete());
 
                 
                     saveModif.SetName(saveName.Text);
@@ -112,7 +131,15 @@ namespace WpfApp1.src.vues
         }
         private void remove_Click(object sender, RoutedEventArgs e)
         {
-            //TODO
+            try
+            {
+                m.GetSaves().removeSave(saveModif);
+                this.m.afficher("edit");
+            }
+            catch(Exception ex) 
+            {
+                System.Windows.MessageBox.Show(""+ex, "EasySave", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void src_Click(object sender, RoutedEventArgs e)
