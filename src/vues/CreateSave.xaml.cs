@@ -124,5 +124,10 @@ namespace WpfApp1.src.vues
             loadLanguage();
             return this.Content;
         }
+
+        private void saveName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

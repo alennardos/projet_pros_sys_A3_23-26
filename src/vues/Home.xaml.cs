@@ -29,6 +29,7 @@ namespace WpfApp1.src.vues
             loadLanguage();
         }
 
+
         private void loadLanguage()
         {
             create.Content = m.GetResourceManager().GetString("HOME_create_save");

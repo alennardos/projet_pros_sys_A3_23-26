@@ -63,11 +63,56 @@ namespace WpfApp1.src.vues
 
         private void save_Click(object sender, RoutedEventArgs e)
         {
-            saveModif.SetName(saveName.Text);
-            saveModif.SetSource(saveSrcPath.Text);
-            saveModif.SetDestination(saveDestPath.Text);
-            this.m.afficher("edit");
+            bool good = true;
+
+            if (saveName.Text.Equals(""))
+            {
+                saveName.BorderBrush = System.Windows.Media.Brushes.Red;
+                good = false;
+            }
+            else
+            {
+                saveName.BorderBrush = default;
+            }
+
+            if (saveDestPath.Text.Equals(""))
+            {
+                saveDestPath.BorderBrush = System.Windows.Media.Brushes.Red;
+                good = false;
+
+            }
+            else
+            {
+                saveDestPath.BorderBrush = default;
+            }
+
+            if (saveSrcPath.Text.Equals(""))
+            {
+                saveSrcPath.BorderBrush = System.Windows.Media.Brushes.Red;
+                good = false;
+            }
+            else
+            {
+                saveSrcPath.BorderBrush = default;
+            }
+            if (good)
+            {
+                if (SaveDiff.IsChecked == true)
+                    //TODO
+                if(SaveComplete.IsChecked == true)
+                    //TODO
+
+                
+                    saveModif.SetName(saveName.Text);
+                saveModif.SetSource(saveSrcPath.Text);
+                saveModif.SetDestination(saveDestPath.Text);
+                this.m.afficher("edit");
+            }
             
+        }
+        private void remove_Click(object sender, RoutedEventArgs e)
+        {
+            //TODO
         }
 
         private void src_Click(object sender, RoutedEventArgs e)

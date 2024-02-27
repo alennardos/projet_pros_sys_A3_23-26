@@ -9,14 +9,15 @@
       Title="Home">
 
     <Grid>
-        <Image x:Name="picture_home" HorizontalAlignment="Center" Height="209" Margin="0,57,0,0" VerticalAlignment="Top" Width="246" Source="/src/vues/home_picture.jpeg" RenderTransformOrigin="0.934,0.558"/>
         <Grid Margin="408,271,408,65">
+
             <Button Content="[create]" Name="create" HorizontalAlignment="Center" Margin="0,64,0,0" VerticalAlignment="Top" Height="47" Width="198" Click="Button_Click"/>
             <Button Content="[lunch]" Name="lunch" HorizontalAlignment="Center" Margin="0,173,0,0" VerticalAlignment="Top" Height="47" Width="198" Click="lunch_Click"/>
             <Button Content="[edit]" Name="edit" HorizontalAlignment="Center" Margin="0,285,0,0" VerticalAlignment="Top" Height="47" Width="198" Click="edit_Click"/>
-            
+
         </Grid>
         <Button Content="[settings]" Name="settings" HorizontalAlignment="Left" Margin="10,615,0,0" VerticalAlignment="Top" Height="70" Width="70
                 " Click="settings_Click"/>
+        <Image x:Name="picture_home" HorizontalAlignment="Center" Height="171" Margin="0,62,0,0" VerticalAlignment="Top" Width="472" Source="/src/vues/logo.png" RenderTransformOrigin="0.5,0.5" Stretch="UniformToFill"/>
     </Grid>
 </Page>
