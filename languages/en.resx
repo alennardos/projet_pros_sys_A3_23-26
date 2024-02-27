@@ -201,7 +201,13 @@
   <data name="HOME_settings" xml:space="preserve">
     <value>Settings</value>
   </data>
-  <data name="LAUNCH_launch" xml:space="preserve">
+  <data name="LUNCH_cantrun" xml:space="preserve">
+    <value>Impossible to lunch a save because a "Logiciel Metier" is working</value>
+  </data>
+  <data name="LUNCH_info_save" xml:space="preserve">
+    <value>Type 3-5 to initiate the backup from 3 TO 5, type 3;4 to backup 3 AND 4</value>
+  </data>
+  <data name="LUNCH_lunch" xml:space="preserve">
     <value>Launch selected saves</value>
   </data>
   <data name="quit" xml:space="preserve">
