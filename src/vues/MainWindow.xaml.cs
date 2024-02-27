@@ -139,13 +139,14 @@ namespace WpfApp1
 
             foreach (int index in savesIndex)
             {
+                Thread save = new Thread(MainWindow.save);
+                save.Start(this.saves.getSaves()[index]);
                 ProgressBar pb = new ProgressBar(this.saves.getSaves()[index]);
                 pb.Show();
                 //Thread saveProgress = new Thread(MainWindow.saveProgress);
                 //saveProgress.SetApartmentState(ApartmentState.STA);
                 //saveProgress.Start(this.saves.getSaves()[index]);
-                Thread save = new Thread(MainWindow.save);
-                save.Start(this.saves.getSaves()[index]);
+
             }
         }
 

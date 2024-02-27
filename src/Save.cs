@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -181,7 +182,6 @@ namespace ConsoleApp1.src
             if (this.isActive) res += "\n\"State\": \"ACTIVE\",";
             if (!this.isActive) res += "\n\"State\": \"END\",";
             if(this.run == 1) res+= "\n\"State\": \"Pause\",";
-            res += "\n\"value run:"+run;
             res += "\n\"TotalFilesToCopy\": \"" + this.nbfiles + "\",";
             res += "\n\"TotalFilesSize\": \"" + this.fileSize + "\",";
             res += "\n\"NbFilesLeftToDo\": \"" + this.nbLeft + "\",";
@@ -270,6 +270,17 @@ namespace ConsoleApp1.src
             {
                 Interlocked.Add(ref this.run, -2);
             }
+        }
+
+        public void progress(object sender, DoWorkEventArgs e)
+        {
+            while (this.fileSize == 0) { Thread.Sleep(200); }
+            while (this.isActive)
+            {
+                (sender as BackgroundWorker).ReportProgress((((this.fileSize/100) - (this.leftSize/100))*100)/(this.fileSize/100));
+                Thread.Sleep(400);
+            }
+            
         }
 
     }

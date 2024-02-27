@@ -1,6 +1,7 @@
 ﻿using ConsoleApp1.src;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +28,21 @@ namespace WpfApp1.src.vues
         {
             InitializeComponent();
             this.s = s;
+            BackgroundWorker worker = new BackgroundWorker();
+            worker.WorkerReportsProgress = true;
+            worker.DoWork += s.progress;
+            worker.ProgressChanged += worker_ProgressChanged;
+            worker.RunWorkerAsync();
+        }
+
+        void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            //initialisation de la barre de progression avec le pourcentage de progression
+            pbstatus1.Value = e.ProgressPercentage;
+
+            //Affichage de la progression sur un label
+            lb_etat_prog_server.Content = pbstatus1.Value.ToString() + "%";
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
