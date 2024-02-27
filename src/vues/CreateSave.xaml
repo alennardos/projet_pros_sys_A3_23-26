@@ -33,8 +33,8 @@
 
         <Label x:Name="label_selectSaveType" Grid.Row="3"  Content="[SelectSaveType]"/>
 
-        <RadioButton Grid.Row="3"  Content="[complete]" Name="SaveComplete" HorizontalAlignment="Left" Margin="263,0,0,0" VerticalAlignment="Center" IsChecked="True"/>
-        <RadioButton Grid.Row="3"  Content="[diff]" Name="SaveDiff"  HorizontalAlignment="Left" Margin="365,0,0,0" VerticalAlignment="Center"/>
+        <RadioButton Grid.Row="3"  Content="[complete]" Name="SaveComplete" HorizontalAlignment="Left" Margin="263,0,0,0" VerticalAlignment="Center" IsChecked="True" Checked="SaveComplete_Checked"/>
+        <RadioButton Grid.Row="3"  Content="[diff]" Name="SaveDiff"  HorizontalAlignment="Left" Margin="365,0,0,0" VerticalAlignment="Center" Checked="SaveDiff_Checked"/>
 
         <Button Grid.Row ="6"  Content="[create]" Name="create" HorizontalAlignment="Left" Margin="126,21,0,0" VerticalAlignment="Top" Click="create_Click" Height="69" Width="68"/>
 

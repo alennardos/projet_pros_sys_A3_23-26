@@ -38,10 +38,14 @@ namespace ConsoleApp1
             combo_typeLogs.Items.Add("xml");
             combo_typeLogs.Items.Add("json");
 
+            combo_crypt.Items.Add("true");
+            combo_crypt.Items.Add("false");
+
             this.addLanguages();
 
             combo_langages.SelectedIndex = 0;
             combo_typeLogs.SelectedIndex = 0;
+            combo_crypt.SelectedIndex = 0;
 
             loadLanguage();
         }
@@ -90,12 +94,30 @@ namespace ConsoleApp1
         {
             label_langage.Content = m.GetResourceManager().GetString("SETTINGS_lang");
             label_logType.Content = m.GetResourceManager().GetString("SETTINGS_log_type");
-            home.Content = m.GetResourceManager().GetString("home");
+            label_crypt.Content = m.GetResourceManager().GetString("SETTINGS_crypt");
         }
 
         public Object charger()
         {
             return this.Content;
+        }
+
+        private void combo_crypt_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            String value = combo_crypt.SelectedItem as string;
+
+            bool crypt = true;
+
+            if(value.Equals("true"))
+            {
+                crypt = true;
+            }
+            else
+            {
+                crypt = false;
+            }
+
+            m.changeCrypt(crypt);
         }
     }
 }

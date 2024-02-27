@@ -172,6 +172,18 @@ namespace WpfApp1
             }
         }
 
+        public void changeCrypt(bool crypt)
+        {
+            try
+            {
+                saves.changeCrypt(crypt);
+            }
+            catch (Exception e)
+            {
+
+            }
+        }
+
         public void setSaveModif(int index)
         {
             this.saveModif = this.saves.getSaves()[index];
