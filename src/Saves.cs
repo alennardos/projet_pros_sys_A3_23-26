@@ -58,7 +58,7 @@ namespace ConsoleApp1.src
                 Directory.CreateDirectory(savePath);
             }
 
-            string logFilePath = Path.Combine(logsPath, "log." + format);
+            string logFilePath = Path.Combine(logsPath, "log"+ DateTime.Today.ToString("dd.MM.yy") + "." + format);
             rtsFilePath = Path.Combine(logsPath, "rts.json");
             string saveFilePath = Path.Combine(savePath, "save.xml");
 
@@ -91,7 +91,7 @@ namespace ConsoleApp1.src
         {
             this.format = format;
             log.Close();
-            log = new StreamWriter(logsPath + "\\log." + format, true);
+            log = new StreamWriter(logsPath + "\\log" + DateTime.Today.ToString("dd.MM.yy") + "." + format, true);
         }
 
         // Create a save with XML file
