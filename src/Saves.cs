@@ -81,7 +81,11 @@ namespace ConsoleApp1.src
             saveFile.Close();
         }
 
-        
+        public void changeCrypt(bool crypt)
+        {
+            this.crypt = crypt;
+        }
+
         public void changeFormat(string format)
         {
             this.format = format;
