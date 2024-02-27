@@ -39,8 +39,8 @@ namespace ConsoleApp1
 
             this.addLanguages();
 
-            combo_langages.SelectedIndex = 0;
-            combo_typeLogs.SelectedIndex = 0;
+            combo_langages.SelectedIndex = 1;
+            combo_typeLogs.SelectedIndex = 1;
         }
 
         private static string GetThisFilePath([CallerFilePath] string path = null)

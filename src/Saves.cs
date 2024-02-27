@@ -23,28 +23,21 @@ namespace ConsoleApp1.src
         private XmlTextReader saveFile;
         private String format;
         private bool crypt;
+        private String rtsFilePath;
 
-        /*
-        public Saves(string format)
+        private static Saves _instance;
+
+        public static Saves Instance()
         {
-            this.format = format;
-            saves = new List<Save>();
-            var path = GetThisFilePath();
-            
-            if (!new DirectoryInfo(path + "\\..\\..\\logs").Exists)
             {
-                Directory.CreateDirectory(path + "\\..\\..\\logs");
+                if (_instance == null)
+                {
+                    _instance = new Saves("json");
+                }
+                return _instance;
             }
-
-            log = new StreamWriter(path + "\\..\\..\\logs\\log."+format, true);
-            rts = new StreamWriter(path + "\\..\\..\\logs\\rts.json");
-            saveFile = new XmlTextReader(path + "\\..\\..\\save\\save.xml");
-            createSaveXml();
-            saveFile.Close();
-            this.crypt = true;
         }
-        */
-        public Saves(string format)
+        private Saves(string format)
         {
             this.format = format;
             saves = new List<Save>();
@@ -64,7 +57,7 @@ namespace ConsoleApp1.src
             }
 
             string logFilePath = Path.Combine(logsPath, "log." + format);
-            string rtsFilePath = Path.Combine(logsPath, "rts.json");
+            rtsFilePath = Path.Combine(logsPath, "rts.json");
             string saveFilePath = Path.Combine(savePath, "save.xml");
 
             if (!File.Exists(saveFilePath))
@@ -80,7 +73,7 @@ namespace ConsoleApp1.src
             }
 
             log = new StreamWriter(logFilePath, true);
-            //rts = new StreamWriter(rtsFilePath);
+            
             new StreamWriter(saveFilePath, true).Close();
             saveFile = new XmlTextReader(saveFilePath);
             createSaveXml();
@@ -208,6 +201,7 @@ namespace ConsoleApp1.src
         // Write a RTS File
         public void writeRts()
         {
+            rts = new StreamWriter(rtsFilePath, false);
             String res = "[";
             foreach(Save save in this.saves)
             {
@@ -215,7 +209,8 @@ namespace ConsoleApp1.src
                 res += "\n";
             }
             res += "]\n";
-            //this.rts.Write(res);
+            this.rts.Write(res);
+            rts.Close();
         }
 
         public List<Save> getSaves()
@@ -227,7 +222,7 @@ namespace ConsoleApp1.src
         public void quit()
         {
             this.log.Close();
-            //this.rts.Close();
+            this.rts.Close();
             this.writeXmlSave();
         }
 

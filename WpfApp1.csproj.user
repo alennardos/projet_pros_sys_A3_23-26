@@ -10,13 +10,13 @@
     <Compile Update="src\vues\CreateSave.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="src\vues\edit_edit.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="src\vues\Home.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="src\vues\LunchSave.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="src\vues\ProgressBar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -24,13 +24,13 @@
     <Page Update="src\vues\CreateSave.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="src\vues\edit_edit.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="src\vues\Home.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="src\vues\LunchSave.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="src\vues\ProgressBar.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
