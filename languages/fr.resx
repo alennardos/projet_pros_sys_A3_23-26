@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="cancel" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
   <data name="CREATE_create" xml:space="preserve">
     <value>Créer</value>
   </data>
@@ -145,10 +148,10 @@
     <value>Création réussit !</value>
   </data>
   <data name="CREATE_type_save" xml:space="preserve">
-    <value>Type de sauvegarde (1: complete, 2: différentiellef)</value>
+    <value>Type de sauvegarde</value>
   </data>
   <data name="EDIT_delet_save" xml:space="preserve">
-    <value>Supprimer la sauvegarde</value>
+    <value>Supprimer</value>
   </data>
   <data name="EDIT_destination_save" xml:space="preserve">
     <value>Chemin de destination de la sauvegarde</value>
@@ -173,6 +176,9 @@
   </data>
   <data name="error_general" xml:space="preserve">
     <value>Une erreur s'est produite</value>
+  </data>
+  <data name="FILE_choose" xml:space="preserve">
+    <value>Parcourir</value>
   </data>
   <data name="home" xml:space="preserve">
     <value>Accueil</value>
@@ -207,6 +213,9 @@
   <data name="quit" xml:space="preserve">
     <value>Quitter</value>
   </data>
+  <data name="save" xml:space="preserve">
+    <value>Sauvegarder</value>
+  </data>
   <data name="SAVE_dest" xml:space="preserve">
     <value>Destination de la sauvegarde</value>
   </data>
@@ -215,6 +224,9 @@
   </data>
   <data name="SAVE_src" xml:space="preserve">
     <value>Source de la sauvegarde</value>
+  </data>
+  <data name="SETTINGS_crypt" xml:space="preserve">
+    <value>Cryptage de la sauvegarde</value>
   </data>
   <data name="SETTINGS_lang" xml:space="preserve">
     <value>Choisir une langue</value>
