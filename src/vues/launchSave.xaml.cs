@@ -24,12 +24,12 @@ namespace WpfApp1.src.vues
     /// <summary>
     /// Logique d'interaction pour Page1.xaml
     /// </summary>
-    public partial class LunchSave : Page
+    public partial class LaunchSave : Page
     {
 
         MainWindow m;
 
-        public LunchSave(MainWindow m)
+        public LaunchSave(MainWindow m)
         {
             InitializeComponent();
             this.m = m;

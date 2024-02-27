@@ -32,7 +32,7 @@ namespace WpfApp1
         CreateSave vueSave;
         Home vueHome;
         EditSave vueEdit;
-        LunchSave vueLunch;
+        LaunchSave vueLunch;
         SettingsPageMenu vueSettings;
         second_edit vueSecondEdit;
 
@@ -56,7 +56,7 @@ namespace WpfApp1
             vueHome = new Home(this);
             this.Content = vueHome;
             vueEdit = new EditSave(this);
-            vueLunch = new LunchSave(this);
+            vueLunch = new LaunchSave(this);
             vueSecondEdit = new second_edit(this);
 
         }
