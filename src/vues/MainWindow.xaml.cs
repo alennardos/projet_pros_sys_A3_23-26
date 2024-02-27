@@ -131,10 +131,10 @@ namespace WpfApp1
 
         public void makeSave(List<int> savesIndex)
         {
-            if (processIsActive("Minecraft") == true)
+            string software = "Minecraft";
+            if (processIsActive(software) == true)
             {
-                //TODO
-                return;
+                throw new Exception("The business software " + software + " is active");
             }
 
             foreach (int index in savesIndex)
