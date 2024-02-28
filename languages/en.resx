@@ -222,6 +222,9 @@
   <data name="SETTINGS_crypt" xml:space="preserve">
     <value>Backup encryption</value>
   </data>
+  <data name="SETTINGS_ko" xml:space="preserve">
+    <value>Max size per save in MT</value>
+  </data>
   <data name="SETTINGS_lang" xml:space="preserve">
     <value>Choose a language</value>
   </data>
