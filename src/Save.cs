@@ -170,7 +170,7 @@ namespace ConsoleApp1.src
                 res += (log(file.FullName, destination + @"\" + file.Name, ((int)file.Length), time));
 
                 fileTreated++;
-                sizeTreated += (int)file.Length;
+                sizeTreated += (long)file.Length;
             }
 
             DirectoryInfo[] directorys = directory.GetDirectories();
@@ -228,13 +228,13 @@ namespace ConsoleApp1.src
         }
 
         // Return the size of a directory
-        public int calculDirectorySize(DirectoryInfo directory)
+        public long calculDirectorySize(DirectoryInfo directory)
         {
-            int res = 0;
+            long res = 0;
 
             foreach (FileInfo f in directory.GetFiles())
             {
-                res += (int)f.Length;
+                res += f.Length;
             }
 
             foreach (DirectoryInfo subDirectory in directory.GetDirectories())
@@ -290,7 +290,7 @@ namespace ConsoleApp1.src
             while (this.isActive)
             {
                 (sender as BackgroundWorker).ReportProgress((int)((this.sizeTreated*100) / this.fileSize));
-                Thread.Sleep(400);
+                Thread.Sleep(300);
             }
             (sender as BackgroundWorker).ReportProgress(100);
         }

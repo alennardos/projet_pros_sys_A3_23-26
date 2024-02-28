@@ -56,7 +56,7 @@ namespace WpfApp1.src.vues
             }
         }
 
-        public ProgressBarVue(Save s, Socket socket)
+        public ProgressBarVue(Save s, Socket socket, ResourceManager rm)
         {
             this.rm = rm;
             InitializeComponent();
