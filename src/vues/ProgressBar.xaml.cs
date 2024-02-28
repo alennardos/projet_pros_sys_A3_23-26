@@ -26,6 +26,7 @@ namespace WpfApp1.src.vues
 
         public ProgressBar(Save s)
         {
+            loadLanguage();
             InitializeComponent();
             this.s = s;
             BackgroundWorker worker = new BackgroundWorker();
@@ -34,13 +35,25 @@ namespace WpfApp1.src.vues
             worker.ProgressChanged += worker_ProgressChanged;
             worker.RunWorkerAsync();
         }
-
-        void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        private void loadLanguage()
         {
-            //initialisation de la barre de progression avec le pourcentage de progression
+           //TODO
+        }
+
+            void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            
+            //Initializing the progress bar with the progress percentage.
             pbstatus1.Value = e.ProgressPercentage;
 
-            //Affichage de la progression sur un label
+            //close when 100%
+            if(pbstatus1.Value == 100)
+            {
+                System.Windows.MessageBox.Show("Le processus est terminé.", "Fin de traitement", MessageBoxButton.OK, MessageBoxImage.Information);
+                this.Close();
+            }
+
+            //Displaying the progress on a label.
             lb_etat_prog_server.Content = pbstatus1.Value.ToString() + "%";
 
         }
@@ -49,5 +62,6 @@ namespace WpfApp1.src.vues
         {
             this.s.pausePlay();
         }
+
     }
 }

@@ -135,6 +135,16 @@ namespace ConsoleApp1.src
                 Directory.CreateDirectory(destination);
             }
 
+            //clear the destination file in the case of complete save
+            if( ts is SaveComplete )
+            {
+                string[] files = Directory.GetFiles(destination);
+                foreach (string file in files)
+                {
+                    File.Delete(file);
+                }
+            }
+
             foreach (FileInfo file in directory.GetFiles())
             {
                 while (Interlocked.Equals(this.run, 1))
