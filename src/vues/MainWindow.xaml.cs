@@ -73,8 +73,17 @@ namespace WpfApp1
                 vueEdit = new EditSave(this);
                 vueLaunch = new LaunchSave(this);
                 vueSecondEdit = new second_edit(this);
+
             }
 
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            double screenWidth = SystemParameters.PrimaryScreenWidth;
+            double screenHeight = SystemParameters.PrimaryScreenHeight;
+            Width = screenWidth;
+            Height = screenHeight;
         }
 
         public static void save(Object save)

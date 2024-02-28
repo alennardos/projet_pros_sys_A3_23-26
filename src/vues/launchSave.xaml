@@ -9,9 +9,8 @@
       Title="LaunchSave">
 
     <Grid>
-        <ListBox Margin="80,80,80,151" x:Name ="listeSaves" SelectionChanged="listeSaves_SelectionChanged"/>
-        <Button Name="Home" Content="[Home]" HorizontalAlignment="Left" Height="69" Margin="931,602,0,0" VerticalAlignment="Top" Width="69" Click="HomeButton_Click"></Button>
-        <Button Content="[launchSave]" Name="launchSave" HorizontalAlignment="Left" Margin="559,602,0,0" VerticalAlignment="Top" Height="69" Width="351" Click="Launch_save_Click"/>
-
+        <ListBox Margin="80,80,80,151" x:Name="listeSaves" SelectionChanged="listeSaves_SelectionChanged"/>
+        <Button Name="Home" Content="[Home]" HorizontalAlignment="Left" Height="69" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="69" Click="HomeButton_Click"/>
+        <Button Content="[launchSave]" Name="launchSave" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="69" Width="352" Margin="0,0,0,10" Click="Launch_save_Click"/>
     </Grid>
 </Page>
