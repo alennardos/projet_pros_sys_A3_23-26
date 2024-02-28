@@ -30,29 +30,22 @@ namespace WpfApp1.src.vues
         private Save s;
         ResourceManager rm;
         bool isPlaying = true;
+        static int value = 0;
 
-        private static void AccepterConnexion(Object list)
+        private static void AccepterConnexion(Object s)
         {
-            Socket res = ((Socket)((List<Object>)list)[0]).Accept();
-            sendProgress(res, (System.Windows.Controls.ProgressBar)((List<Object>)list)[1]);
+            Socket res = ((Socket)s).Accept();
+            sendProgress(res);
         }
 
-        private static void sendProgress(Socket s, ProgressBar pb)
+        private static void sendProgress(Socket s)
         {
-            byte[] value = new byte[128];
             bool run = true;
-            int i = 0;
             while (run)
             {
-                // Utilise Dispatcher.Invoke pour accéder à l'interface utilisateur depuis le thread UI
-                pb.Dispatcher.Invoke(() =>
-                {
-                    byte[] value = BitConverter.GetBytes(i);
-                    s.Send(value);
-                    Thread.Sleep(1000);
-                    i++;
-                    //run = pb.Value == 100; // Si vous avez besoin d'arrêter le bouclage lorsque la valeur atteint 100, vous pouvez le faire ici
-                });
+                s.Send(BitConverter.GetBytes(value));
+                Thread.Sleep(300);
+                run = value != 100;
             }
         }
 
@@ -68,7 +61,7 @@ namespace WpfApp1.src.vues
             worker.RunWorkerAsync();
             Thread serveur = new Thread(AccepterConnexion);
 
-            serveur.Start(new List<object>() { socket, pbstatus1 });
+            serveur.Start(socket);
 
             this.rm = rm;
             etatProgressLabel.Content = rm.GetString("LAUNCH_progress");
@@ -81,15 +74,16 @@ namespace WpfApp1.src.vues
             //Initializing the progress bar with the progress percentage.
             pbstatus1.Value = e.ProgressPercentage;
 
+            etatProgressLabel.Content = pbstatus1.Value.ToString() + "%";
+
             //close when 100%
-            if(pbstatus1.Value == 100)
+            if (pbstatus1.Value == 100)
             {
                 System.Windows.MessageBox.Show("Le processus est terminé.", "Fin de traitement", MessageBoxButton.OK, MessageBoxImage.Information);
                 this.Close();
             }
 
-            //Displaying the progress on a label.
-            etatProgressLabel.Content = pbstatus1.Value.ToString() + "%";
+            value = (int)pbstatus1.Value;
 
         }
 
