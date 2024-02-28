@@ -180,6 +180,12 @@
   <data name="error_general" xml:space="preserve">
     <value>Une erreur s'est produite</value>
   </data>
+  <data name="error_nosave" xml:space="preserve">
+    <value>Pas de sauvegarde selectionnée</value>
+  </data>
+  <data name="error_running" xml:space="preserve">
+    <value>Le processus est déjà en cours d'utilisation</value>
+  </data>
   <data name="FILE_choose" xml:space="preserve">
     <value>Parcourir</value>
   </data>
@@ -232,7 +238,7 @@
     <value>Cryptage de la sauvegarde</value>
   </data>
   <data name="SETTINGS_ko" xml:space="preserve">
-    <value>Taille par sauvegarde max en MT</value>
+    <value>Limite maximale pour le transfert en parallèle (en Ko)</value>
   </data>
   <data name="SETTINGS_lang" xml:space="preserve">
     <value>Choisir une langue</value>

@@ -180,6 +180,12 @@
   <data name="error_general" xml:space="preserve">
     <value>An error occurred</value>
   </data>
+  <data name="error_nosave" xml:space="preserve">
+    <value>No save selected</value>
+  </data>
+  <data name="error_running" xml:space="preserve">
+    <value>The process is already in use</value>
+  </data>
   <data name="FILE_choose" xml:space="preserve">
     <value>Browse</value>
   </data>
@@ -232,7 +238,7 @@
     <value>Backup encryption</value>
   </data>
   <data name="SETTINGS_ko" xml:space="preserve">
-    <value>Max size per save in MT</value>
+    <value>Maximum limit for parallel transfer (in KB)</value>
   </data>
   <data name="SETTINGS_lang" xml:space="preserve">
     <value>Choose a language</value>

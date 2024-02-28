@@ -48,7 +48,8 @@ namespace WpfApp1
             //single instance case
             if (processIsActive("EasySave") == true)
             {
-                return;
+                System.Windows.MessageBox.Show(rm.GetString("error_running"));
+                System.Windows.Application.Current.Shutdown();
             }
             else
             {
@@ -74,7 +75,6 @@ namespace WpfApp1
         {
             ((Saves)((List<Object>)save).ElementAt(0)).save((int)((List<Object>)save).ElementAt(1));
         }
-
 
         public void afficher(string page)
         {
@@ -130,7 +130,7 @@ namespace WpfApp1
             return localByName.Length > 0;
 
         }
-        // A
+        
         public void makeSave(List<int> savesIndex)
         {
             string software = "Minecraft";

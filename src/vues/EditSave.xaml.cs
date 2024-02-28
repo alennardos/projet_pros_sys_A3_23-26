@@ -54,7 +54,7 @@ namespace WpfApp1.src.vues
             if (listeSaves.SelectedIndex == -1)
             {
                 
-                System.Windows.MessageBox.Show("No save selected", "EasySave", MessageBoxButton.OK, MessageBoxImage.Error);
+                System.Windows.MessageBox.Show(m.GetResourceManager().GetString("error_nosave"), "EasySave", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 

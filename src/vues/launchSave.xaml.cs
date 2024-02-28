@@ -72,6 +72,11 @@ namespace WpfApp1.src.vues
                 index.Add(listeSaves.Items.IndexOf(item));
                 
             }
+            if (listeSaves.SelectedIndex == -1)
+            {
+                System.Windows.MessageBox.Show(m.GetResourceManager().GetString("error_nosave"), "EasySave", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             try
             {
                 this.m.makeSave(index);
