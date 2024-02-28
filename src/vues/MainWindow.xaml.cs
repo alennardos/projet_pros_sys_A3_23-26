@@ -43,6 +43,10 @@ namespace WpfApp1
         private Save saveModif;
         private int size = 0;
 
+        //when the buisnessSoftare is running user cant launch save !
+        static string buisnessSoftware = "Minecraft";
+        public static bool detected = false;
+
         Socket s;
 
         //Settings_menu vueSettings;
@@ -51,7 +55,7 @@ namespace WpfApp1
             //single instance case
             if (processIsActive("EasySave"))
             {
-                System.Windows.MessageBox.Show(rm.GetString("error_running"));
+                System.Windows.MessageBox.Show(rm.GetString("error_running"), "EasySave");
                 System.Windows.Application.Current.Shutdown();
             }
             else
@@ -73,6 +77,11 @@ namespace WpfApp1
                 vueEdit = new EditSave(this);
                 vueLaunch = new LaunchSave(this);
                 vueSecondEdit = new second_edit(this);
+                
+
+                //stop the save process if the buisness software is running
+                Thread thread = new Thread(CheckProcessStatus);
+                thread.Start(this.saves);
 
             }
 
@@ -139,19 +148,51 @@ namespace WpfApp1
             this.saves.createSave(saveName, pathSrc, pathDest, ts);
         }
 
-        public bool processIsActive(string name)
+        public static bool processIsActive(string name)
         {
             Process[] localByName = Process.GetProcessesByName(name);
             return localByName.Length > 0;
 
         }
-        
+
+        public static void CheckProcessStatus(object saves)
+        {
+            while (true)
+            {
+                if (processIsActive(buisnessSoftware)==true && detected == false)
+                {
+
+                    foreach (Save s in ((Saves)saves).getSaves())
+                    {
+                        if(s.getPlay())
+                        {
+                            s.pausePlay();
+                        }
+                        
+                    }
+                    System.Windows.MessageBox.Show("Logiciel metier est en route", "EasySavet", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    detected = true;
+                }
+                //Gerer le cas pour changer le detected une fois que tout a été mis en pause
+                /*
+                else
+                {
+                    if(processIsActive(buisnessSoftware) == true && detected == true)
+                }
+                */
+
+                Thread.Sleep(5000);
+            }
+        }
+
+
+
         public void makeSave(List<int> savesIndex)
         {
-            string software = "Minecraft";
-            if (processIsActive(software) == true)
+            
+            if (processIsActive(buisnessSoftware) == true)
             {
-                throw new Exception("The business software " + software + " is active \n Please close "+software);
+                throw new Exception("The business software " + buisnessSoftware + " is active \n Please close "+ buisnessSoftware);
             }
 
             foreach (int index in savesIndex)
