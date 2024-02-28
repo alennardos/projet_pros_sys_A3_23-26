@@ -52,6 +52,7 @@ namespace WpfApp1.src.vues
             listeSaves.Items.Clear();
             ResourceManager rm = this.m.GetResourceManager();
             listeSaves.SelectionMode = SelectionMode.Multiple;
+
             foreach (Save s in m.GetSaves().getSaves())
             {
                 listeSaves.Items.Add($"{rm.GetString("SAVE_name")}:     {s.GetName()},     {rm.GetString("SAVE_src")}: {s.GetSource()},     {rm.GetString("SAVE_dest")}: {s.GetDestination()}");
@@ -69,6 +70,7 @@ namespace WpfApp1.src.vues
             foreach(var item in listeSaves.SelectedItems)
             {
                 index.Add(listeSaves.Items.IndexOf(item));
+                
             }
             try
             {
