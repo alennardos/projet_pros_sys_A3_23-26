@@ -174,6 +174,12 @@
   <data name="enter_bad" xml:space="preserve">
     <value>Je n'ai pas compris</value>
   </data>
+  <data name="erreur_format" xml:space="preserve">
+    <value>La valeur saisie n'est pas un nombre</value>
+  </data>
+  <data name="erreur_overflow" xml:space="preserve">
+    <value>La valeur saisie est trop grande</value>
+  </data>
   <data name="error_business_software" xml:space="preserve">
     <value>Impossible de lancer une sauvegarde tant que le logiciel métier est ouvert</value>
   </data>
@@ -238,7 +244,7 @@
     <value>Cryptage de la sauvegarde</value>
   </data>
   <data name="SETTINGS_ko" xml:space="preserve">
-    <value>Limite maximale pour le transfert en parallèle (en Ko)</value>
+    <value>Limite max' pour le transfert en parallèle (en Ko)</value>
   </data>
   <data name="SETTINGS_lang" xml:space="preserve">
     <value>Choisir une langue</value>

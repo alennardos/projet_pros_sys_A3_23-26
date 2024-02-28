@@ -23,7 +23,7 @@
         <Label x:Name="label_logType" Content="[logsType]" HorizontalAlignment="Left" Margin="597,334,0,0" VerticalAlignment="Top" Width="198" HorizontalContentAlignment="Center"/>
         <ComboBox x:Name="combo_typeLogs" HorizontalAlignment="Left" Margin="597,365,0,0" VerticalAlignment="Top" Width="198" Height="47" SelectionChanged="combo_typeLogs_SelectionChanged" VerticalContentAlignment="Center" 
                   HorizontalContentAlignment="Center"/>
-        <Label x:Name="label_maxoctet" Content="[maxoctet]" HorizontalAlignment="Left" Margin="597,201,0,0" VerticalAlignment="Top" Width="198" HorizontalContentAlignment="Center"/>
+        <Label x:Name="label_maxoctet" Content="[maxoctet]" HorizontalAlignment="Left" Margin="560,201,0,0" VerticalAlignment="Top" Width="272" HorizontalContentAlignment="Center"/>
         <TextBox x:Name="maxoctet" HorizontalAlignment="Left" Margin="597,232,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" Height="47" TextChanged="maxoctet_TextChanged" PreviewTextInput="DigitsOnlyTextBox_PreviewTextInput" MaxLength="10" />
 
     </Grid>

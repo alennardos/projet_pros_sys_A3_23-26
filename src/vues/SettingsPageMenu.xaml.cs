@@ -76,10 +76,27 @@ namespace ConsoleApp1
 
         private void HomeButton_Click(object sender, RoutedEventArgs e)
         {
-            this.m.afficher("menu");
+            if (maxoctet.Text != "")
+            {
 
-            if (m.getMaxSize() != 0)
-                m.setMaxSize(Int32.Parse(maxoctet.Text));
+                try
+                {
+                    m.setMaxSize(Int32.Parse(maxoctet.Text));
+                    this.m.afficher("menu");
+                }
+                catch (FormatException)
+                {
+                    System.Windows.MessageBox.Show(m.GetResourceManager().GetString("erreur_format"), "EasySave", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                catch (OverflowException)
+                {
+                    System.Windows.MessageBox.Show("erreur_overflow", "EasySave", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            else
+            {
+                this.m.afficher("menu");
+            }
         }
 
         private void addLanguages()
