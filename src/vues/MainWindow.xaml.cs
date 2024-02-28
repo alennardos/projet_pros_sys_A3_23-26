@@ -161,7 +161,7 @@ namespace WpfApp1
             {
                 if (processIsActive(buisnessSoftware)==true && detected == false)
                 {
-
+                    detected = true;
                     foreach (Save s in ((Saves)saves).getSaves())
                     {
                         if(s.getPlay())
@@ -171,17 +171,12 @@ namespace WpfApp1
                         
                     }
                     System.Windows.MessageBox.Show("Logiciel metier est en route", "EasySavet", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    detected = true;
+                    
                 }
-                //Gerer le cas pour changer le detected une fois que tout a été mis en pause
-                /*
-                else
+                if (processIsActive(buisnessSoftware) == false)
                 {
-                    if(processIsActive(buisnessSoftware) == true && detected == true)
+                    detected = false;
                 }
-                */
-
-                Thread.Sleep(5000);
             }
         }
 

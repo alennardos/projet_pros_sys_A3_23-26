@@ -76,6 +76,13 @@ namespace ConsoleApp1.src
             return res;
         }
 
+        //return if the curent save is playing
+        public bool getPlay()
+        {
+            //if run = 0 the save is running
+            return this.run==0;
+        }
+
         public void setTs(TypeSave ts)
         {
             this.ts = ts;

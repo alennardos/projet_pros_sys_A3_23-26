@@ -80,7 +80,7 @@ namespace WpfApp1.src.vues
             //close when 100%
             if (pbstatus1.Value == 100)
             {
-                System.Windows.MessageBox.Show("Le processus est terminé.", "Fin de traitement", MessageBoxButton.OK, MessageBoxImage.Information);
+                System.Windows.MessageBox.Show(rm.GetString("LAUNCH_succes"), "EasySave", MessageBoxButton.OK, MessageBoxImage.Information);
                 this.Close();
             }
 
@@ -90,16 +90,24 @@ namespace WpfApp1.src.vues
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            this.s.pausePlay();
-            if (isPlaying)
+            if (MainWindow.detected == true)
             {
-                isPlaying = false;
                 playPause.Content = rm.GetString("LAUNCH_pause");
+                System.Windows.MessageBox.Show(rm.GetString("error_business_software"), "EasySave", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             else
             {
-                isPlaying = true;
-                playPause.Content = rm.GetString("LAUNCH_play");
+                this.s.pausePlay();
+                if (isPlaying)
+                {
+                    isPlaying = false;
+                    playPause.Content = rm.GetString("LAUNCH_pause");
+                }
+                else
+                {
+                    isPlaying = true;
+                    playPause.Content = rm.GetString("LAUNCH_play");
+                }
             }
         }
 

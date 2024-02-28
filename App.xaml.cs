@@ -20,6 +20,7 @@ namespace WpfApp1
         {
             Saves s = Saves.Instance();
             s.quit();
+            System.Diagnostics.Process.GetCurrentProcess().Kill();
 
             //kill all process of the app when the user exit the app
             string processName = Process.GetCurrentProcess().ProcessName;
