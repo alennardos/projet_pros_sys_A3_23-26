@@ -145,7 +145,7 @@ namespace WpfApp1
 
                 save.Start(new List<object>() {this.saves, index});
 
-                ProgressBar pb = new ProgressBar(this.saves.getSaves()[index]);
+                ProgressBar pb = new ProgressBar(this.saves.getSaves()[index], rm);
 
                 pb.Show();
                 //Thread saveProgress = new Thread(MainWindow.saveProgress);

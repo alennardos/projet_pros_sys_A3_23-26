@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,10 +24,12 @@ namespace WpfApp1.src.vues
     {
 
         private Save s;
+        ResourceManager rm;
+        bool isPlaying = true;
 
-        public ProgressBar(Save s)
+        public ProgressBar(Save s, ResourceManager rm)
         {
-            loadLanguage();
+            this.rm = rm;
             InitializeComponent();
             this.s = s;
             BackgroundWorker worker = new BackgroundWorker();
@@ -34,10 +37,9 @@ namespace WpfApp1.src.vues
             worker.DoWork += s.progress;
             worker.ProgressChanged += worker_ProgressChanged;
             worker.RunWorkerAsync();
-        }
-        private void loadLanguage()
-        {
-           //TODO
+            this.rm = rm;
+            etatProgressLabel.Content = rm.GetString("LAUNCH_progress");
+            playPause.Content = rm.GetString("LAUNCH_play");
         }
 
             void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -54,13 +56,23 @@ namespace WpfApp1.src.vues
             }
 
             //Displaying the progress on a label.
-            lb_etat_prog_server.Content = pbstatus1.Value.ToString() + "%";
+            etatProgressLabel.Content = pbstatus1.Value.ToString() + "%";
 
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.s.pausePlay();
+            if (isPlaying)
+            {
+                isPlaying = false;
+                playPause.Content = rm.GetString("LAUNCH_pause");
+            }
+            else
+            {
+                isPlaying = true;
+                playPause.Content = rm.GetString("LAUNCH_play");
+            }
         }
 
     }

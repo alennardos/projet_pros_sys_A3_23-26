@@ -14,10 +14,10 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <ProgressBar x:Name="pbstatus1" HorizontalAlignment="Left" Height="51" Margin="65,64,0,0" VerticalAlignment="Top" Width="379"/>
-        <Label x:Name="lb_etat_prog_server" Content="" HorizontalAlignment="Left" Margin="305,0,0,0" VerticalAlignment="Center" Height="58" Width="108" FontSize="24"/>
-        <Button Content="[pause]" Name="PausePlay" HorizontalAlignment="Left" Margin="244,264,0,0" VerticalAlignment="Top" Click="Button_Click" Height="43" Width="169" RenderTransformOrigin="2.423,0.405" FontWeight="Bold"/>
+        <Label x:Name="etatProgressLabel" Content="" HorizontalAlignment="Left" Margin="305,0,0,0" VerticalAlignment="Center" Height="58" Width="108" FontSize="24"/>
+        <Button Content="[pause]" Name="playPause" HorizontalAlignment="Left" Margin="244,264,0,0" VerticalAlignment="Top" Click="Button_Click" Height="43" Width="169" RenderTransformOrigin="2.423,0.405" FontWeight="Bold"/>
         <Label HorizontalAlignment="Left" Margin="203,264,0,0" VerticalAlignment="Top"/>
-        <Label Content="[Progress]" Name="Progress" HorizontalAlignment="Left" Margin="24,147,0,0" VerticalAlignment="Top" RenderTransformOrigin="3.024,1.668" FontSize="18" FontFamily="Arial Rounded MT Bold" FontWeight="Bold"/>
+        <Label Content="[Progress]" Name="progressLabel" HorizontalAlignment="Left" Margin="110,153,0,0" VerticalAlignment="Top" RenderTransformOrigin="3.024,1.668" FontSize="18" FontFamily="Arial Rounded MT Bold" FontWeight="Bold"/>
 
     </Grid>
 </Window>

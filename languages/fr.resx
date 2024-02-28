@@ -204,6 +204,15 @@
   <data name="LAUNCH_launch" xml:space="preserve">
     <value>Lancer les sauvegardes sélectionnées </value>
   </data>
+  <data name="LAUNCH_pause" xml:space="preserve">
+    <value>Lancer</value>
+  </data>
+  <data name="LAUNCH_play" xml:space="preserve">
+    <value>Pause</value>
+  </data>
+  <data name="LAUNCH_progress" xml:space="preserve">
+    <value>Progression :</value>
+  </data>
   <data name="quit" xml:space="preserve">
     <value>Quitter</value>
   </data>

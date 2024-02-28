@@ -204,6 +204,15 @@
   <data name="LAUNCH_launch" xml:space="preserve">
     <value>Launch selected saves</value>
   </data>
+  <data name="LAUNCH_pause" xml:space="preserve">
+    <value>Pause</value>
+  </data>
+  <data name="LAUNCH_play" xml:space="preserve">
+    <value>Play</value>
+  </data>
+  <data name="LAUNCH_progress" xml:space="preserve">
+    <value>Progression:</value>
+  </data>
   <data name="quit" xml:space="preserve">
     <value>Quit</value>
   </data>
