@@ -9,6 +9,7 @@ using System.Resources;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -48,6 +49,12 @@ namespace ConsoleApp1
             combo_crypt.SelectedIndex = 0;
 
             loadLanguage();
+
+            if(m.getMaxSize() != 0)
+            {
+                maxoctet.Text = m.getMaxSize().ToString();
+            }
+            
         }
 
         private static string GetThisFilePath([CallerFilePath] string path = null)
@@ -70,6 +77,9 @@ namespace ConsoleApp1
         private void HomeButton_Click(object sender, RoutedEventArgs e)
         {
             this.m.afficher("menu");
+
+            if (m.getMaxSize() != 0)
+                m.setMaxSize(Int32.Parse(maxoctet.Text));
         }
 
         private void addLanguages()
@@ -96,6 +106,7 @@ namespace ConsoleApp1
             label_logType.Content = m.GetResourceManager().GetString("SETTINGS_log_type");
             label_crypt.Content = m.GetResourceManager().GetString("SETTINGS_crypt");
             home.Content = m.GetResourceManager().GetString("home");
+            label_maxoctet.Content = m.GetResourceManager().GetString("SETTINGS_ko");
         }
 
         public Object charger()
@@ -108,6 +119,16 @@ namespace ConsoleApp1
             String value = combo_crypt.SelectedItem as string;
 
             m.changeCrypt(value.Equals("true"));
+        }
+
+        private void maxoctet_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+        private void DigitsOnlyTextBox_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

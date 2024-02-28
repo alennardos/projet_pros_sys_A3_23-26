@@ -40,6 +40,7 @@ namespace WpfApp1
         private ResourceManager rm;
         private bool run;
         private Save saveModif;
+        private int size = 0;
 
         //Settings_menu vueSettings;
         public MainWindow()
@@ -141,8 +142,11 @@ namespace WpfApp1
             foreach (int index in savesIndex)
             {
                 Thread save = new Thread(MainWindow.save);
+
                 save.Start(new List<object>() {this.saves, index});
+
                 ProgressBar pb = new ProgressBar(this.saves.getSaves()[index]);
+
                 pb.Show();
                 //Thread saveProgress = new Thread(MainWindow.saveProgress);
                 //saveProgress.SetApartmentState(ApartmentState.STA);
@@ -190,6 +194,16 @@ namespace WpfApp1
         {
             this.saveModif = this.saves.getSaves()[index];
         }
+
+        public void setMaxSize(int size)
+        {
+            this.size = size;
+        }
+        public int getMaxSize()
+        {
+            return this.size;
+        }
+
         public Save getSaveModif()
         {
             return this.saveModif;
