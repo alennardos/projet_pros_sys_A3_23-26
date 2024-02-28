@@ -1,6 +1,7 @@
 ﻿using ConsoleApp1.src;
 using System.Configuration;
 using System.Data;
+using System.Diagnostics;
 using System.Reflection;
 using System.Resources;
 using System.Runtime.CompilerServices;
@@ -19,6 +20,19 @@ namespace WpfApp1
         {
             Saves s = Saves.Instance();
             s.quit();
+
+            //kill all process of the app when the user exit the app
+            string processName = Process.GetCurrentProcess().ProcessName;
+            Process[] processes = Process.GetProcessesByName(processName);
+
+            foreach (Process pro in processes)
+            {
+                if (pro.Id != Process.GetCurrentProcess().Id)
+                {
+                    pro.Kill();
+                }
+            }
+
         }
 
     }

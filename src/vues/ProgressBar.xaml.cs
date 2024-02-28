@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Net.Sockets;
 using System.Net;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -27,6 +28,8 @@ namespace WpfApp1.src.vues
     {
 
         private Save s;
+        ResourceManager rm;
+        bool isPlaying = true;
 
         private static void AccepterConnexion(Object list)
         {
@@ -55,6 +58,7 @@ namespace WpfApp1.src.vues
 
         public ProgressBarVue(Save s, Socket socket)
         {
+            this.rm = rm;
             InitializeComponent();
             this.s = s;
             BackgroundWorker worker = new BackgroundWorker();
@@ -66,21 +70,43 @@ namespace WpfApp1.src.vues
 
             serveur.Start(new List<object>() { socket, pbstatus1 });
 
+            this.rm = rm;
+            etatProgressLabel.Content = rm.GetString("LAUNCH_progress");
+            playPause.Content = rm.GetString("LAUNCH_play");
         }
 
-        void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+            void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            //initialisation de la barre de progression avec le pourcentage de progression
+            
+            //Initializing the progress bar with the progress percentage.
             pbstatus1.Value = e.ProgressPercentage;
 
-            //Affichage de la progression sur un label
-            lb_etat_prog_server.Content = pbstatus1.Value.ToString() + "%";
+            //close when 100%
+            if(pbstatus1.Value == 100)
+            {
+                System.Windows.MessageBox.Show("Le processus est terminé.", "Fin de traitement", MessageBoxButton.OK, MessageBoxImage.Information);
+                this.Close();
+            }
+
+            //Displaying the progress on a label.
+            etatProgressLabel.Content = pbstatus1.Value.ToString() + "%";
 
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.s.pausePlay();
+            if (isPlaying)
+            {
+                isPlaying = false;
+                playPause.Content = rm.GetString("LAUNCH_pause");
+            }
+            else
+            {
+                isPlaying = true;
+                playPause.Content = rm.GetString("LAUNCH_play");
+            }
         }
+
     }
 }
