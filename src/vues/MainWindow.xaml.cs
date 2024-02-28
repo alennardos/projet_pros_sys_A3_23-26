@@ -20,7 +20,9 @@ using System.Diagnostics;
 using System.Collections;
 using ConsoleApp1;
 using System.Linq.Expressions;
-using ProgressBar = WpfApp1.src.vues.ProgressBar;
+using ProgressBarVue = WpfApp1.src.vues.ProgressBarVue;
+using System.Net.Sockets;
+using System.Net;
 
 namespace WpfApp1
 {
@@ -38,15 +40,16 @@ namespace WpfApp1
 
         private Saves saves;
         private ResourceManager rm;
-        private bool run;
         private Save saveModif;
         private int size = 0;
+
+        Socket s;
 
         //Settings_menu vueSettings;
         public MainWindow()
         {
             //single instance case
-            if (processIsActive("EasySave") == true)
+            if (processIsActive("EasySave"))
             {
                 return;
             }
@@ -54,12 +57,15 @@ namespace WpfApp1
             {
                 InitializeComponent();
 
-                this.run = true;
+                s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                IPEndPoint ipep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8000);
+                s.Bind(ipep);
+                s.Listen();
+
                 this.saves = Saves.Instance();
                 this.rm = new ResourceManager("WpfApp1.languages.fr", Assembly.GetExecutingAssembly());
 
                 vueSettings = new SettingsPageMenu(this);
-                Thread.Sleep(100);
                 vueSave = new CreateSave(this);
                 vueHome = new Home(this);
                 this.Content = vueHome;
@@ -145,7 +151,7 @@ namespace WpfApp1
 
                 save.Start(new List<object>() {this.saves, index});
 
-                ProgressBar pb = new ProgressBar(this.saves.getSaves()[index]);
+                ProgressBarVue pb = new ProgressBarVue(this.saves.getSaves()[index], s);
 
                 pb.Show();
                 //Thread saveProgress = new Thread(MainWindow.saveProgress);
