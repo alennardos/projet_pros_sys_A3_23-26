@@ -47,7 +47,7 @@ namespace WpfApp1
         //when the buisnessSoftare is running user cant launch save !
         static string buisnessSoftware = "paintdotnet";
         public static bool detected = false;
-        private static List<string> extensionList;
+        
 
         Socket s;
 
@@ -266,7 +266,8 @@ namespace WpfApp1
         public void setExtensions(string extensionsString)
         {
             string[] extensionsArray = extensionsString.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-            extensionList = [];
+
+            List<String> extensionList = new List<string>();
 
             foreach (string extension in extensionsArray)
             {
@@ -276,10 +277,8 @@ namespace WpfApp1
                 {
                     throw new ArgumentException();
                 }
-
-                
             }
-            
+            this.saves.setExtensionList(extensionList);
         }
 
     }

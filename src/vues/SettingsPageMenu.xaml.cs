@@ -116,7 +116,6 @@ namespace ConsoleApp1
                 this.m.setExtensions(extensionString.Text);
                 if (maxoctet.Text != "")
                 {
-                    this.m.setExtensions(extensionString.Text);
                     m.setMaxSize(Int32.Parse(maxoctet.Text));
                 }
                 this.m.afficher("menu");

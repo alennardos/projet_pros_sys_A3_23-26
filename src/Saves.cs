@@ -26,6 +26,7 @@ namespace ConsoleApp1.src
         private bool crypt;
         private String rtsFilePath;
         private int heavyFileSize;
+        private List<string> extensionList;
 
         private static Saves _instance;
 
@@ -245,6 +246,16 @@ namespace ConsoleApp1.src
         public string getFormat()
         {
             return this.format;
+        }
+
+        public void setExtensionList(List<string> extlist)
+        {
+            this.extensionList = extlist;
+        }
+
+        public List<string> getExtensionList()
+        {
+            return this.extensionList;
         }
     }
 }
