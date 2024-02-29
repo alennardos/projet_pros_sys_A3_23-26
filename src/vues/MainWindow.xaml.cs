@@ -44,7 +44,7 @@ namespace WpfApp1
         private int size = 0;
 
         //when the buisnessSoftare is running user cant launch save !
-        static string buisnessSoftware = "Minecraft";
+        static string buisnessSoftware = "paintdotnet";
         public static bool detected = false;
 
         Socket s;
@@ -65,7 +65,7 @@ namespace WpfApp1
                 s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 IPEndPoint ipep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8000);
                 s.Bind(ipep);
-                s.Listen();
+                s.Listen(1);
 
                 this.saves = Saves.Instance();
                 this.rm = new ResourceManager("WpfApp1.languages.fr", Assembly.GetExecutingAssembly());

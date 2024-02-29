@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="MainWindow" 
+        Height="720" Width="1080"
         WindowStartupLocation="CenterScreen"
         Loaded="Window_Loaded">
 </Window>

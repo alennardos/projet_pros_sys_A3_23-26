@@ -32,20 +32,38 @@ namespace WpfApp1.src.vues
         bool isPlaying = true;
         static int value = 0;
 
-        private static void AccepterConnexion(Object s)
+        private static void AccepterConnexion(Object list)
         {
-            Socket res = ((Socket)s).Accept();
-            sendProgress(res);
+            Socket res = ((Socket)((List<Object>)list)[0]).Accept();
+            res.Send(Encoding.UTF8.GetBytes("Connected"));
+            sendProgress(res, ((Save)((List<Object>)list)[1]));
         }
 
-        private static void sendProgress(Socket s)
+        private static void sendProgress(Socket s, Save save)
         {
+            byte[] buffer = new byte[1024];
+            String message;
             bool run = true;
             while (run)
             {
-                s.Send(BitConverter.GetBytes(value));
-                Thread.Sleep(300);
-                run = value != 100;
+                //try
+                //{
+                    s.Receive(buffer);
+                    message = Encoding.UTF8.GetString(buffer);
+
+                    if (message.Contains("PlayPause"))
+                    {
+                        save.pausePlay();
+                    }
+
+                    s.Send(BitConverter.GetBytes(value));
+                    run = value != 100;
+                    Thread.Sleep(300);
+                //}
+                //catch  (Exception ex)
+                //{
+                //    run = false;
+                //}
             }
         }
         
@@ -62,18 +80,20 @@ namespace WpfApp1.src.vues
             worker.RunWorkerAsync();
             Thread serveur = new Thread(AccepterConnexion);
 
-            serveur.Start(socket);
+            serveur.Start(new List<object>() { socket, s});
 
             this.rm = rm;
-            etatProgressLabel.Content = rm.GetString("LAUNCH_progress");
+            progressLabel.Content = rm.GetString("LAUNCH_progress");
             playPause.Content = rm.GetString("LAUNCH_play");
         }
 
-            void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            
+
             //Initializing the progress bar with the progress percentage.
             pbstatus1.Value = e.ProgressPercentage;
+
+            value = (int)pbstatus1.Value;
 
             etatProgressLabel.Content = pbstatus1.Value.ToString() + "%";
 
@@ -83,9 +103,6 @@ namespace WpfApp1.src.vues
                 System.Windows.MessageBox.Show(rm.GetString("LAUNCH_succes"), "EasySave", MessageBoxButton.OK, MessageBoxImage.Information);
                 this.Close();
             }
-
-            value = (int)pbstatus1.Value;
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
