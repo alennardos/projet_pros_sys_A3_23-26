@@ -21,17 +21,7 @@ namespace clientProgress
         public MainWindow()
         {
             InitializeComponent();
-            try
-            {
-                Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                IPEndPoint ipep = new IPEndPoint(IPAddress.Parse(ip.Text), Int32.Parse(port.Text));
-                s.Connect(ipep);
-                EcouterReseau(s);
-            }
-            catch (Exception ex)
-            {
-                System.Windows.MessageBox.Show("Error\n" + ex);
-            }
+
         }
 
         private static void EcouterReseau(Socket s)
@@ -44,7 +34,17 @@ namespace clientProgress
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                IPEndPoint ipep = new IPEndPoint(IPAddress.Parse(ip.Text), Int32.Parse(port.Text));
+                s.Connect(ipep);
+                EcouterReseau(s);
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show("Error\n" + ex);
+            }
         }
     }
 }
