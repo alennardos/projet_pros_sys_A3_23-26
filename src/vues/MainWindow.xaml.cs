@@ -23,6 +23,7 @@ using System.Linq.Expressions;
 using ProgressBarVue = WpfApp1.src.vues.ProgressBarVue;
 using System.Net.Sockets;
 using System.Net;
+using System.Text.RegularExpressions;
 
 namespace WpfApp1
 {
@@ -46,6 +47,7 @@ namespace WpfApp1
         //when the buisnessSoftare is running user cant launch save !
         static string buisnessSoftware = "paintdotnet";
         public static bool detected = false;
+        private static List<string> extensionList;
 
         Socket s;
 
@@ -170,7 +172,7 @@ namespace WpfApp1
                         }
                         
                     }
-                    System.Windows.MessageBox.Show("Logiciel metier est en route", "EasySavet", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    System.Windows.MessageBox.Show("Logiciel metier est en route", "EasySave", MessageBoxButton.OK, MessageBoxImage.Warning);
                     
                 }
                 if (processIsActive(buisnessSoftware) == false)
@@ -258,6 +260,26 @@ namespace WpfApp1
         public Save getSaveModif()
         {
             return this.saveModif;
+        }
+
+        //add the extension typed in the textbox in the priority extension list
+        public void setExtensions(string extensionsString)
+        {
+            string[] extensionsArray = extensionsString.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            extensionList = [];
+
+            foreach (string extension in extensionsArray)
+            {
+                if (Regex.IsMatch(extension, @"^[a-zA-Z0-9]*$"))
+                    extensionList.Add(extension);
+                else
+                {
+                    throw new ArgumentException();
+                }
+
+                
+            }
+            
         }
 
     }

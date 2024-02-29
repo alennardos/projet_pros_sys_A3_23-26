@@ -85,6 +85,8 @@ namespace WpfApp1.src.vues
             this.rm = rm;
             progressLabel.Content = rm.GetString("LAUNCH_progress");
             playPause.Content = rm.GetString("LAUNCH_play");
+            saveNameLabel.Content = s.GetName();
+            
         }
 
         void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -100,7 +102,7 @@ namespace WpfApp1.src.vues
             //close when 100%
             if (pbstatus1.Value == 100)
             {
-                System.Windows.MessageBox.Show(rm.GetString("LAUNCH_succes"), "EasySave", MessageBoxButton.OK, MessageBoxImage.Information);
+                System.Windows.MessageBox.Show(s.GetName() + " : " + rm.GetString("LAUNCH_succes"), "EasySave", MessageBoxButton.OK, MessageBoxImage.Information);
                 this.Close();
             }
         }

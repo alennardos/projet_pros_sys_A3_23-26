@@ -175,13 +175,16 @@
     <value>I don't understand</value>
   </data>
   <data name="erreur_format" xml:space="preserve">
-    <value>The input value is not a number</value>
+    <value>The max input value is not a number</value>
   </data>
   <data name="erreur_overflow" xml:space="preserve">
     <value>The input value is too large</value>
   </data>
   <data name="error_business_software" xml:space="preserve">
     <value>Unable to initiate a backup while the business software is running</value>
+  </data>
+  <data name="error_extension" xml:space="preserve">
+    <value>One of the extension is not correct</value>
   </data>
   <data name="error_general" xml:space="preserve">
     <value>An error occurred</value>
@@ -245,6 +248,9 @@
   </data>
   <data name="SETTINGS_crypt" xml:space="preserve">
     <value>Backup encryption</value>
+  </data>
+  <data name="SETTINGS_extensions" xml:space="preserve">
+    <value>Priority extensions (Without periods and separated by spaces)</value>
   </data>
   <data name="SETTINGS_ko" xml:space="preserve">
     <value>Max' limit for parallel transfer (in KB)</value>
