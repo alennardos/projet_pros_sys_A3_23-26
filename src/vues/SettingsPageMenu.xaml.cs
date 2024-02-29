@@ -76,11 +76,23 @@ namespace ConsoleApp1
 
         private void HomeButton_Click(object sender, RoutedEventArgs e)
         {
+            /*
+            try
+            {
+                this.m.setExtensions(extensionString.Text);
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show(m.GetResourceManager().GetString("error_extension"), "EasySave", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            
+
             if (maxoctet.Text != "")
             {
 
                 try
                 {
+                    this.m.setExtensions(extensionString.Text);
                     m.setMaxSize(Int32.Parse(maxoctet.Text));
                     this.m.afficher("menu");
                 }
@@ -97,9 +109,35 @@ namespace ConsoleApp1
             {
                 this.m.afficher("menu");
             }
+            */
+
+            try
+            {
+                this.m.setExtensions(extensionString.Text);
+                if (maxoctet.Text != "")
+                {
+                    this.m.setExtensions(extensionString.Text);
+                    m.setMaxSize(Int32.Parse(maxoctet.Text));
+                }
+                this.m.afficher("menu");
+            }
+            catch (FormatException)
+            {
+                System.Windows.MessageBox.Show(m.GetResourceManager().GetString("erreur_format"), "EasySave", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (OverflowException)
+            {
+                System.Windows.MessageBox.Show("erreur_overflow", "EasySave", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show(m.GetResourceManager().GetString("error_extension"), "EasySave", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+
+
         }
 
-        private void addLanguages()
+            private void addLanguages()
         {
             var path = GetThisFilePath();
 
@@ -124,6 +162,7 @@ namespace ConsoleApp1
             label_crypt.Content = m.GetResourceManager().GetString("SETTINGS_crypt");
             home.Content = m.GetResourceManager().GetString("home");
             label_maxoctet.Content = m.GetResourceManager().GetString("SETTINGS_ko");
+            extensionsLabel.Content = m.GetResourceManager().GetString("SETTINGS_extensions");
         }
 
         public Object charger()
