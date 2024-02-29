@@ -5,19 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1.src.vues"
         mc:Ignorable="d"
-        Title="Server" Height="362" Width="527" >
+        Title="EasySave" Height="362" Width="527" >
     <Grid x:Name="pbstatus" Margin="0,0,10,0">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="383*"/>
-            <ColumnDefinition Width="6*"/>
-            <ColumnDefinition Width="10*"/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="35*"/>
+            <ColumnDefinition Width="460*"/>
+            <ColumnDefinition Width="8*"/>
+            <ColumnDefinition Width="13*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <ProgressBar x:Name="pbstatus1" HorizontalAlignment="Left" Height="51" Margin="65,64,0,0" VerticalAlignment="Top" Width="379"/>
-        <Label x:Name="etatProgressLabel" Content="" HorizontalAlignment="Left" Margin="305,0,0,0" VerticalAlignment="Center" Height="58" Width="108" FontSize="24"/>
-        <Button Content="[pause]" Name="playPause" HorizontalAlignment="Left" Margin="244,264,0,0" VerticalAlignment="Top" Click="Button_Click" Height="43" Width="169" RenderTransformOrigin="2.423,0.405" FontWeight="Bold"/>
-        <Label HorizontalAlignment="Left" Margin="203,264,0,0" VerticalAlignment="Top"/>
-        <Label Content="[Progress]" Name="progressLabel" HorizontalAlignment="Left" Margin="110,153,0,0" VerticalAlignment="Top" RenderTransformOrigin="3.024,1.668" FontSize="18" FontFamily="Arial Rounded MT Bold" FontWeight="Bold"/>
+        <ProgressBar x:Name="pbstatus1" HorizontalAlignment="Left" Height="51" Margin="30,64,0,0" VerticalAlignment="Top" Width="379" Grid.Column="1"/>
+        <Label Content="[Progress]" Name="progressLabel" HorizontalAlignment="Left" VerticalAlignment="Center" RenderTransformOrigin="3.024,1.668" HorizontalContentAlignment="Right" FontSize="18" FontFamily="Arial Rounded MT Bold" FontWeight="Bold" Grid.Column="1" Margin="161,0,0,0"/>
+        <Label x:Name="etatProgressLabel" Content="" HorizontalAlignment="Left" Margin="278,0,0,0" VerticalAlignment="Center" Height="31" Width="108" FontSize="18" Grid.Column="1" HorizontalContentAlignment="Left" FontFamily="Arial Rounded MT Bold" FontWeight="Bold"/>
+        <Button Content="[pause]" Name="playPause" HorizontalAlignment="Center" Margin="0,264,0,0" VerticalAlignment="Top" Click="Button_Click" Height="43" Width="170" RenderTransformOrigin="2.423,0.405" FontWeight="Bold" Grid.Column="1"/>
+        <Label HorizontalAlignment="Left" Margin="168,264,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+
+        <Label Content="[SaveName]" Name="saveNameLabel" HorizontalAlignment="Left" Height="31" Margin="85,28,0,0" VerticalAlignment="Top" Width="276" HorizontalContentAlignment="Center" Grid.Column="1"/>
 
     </Grid>
 </Window>
