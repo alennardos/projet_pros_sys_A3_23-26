@@ -26,7 +26,7 @@ namespace ConsoleApp1.src
         private bool crypt;
         private String rtsFilePath;
         private int heavyFileSize;
-        private List<string> extensionList;
+        private List<string> extensionList = new List<string>();
         private Semaphore semaphore = new Semaphore(1, 1);
         private int maxSize;
 

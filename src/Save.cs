@@ -171,6 +171,11 @@ namespace ConsoleApp1.src
                     {
                         Thread.Sleep(500);
                     }
+                    if(this.saves.getExtensionList() == null)
+                    {
+                        this.saves.getExtensionList().Add(" ");
+                    }
+                    
                     if ((this.saves.getExtensionList().Contains(file.Extension.Remove(0, 1)) && i == 0) || (!this.saves.getExtensionList().Contains(file.Extension.Remove(0, 1)) && i != 0))
                     {
                         Thread.Sleep(300);
@@ -193,6 +198,7 @@ namespace ConsoleApp1.src
                         fileTreated++;
                         sizeTreated += (long)file.Length;
                     }
+                    
 
                 }
             }
