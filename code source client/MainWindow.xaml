@@ -5,13 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:clientProgress"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Button Content="Button" HorizontalAlignment="Center" Margin="0,357,0,0" VerticalAlignment="Top" Click="Button_Click"/>
-        <TextBox HorizontalAlignment="Center" Name="ip" TextWrapping="Wrap" Text="127.0.0.1" VerticalAlignment="Center" Width="94"/>
-        <TextBox HorizontalAlignment="Center" Name="port" TextWrapping="Wrap" Text="8000" VerticalAlignment="Top" Width="94" Margin="0,285,0,0"/>
-        <Label Content="IP adress" HorizontalAlignment="Center" Margin="0,163,0,0" VerticalAlignment="Top"/>
-        <Label Content="port&#xD;&#xA;" HorizontalAlignment="Center" Margin="0,243,0,0" VerticalAlignment="Top"/>
+        Title="EasySave Client" Height="450" Width="800">
 
+    <Grid>
+
+        
+        <Image Name="picture_home" HorizontalAlignment="Left" Height="93" Margin="271,35,0,0" VerticalAlignment="Top" Width="255" Source="logo.png" RenderTransformOrigin="0.5,0.5" Stretch="UniformToFill"/>
+
+        <Label Content="IP Address" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,157,0,0"/>
+        <TextBox HorizontalAlignment="Center" Name="ip" TextWrapping="Wrap" Text="127.0.0.1" VerticalAlignment="Top" Width="94" Margin="0,183,0,0"/>
+
+        <Label Content="Port" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,237,0,0"/>
+        <TextBox HorizontalAlignment="Center" Name="port" TextWrapping="Wrap" Text="8000" VerticalAlignment="Top" Width="94" Margin="0,263,0,0" PreviewTextInput="DigitsOnlyTextBox_PreviewTextInput"/>
+
+        <Button Content="GO" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Button_Click" Height="34" Width="57" Margin="0,343,0,0"/>
     </Grid>
 </Window>

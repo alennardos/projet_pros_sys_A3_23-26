@@ -10,17 +10,21 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions;
 
 namespace clientProgress
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    
+    //CLIENT MAINWINDOW
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
+            this.Background = Brushes.LightGray;
 
         }
 
@@ -43,8 +47,13 @@ namespace clientProgress
             }
             catch (Exception ex)
             {
-                System.Windows.MessageBox.Show("Error\n" + ex);
+                MessageBox.Show("Error\n" + ex);
             }
+        }
+        private void DigitsOnlyTextBox_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }
