@@ -25,10 +25,12 @@ namespace ConsoleApp1.src
         private String format;
         private bool crypt;
         private String rtsFilePath;
-        private int heavyFileSize;
         private List<string> extensionList = new List<string>();
-        private Semaphore semaphore = new Semaphore(1, 1);
+        private Semaphore semaphore;
         private int maxSize;
+        private String logFilePath;
+
+        private Semaphore logWriter;
 
         private static Saves _instance;
 
@@ -61,7 +63,7 @@ namespace ConsoleApp1.src
                 Directory.CreateDirectory(savePath);
             }
 
-            string logFilePath = Path.Combine(logsPath, "log"+ DateTime.Today.ToString("dd.MM.yy") + "." + format);
+            logFilePath = Path.Combine(logsPath, "log"+ DateTime.Today.ToString("dd.MM.yy") + "." + format);
             rtsFilePath = Path.Combine(logsPath, "rts.json");
             string saveFilePath = Path.Combine(savePath, "save.xml");
 
@@ -76,14 +78,14 @@ namespace ConsoleApp1.src
                     writer.Close();
                 }
             }
-
-            log = new StreamWriter(logFilePath, true);
             
             new StreamWriter(saveFilePath, true).Close();
             saveFile = new XmlTextReader(saveFilePath);
             createSaveXml();
             saveFile.Close();
             this.maxSize = Int32.MaxValue;
+            semaphore = new Semaphore(1, 1);
+            logWriter = new Semaphore(1, 1);
         }
 
         public void changeCrypt(bool crypt)
@@ -94,8 +96,7 @@ namespace ConsoleApp1.src
         public void changeFormat(string format)
         {
             this.format = format;
-            log.Close();
-            log = new StreamWriter(logsPath + "\\log" + DateTime.Today.ToString("dd.MM.yy") + "." + format, true);
+            logFilePath = Path.Combine(logsPath, "log" + DateTime.Today.ToString("dd.MM.yy") + "." + format);
         }
 
         // Create a save with XML file
@@ -211,7 +212,14 @@ namespace ConsoleApp1.src
         // Write a Log File
         public void writeLog(String log)
         {
+            logWriter.WaitOne();
+            this.log = new StreamWriter(this.logFilePath, false);
+
             this.log.Write(log);
+
+            this.log.Close();
+            logWriter.Release();
+
         }
 
         // Write a RTS File
@@ -237,7 +245,6 @@ namespace ConsoleApp1.src
         // Quit the menu and close the app
         public void quit()
         {
-            this.log.Close();
             this.writeXmlSave();
         }
 
