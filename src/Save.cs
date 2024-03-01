@@ -122,7 +122,19 @@ namespace ConsoleApp1.src
 
             this.fileSize = this.calculDirectorySize(directory);
 
-            String res = this.save(directory, destination);
+            String res;
+
+            if(this.saves.getMaxSize() < this.fileSize / 1024)
+            {
+                this.saves.GetSemaphore().WaitOne();
+                res = this.save(directory, destination);
+
+                this.saves.GetSemaphore().Release();
+            }
+            else
+            {
+                res = this.save(directory, destination);
+            }
 
             setIsActive(false);
 
@@ -151,36 +163,6 @@ namespace ConsoleApp1.src
                     File.Delete(file);
                 }
             }
-
-            /*
-            foreach (FileInfo file in directory.GetFiles())
-            {
-                while (Interlocked.Equals(this.run, 1))
-                {
-                    Thread.Sleep(500);
-                }
-
-                Thread.Sleep(300);
-
-                string targetFilePath = Path.Combine(destination, file.Name);
-                var watch = System.Diagnostics.Stopwatch.StartNew();
-
-                this.setState(nbfiles - fileTreated, (int)(fileSize - sizeTreated), file.FullName, destination + @"\" + file.Name);
-
-                this.saves.writeRts();
-
-                ts.save(file, targetFilePath, this.saves.getCrypt());
-
-                watch.Stop();
-
-                double time = (double)watch.ElapsedMilliseconds / 1000;
-
-                res += (log(file.FullName, destination + @"\" + file.Name, ((int)file.Length), time));
-
-                fileTreated++;
-                sizeTreated += (long)file.Length;
-            }
-            */
             for (int i = 0; i < 2; i++)
             {
                 foreach (FileInfo file in directory.GetFiles())

@@ -80,7 +80,7 @@ namespace WpfApp1.src.vues
             this.nbSavesMax = 0;
 
             foreach (var item in listeSaves.SelectedItems)
-            {
+            {/*
                 // for loop -- used to determinate how many saves are heavier than max size 
                 for (int i = 0; i < listSrc.Count; i++)
                 {
@@ -104,7 +104,7 @@ namespace WpfApp1.src.vues
                         }
                     }
 
-                }
+                }*/
                 index.Add(listeSaves.Items.IndexOf(item));
                 
             }

@@ -27,6 +27,8 @@ namespace ConsoleApp1.src
         private String rtsFilePath;
         private int heavyFileSize;
         private List<string> extensionList;
+        private Semaphore semaphore = new Semaphore(1, 1);
+        private int maxSize;
 
         private static Saves _instance;
 
@@ -81,6 +83,7 @@ namespace ConsoleApp1.src
             saveFile = new XmlTextReader(saveFilePath);
             createSaveXml();
             saveFile.Close();
+            this.maxSize = Int32.MaxValue;
         }
 
         public void changeCrypt(bool crypt)
@@ -256,6 +259,21 @@ namespace ConsoleApp1.src
         public List<string> getExtensionList()
         {
             return this.extensionList;
+        }
+
+        public void setMaxSize(int maxSize)
+        {
+            this.maxSize = maxSize; 
+        }
+
+        public int getMaxSize()
+        {
+            return this.maxSize;
+        }
+
+        public Semaphore GetSemaphore()
+        {
+            return this.semaphore;
         }
     }
 }

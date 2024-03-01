@@ -74,6 +74,17 @@ namespace WpfApp1.src.vues
             saveName.Text = this.saveModif.GetName();
             saveSrcPath.Text = this.saveModif.GetSource();
             saveDestPath.Text = this.saveModif.GetDestination();
+            
+            if (this.saveModif.getTs().toString().Equals("diff"))
+            {
+                SaveDiff.IsChecked = true;
+                SaveComplete.IsChecked = false;
+            }
+            else
+            {
+                SaveComplete.IsChecked = true;
+                SaveDiff.IsChecked = false;
+            }
            
         }
 

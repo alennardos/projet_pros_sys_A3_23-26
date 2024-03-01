@@ -42,7 +42,6 @@ namespace WpfApp1
         private Saves saves;
         private ResourceManager rm;
         private Save saveModif;
-        private int size = 0;
 
         //when the buisnessSoftare is running user cant launch save !
         static string buisnessSoftware = "paintdotnet";
@@ -186,7 +185,9 @@ namespace WpfApp1
 
         public void makeSave(List<int> savesIndex)
         {
-            
+            SemaphoreSlim semaphoreLargeFolders = new SemaphoreSlim(1, 1);
+            Queue<string> folderQueue = new Queue<string>();
+
             if (processIsActive(buisnessSoftware) == true)
             {
                 throw new Exception("The business software " + buisnessSoftware + " is active \n Please close "+ buisnessSoftware);
@@ -250,12 +251,14 @@ namespace WpfApp1
 
         public void setMaxSize(int size)
         {
-            this.size = size;
+            this.saves.setMaxSize(size);
         }
+
         public int getMaxSize()
         {
-            return this.size;
+            return this.saves.getMaxSize();
         }
+
 
         public Save getSaveModif()
         {

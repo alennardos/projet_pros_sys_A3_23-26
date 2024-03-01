@@ -27,7 +27,6 @@ namespace ConsoleApp1
 {
     public partial class SettingsPageMenu : Page
     {
-        Saves saves;
         MainWindow m;
 
         public SettingsPageMenu(MainWindow m)
@@ -117,6 +116,10 @@ namespace ConsoleApp1
                 if (maxoctet.Text != "")
                 {
                     m.setMaxSize(Int32.Parse(maxoctet.Text));
+                }
+                else
+                {
+                    m.setMaxSize(Int32.MaxValue);
                 }
                 this.m.afficher("menu");
             }
