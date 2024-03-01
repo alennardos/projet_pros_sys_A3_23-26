@@ -24,7 +24,7 @@ namespace clientProgress
         public MainWindow()
         {
             InitializeComponent();
-            this.Background = Brushes.LightGray;
+            this.Background = System.Windows.Media.Brushes.LightGray;
 
         }
 
@@ -47,7 +47,7 @@ namespace clientProgress
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error\n" + ex);
+                System.Windows.MessageBox.Show("Error\n" + ex);
             }
         }
         private void DigitsOnlyTextBox_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)

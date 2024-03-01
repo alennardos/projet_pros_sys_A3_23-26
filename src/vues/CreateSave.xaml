@@ -7,38 +7,42 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CreateSave2">
-
     <Grid>
+        <StackPanel>
+        <StackPanel Margin="50,50,50,0">
+            <Label Content="[save name]" Name="saveNameLabel"/>
+                <TextBox x:Name="saveName" Width="500" HorizontalAlignment="Left"/>
+            </StackPanel>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
+        <StackPanel Margin="50,20">
+            <Label Content="[SelectPathSource]" Name="label_selectPathSource"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBox Name="srcPath" Width="500"/>
+                <Button Content="[open]" Name="selectPathSrc" Width="80" Margin="10,0,0,0" Click="selectSrc_Click"/>
+            </StackPanel>
+        </StackPanel>
 
-        <Label Grid.Row="0" Content="[save name]" Name="saveNameLabel"/>
-        <TextBox Grid.Row="0" Margin="150,5,0,5"  Name="saveName" HorizontalAlignment="Left" Width="418" />
+        <StackPanel Margin="50,20">
+            <Label Content="[SelectPathDest]" Name="label_selectPathDest"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBox Name="dstPath" Width="500"/>
+                <Button Content="[open]" Name="selectPathDst" Width="80" Margin="10,0,0,0" Click="selectDest_Click"/>
+            </StackPanel>
+        </StackPanel>
 
-        <Label x:Name="label_selectPathSource" Grid.Row="1" Content="[SelectPathSource]"/>
-        <TextBox Grid.Row="1" Name ="srcPath"  Margin="150,5,0,5" TextWrapping="Wrap" Text="" HorizontalAlignment="Left" Width="418"/>
-        <Button Grid.Row="1" Content="[open]" Name="selectPathSrc" Margin="587,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Click="selectSrc_Click" Width="211" Height="18"/>
+        <StackPanel Margin="50,20">
+            <Label Content="[SelectSaveType]" Name="label_selectSaveType"/>
+            <StackPanel Orientation="Horizontal">
+                <RadioButton Content="[complete]" Name="SaveComplete" IsChecked="True"/>
+                <RadioButton Content="[diff]" Name="SaveDiff"/>
+            </StackPanel>
+        </StackPanel>
 
-        <Label x:Name="label_selectPathDest" Grid.Row="2" Content="[SelectPathDest]" RenderTransformOrigin="0.463,-0.021"/>
-        <TextBox Grid.Row="2"  Name ="dstPath" Margin="150,5,0,5" TextWrapping="Wrap" Text="" HorizontalAlignment="Left" Width="418"/>
-        <Button Grid.Row="2" Name="selectPathDst" Content="[open]" Margin="587,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Click="selectDest_Click" Height="18" Width="211"/>
+        <StackPanel Margin="0,50,0,0" HorizontalAlignment="Center">
+            <Button Content="[create]" Name="create" Width="120" Height="40" Click="create_Click"/>
+        </StackPanel>
+    </StackPanel>
 
-        <Label x:Name="label_selectSaveType" Grid.Row="3"  Content="[SelectSaveType]"/>
-
-        <RadioButton Grid.Row="3"  Content="[complete]" Name="SaveComplete" HorizontalAlignment="Left" Margin="263,0,0,0" VerticalAlignment="Center" IsChecked="True" Checked="SaveComplete_Checked"/>
-        <RadioButton Grid.Row="3"  Content="[diff]" Name="SaveDiff"  HorizontalAlignment="Left" Margin="365,0,0,0" VerticalAlignment="Center" Checked="SaveDiff_Checked"/>
-
-        <Button Grid.Row ="6"  Content="[create]" Name="create" HorizontalAlignment="Left" Margin="126,21,0,0" VerticalAlignment="Top" Click="create_Click" Height="69" Width="68"/>
-
-
-        <Button Grid.Row="6" Content="[Home]" Name="home" HorizontalAlignment="Left" VerticalAlignment="Top" Height="68" Width="69" Click="HomeButton_Click"  RenderTransformOrigin="0.754,1.061" Margin="39,22,0,0"></Button>
+        <Button Name="home" Content="[Home]" HorizontalAlignment="Left" Height="69" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="69" Click="HomeButton_Click"/>
     </Grid>
 </Page>

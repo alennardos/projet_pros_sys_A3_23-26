@@ -35,8 +35,8 @@ namespace WpfApp1.src.vues
         private void loadLanguage()
         {
             saveNameLabel.Content = m.GetResourceManager().GetString("CREATE_name_save");
-            selectPathSrc.Content = m.GetResourceManager().GetString("CREATE_source_save");
-            selectPathDst.Content = m.GetResourceManager().GetString("CREATE_destination_save");
+            selectPathSrc.Content = m.GetResourceManager().GetString("FILE_choose");
+            selectPathDst.Content = m.GetResourceManager().GetString("FILE_choose");
             SaveComplete.Content = m.GetResourceManager().GetString("TYPE_complete");
             SaveDiff.Content = m.GetResourceManager().GetString("TYPE_diff");
             create.Content = m.GetResourceManager().GetString("CREATE_create");
