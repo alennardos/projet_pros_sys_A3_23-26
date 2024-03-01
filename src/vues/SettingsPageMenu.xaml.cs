@@ -20,6 +20,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml;
 using WpfApp1;
 using WpfApp1.src.vues;
 
@@ -42,17 +43,19 @@ namespace ConsoleApp1
             combo_crypt.Items.Add("false");
 
             this.addLanguages();
-
+            /*
             combo_langages.SelectedIndex = 1;
             combo_typeLogs.SelectedIndex = 1;
             combo_crypt.SelectedIndex = 0;
-
+            */
             loadLanguage();
-
+            /*
             if(m.getMaxSize() != 0)
             {
                 maxoctet.Text = m.getMaxSize().ToString();
             }
+            */
+            loadSettings();
             
         }
 
@@ -75,41 +78,7 @@ namespace ConsoleApp1
 
         private void HomeButton_Click(object sender, RoutedEventArgs e)
         {
-            /*
-            try
-            {
-                this.m.setExtensions(extensionString.Text);
-            }
-            catch (Exception ex)
-            {
-                System.Windows.MessageBox.Show(m.GetResourceManager().GetString("error_extension"), "EasySave", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
-            
-
-            if (maxoctet.Text != "")
-            {
-
-                try
-                {
-                    this.m.setExtensions(extensionString.Text);
-                    m.setMaxSize(Int32.Parse(maxoctet.Text));
-                    this.m.afficher("menu");
-                }
-                catch (FormatException)
-                {
-                    System.Windows.MessageBox.Show(m.GetResourceManager().GetString("erreur_format"), "EasySave", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-                catch (OverflowException)
-                {
-                    System.Windows.MessageBox.Show("erreur_overflow", "EasySave", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
-            else
-            {
-                this.m.afficher("menu");
-            }
-            */
-
+           
             try
             {
                 this.m.setExtensions(extensionString.Text);
@@ -121,6 +90,7 @@ namespace ConsoleApp1
                 {
                     m.setMaxSize(Int32.MaxValue);
                 }
+                saveSettings();
                 this.m.afficher("menu");
             }
             catch (FormatException)
@@ -139,7 +109,7 @@ namespace ConsoleApp1
 
         }
 
-            private void addLanguages()
+        private void addLanguages()
         {
             var path = GetThisFilePath();
 
@@ -183,6 +153,115 @@ namespace ConsoleApp1
         {
 
         }
+
+        public void saveSettings()
+        {
+            
+            var settingsValues = new Dictionary<string, object>
+            {
+                { "language", combo_langages.SelectedValue },
+                { "logsType", combo_typeLogs.SelectedValue },
+                { "extensions", extensionString.Text },
+                { "maxSize", maxoctet.Text },
+                { "crypt", combo_crypt.SelectedValue }
+            };
+            
+
+            string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "EasySave\\settings\\settings.txt");
+
+            /*
+            if (!File.Exists(path))
+            {
+                
+                XmlWriterSettings settings = new XmlWriterSettings();
+                settings.Indent = true;
+                using (XmlWriter writer = XmlWriter.Create(path, settings))
+                {
+                    writer.WriteStartElement("saves");
+                    writer.WriteEndElement();
+                    writer.Close();
+                }
+            }
+            */
+            using (StreamWriter writer = new StreamWriter(path))
+            {
+                foreach (var kvp in settingsValues)
+                {
+                    writer.WriteLine($"{kvp.Key}:{kvp.Value}");
+                }
+            }
+        }
+
+        private void loadSettings()
+        {
+            string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "EasySave\\settings\\settings.txt");
+
+            string[] settingsValues;
+
+            int nombreLignes = File.ReadLines(path).Count();
+
+            settingsValues = new string[nombreLignes];
+
+            using (StreamReader reader = new StreamReader(path))
+            {
+                string ligne;
+
+                int index = 0;
+
+                while ((ligne = reader.ReadLine()) != null)
+                {
+                    string[] elements = ligne.Split(':');
+                    string valeur = elements[1].Trim();
+                    settingsValues[index] = valeur;
+                    index++;
+                }
+            }
+
+            if (settingsValues[0] == "en")
+            {
+                combo_langages.SelectedIndex = 0;
+            }
+            else if (settingsValues[0] == "fr")
+            {
+                combo_langages.SelectedIndex = 1;
+            }
+            else
+            {
+                combo_langages.SelectedIndex = 1;
+            }
+
+            if (settingsValues[1] == "json")
+            {
+                combo_typeLogs.SelectedIndex = 1;
+            }
+            else if (settingsValues[1] == "xml")
+            {
+                combo_typeLogs.SelectedIndex = 0;
+            }
+            else
+            {
+                combo_typeLogs.SelectedIndex = 0;
+            }
+
+            if (settingsValues[4] == "true")
+            {
+                combo_crypt.SelectedIndex = 0;
+            }
+            else if (settingsValues[4] == "false")
+            {
+                combo_crypt.SelectedIndex = 1;
+            }
+            else
+            {
+                combo_crypt.SelectedIndex = 1;
+            }
+
+            maxoctet.Text = settingsValues[3];
+
+            extensionString.Text = settingsValues[2];
+
+        }
+
         private void DigitsOnlyTextBox_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]+");
