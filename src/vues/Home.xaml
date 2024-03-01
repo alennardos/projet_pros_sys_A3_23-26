@@ -8,6 +8,10 @@
       d:DesignHeight="720" d:DesignWidth="1080"
       Title="Home">
 
+    <Page.Background>
+        <SolidColorBrush Color="LightGray"/>
+    </Page.Background>
+
     <Grid>
         <Grid Margin="408,238,408,35">
 
